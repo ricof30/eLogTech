@@ -1,6 +1,11 @@
 <?= $this->include('header'); ?>
 <?= $this->include('sidebar'); ?>
 <div class="content">
+<div class="menu-bar">
+        <a href="#" class="sidebar-toggler flex-shrink-0">
+                        <i class="fa fa-bars"></i>
+        </a>
+    </div>
     <div class="container-fluid pt-4 px-4">
         <div class="row g-4">
             <div class="col-12">
@@ -73,7 +78,7 @@
         </div>
     </div>
 </div> -->
-<?= $this->include('footer'); ?>
+<?= $this->include('script'); ?>    
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 

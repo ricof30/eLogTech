@@ -1,6 +1,12 @@
 <?= $this->include('header'); ?>
 <?= $this->include('sidebar'); ?>
 <div class="content">
+    <div class="menu-bar">
+        <a href="#" class="sidebar-toggler flex-shrink-0">
+                        <i class="fa fa-bars"></i>
+        </a>
+    </div>
+
     <div class="container-fluid pt-4 px-4">
         <div class="row g-4">
             <div class="col-12">
@@ -27,10 +33,10 @@
                     </div>
                     <h6 class="mb-4 text-center large">Contact Numbers</h6>
                     <div class="table-responsive">
-                        <table class="table">
+                        <table id="myTable" class="table-responsive table-bordered display">
                             <thead>
                                 <tr>
-                                    <th scope="col" class="text-white">Phone Number</th>
+                                    <th scope="col" class="text-white text-center">Phone Number</th>
                                     <th scope="col" class="text-white text-center">Action</th>
                                     <th scope="col" class="text-white">Status</th>
                                     <!-- <th scope="col">Delete</th> -->
@@ -39,7 +45,7 @@
                             <tbody>
                                 <?php foreach ($contact as $con): ?>
                                     <tr>
-                                        <td><?= $con['phone_number']; ?></td>
+                                        <td class="text-center"><?= $con['phone_number']; ?></td>
                                         <td class="text-center"> <a data-bs-toggle="modal" data-bs-target="#edit" class="text-info edit" href="#" data-id="<?= $con['id'] ?>" data-phone_number="<?= $con['phone_number'] ?>" data-status=<?= $con['status']?>>Edit</a></td>
                                         <td>
                                          <?php if ($con['status'] == 1):?>
@@ -120,6 +126,17 @@
 </div>
 
 <?= $this->include('script'); ?>
+<script>
+    let table = new DataTable('#myTable');
+    const th = document.getElementsByTagName('th');
+    const td = document.getElementsByTagName('td');
+    for(let i=0;i<th.length;i++){
+        th[i].style.backgroundColor = "orange";
+    }
+    for(let j=0;j<td.length;j++){
+        td[j].style.textAlign = "center";
+    }
+</script>
 <script>
     document.addEventListener("DOMContentLoaded", function () {
         document.getElementById("addContactLink").addEventListener("click", function () {

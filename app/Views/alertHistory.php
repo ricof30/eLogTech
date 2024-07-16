@@ -2,6 +2,11 @@
 <?= $this->include('sidebar'); ?>
 
 <div class="content">
+<div class="menu-bar">
+        <a href="#" class="sidebar-toggler flex-shrink-0">
+                        <i class="fa fa-bars"></i>
+        </a>
+    </div>
     <div class="container-fluid pt-4 px-4">
         <div class="row g-4">
             <div class="col-12">
@@ -9,7 +14,7 @@
                     <div class="table-responsive">
                         <h4 class="text-center">Water Level History</h4>
 
-                        <table id="page" class="table table-bordered">
+                        <table id="page" class="table-responsive table-bordered">
                             <thead>
                                 <tr>
                                     <th class="text-white text-center">Water Level</th>
@@ -34,26 +39,19 @@
 
 <?= $this->include('script'); ?>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
-<script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
-
 <script>
-    $(document).ready(function() {
-        $('#page').DataTable({
-            "pagingType": "simple_numbers", // You can choose any pagination style you prefer
-            "lengthMenu": [10, 25, 50, 75, 100],
-            "language": {
-                "paginate": {
-                    "previous": "&lt;",
-                    "next": "&gt;"
-                }
-            },
-            "columnDefs": [
-                { "orderable": false, "targets": 0 }, // Disable sorting on the first column
-                { "orderable": false, "targets": 1 }  // Disable sorting on the second column
-            ]
-        });
-    });
+    let table = new DataTable('#page');
 </script>
-
-<?= $this->include('footer'); ?>
+<script>
+    const th = document.getElementsByTagName('th');
+    const td = document.getElementsByTagName('td');
+    for(let i=0; i<th.length;i++){
+        th[i].style.textAlign = 'center';
+        th[i].style.backgroundColor = 'orange';
+    }
+    for(let i=0;i<td.length;i++){
+        td[i].style.textAlign = 'center';
+    }
+</script>
+   
+<!-- <?= $this->include('footer'); ?> -->

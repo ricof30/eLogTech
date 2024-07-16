@@ -14,12 +14,12 @@
                         <span>Admin</span>
                     </div>
                 </div>
-                <div class="navbar-nav w-100">
-                    <a href="/" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
-                    <a href="contact" class="nav-item nav-link"><i class="fa fa-phone me-2"></i>Contact Numbers</a>
-                    <a href="messages" class="nav-item nav-link"><i class="fa fa-envelope me-2"></i>Messages</a>
-                    <a href="status" class="nav-item nav-link"><i class="fas fa-info-circle me-2"></i> Device Status</a>
-                    <a href="alertHistory" class="nav-item nav-link"><i class="fas fa-info-circle me-2"></i> Alert History</a>
+                <div class="menu navbar-nav w-100">
+                    <a href="/" class="menu-item nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
+                    <a href="contact" class="menu-item nav-item nav-link"><i class="fa fa-phone me-2"></i>Contact Numbers</a>
+                    <a href="messages" class="menu-item nav-item nav-link"><i class="fa fa-envelope me-2"></i>Messages</a>
+                    <a href="status" class="menu-item nav-item nav-link"><i class="fas fa-info-circle me-2"></i> Device Status</a>
+                    <a href="alertHistory" class="menu-item nav-item nav-link"><i class="fas fa-info-circle me-2"></i> Alert History</a>
                 </div>
             </nav>
         </div>

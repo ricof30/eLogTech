@@ -2,6 +2,11 @@
 <?= $this->include('header'); ?>
 <?= $this->include('sidebar'); ?>
 <div class="content">
+<div class="menu-bar">
+        <a href="#" class="sidebar-toggler flex-shrink-0">
+                        <i class="fa fa-bars"></i>
+        </a>
+    </div>
     <div class="container-fluid pt-4 px-4">
         <div class="row g-4">
             <div class="col-12">
@@ -9,7 +14,7 @@
                    
                 <h4 class="text-primary text-center">Status Indicators</h4><br>
                 <div class="table-responsive">
-        <table class="table table-bordered text-center">
+        <table id="statusTable" class="table-responsive table-bordered text-center">
             <thead>
                 <tr>
                     <th class="text-white">Component</th>
@@ -94,6 +99,23 @@
 </div>
 
 <?= $this->include('script'); ?>
+<script>
+    let table = new DataTable('#statusTable');
+</script>
+<script>
+    const th = document.getElementsByTagName('th');
+    const td = document.getElementsByTagName('td');
+    for(let i=0;i < th.length; i++)
+    { 
+        th[i].style.textAlign  = "center";
+        th[i].style.backgroundColor  = "orange";
+    }
+
+    for(let i=0;i < td.length; i++)
+    { 
+        td[i].style.textAlign  = "center";
+    }
+</script>
 <script>
     document.addEventListener("DOMContentLoaded", function () {
         document.getElementById("addContactLink").addEventListener("click", function () {
