@@ -1,0 +1,666 @@
+CRITICAL - 2024-05-26 07:39:32 --> ErrorException: Undefined array key "is_read"
+in APPPATH\Views\dashboard.php on line 33.
+ 1 APPPATH\Views\dashboard.php(33): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "is_read"', 'C:\\laragon\\www\\solarflood\\app\\Views\\dashboard.php', 33)
+ 2 SYSTEMPATH\View\View.php(228): include('C:\\laragon\\www\\solarflood\\app\\Views\\dashboard.php')
+ 3 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('dashboard', [], true)
+ 5 APPPATH\Controllers\Home.php(66): view('dashboard', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->index()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')
+CRITICAL - 2024-05-26 08:01:18 --> ErrorException: Undefined variable $unreadCount
+in APPPATH\Views\message.php on line 40.
+ 1 APPPATH\Views\message.php(40): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $unreadCount', 'C:\\laragon\\www\\solarflood\\app\\Views\\message.php', 40)
+ 2 SYSTEMPATH\View\View.php(228): include('C:\\laragon\\www\\solarflood\\app\\Views\\message.php')
+ 3 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('message', [], true)
+ 5 APPPATH\Controllers\Home.php(195): view('message', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->message()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')
+CRITICAL - 2024-05-26 08:01:50 --> ErrorException: Undefined variable $unreadCount
+in APPPATH\Views\message.php on line 40.
+ 1 APPPATH\Views\message.php(40): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $unreadCount', 'C:\\laragon\\www\\solarflood\\app\\Views\\message.php', 40)
+ 2 SYSTEMPATH\View\View.php(228): include('C:\\laragon\\www\\solarflood\\app\\Views\\message.php')
+ 3 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('message', [], true)
+ 5 APPPATH\Controllers\Home.php(195): view('message', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->message()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')
+CRITICAL - 2024-05-26 08:25:41 --> ErrorException: Undefined variable $unreadCount
+in APPPATH\Views\message.php on line 40.
+ 1 APPPATH\Views\message.php(40): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $unreadCount', 'C:\\laragon\\www\\solarflood\\app\\Views\\message.php', 40)
+ 2 SYSTEMPATH\View\View.php(228): include('C:\\laragon\\www\\solarflood\\app\\Views\\message.php')
+ 3 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('message', [], true)
+ 5 APPPATH\Controllers\Home.php(195): view('message', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->message()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')
+CRITICAL - 2024-05-26 08:26:51 --> ErrorException: Undefined variable $phoneNumber
+in APPPATH\Views\show_message.php on line 8.
+ 1 APPPATH\Views\show_message.php(8): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $phoneNumber', 'C:\\laragon\\www\\solarflood\\app\\Views\\show_message.php', 8)
+ 2 SYSTEMPATH\View\View.php(228): include('C:\\laragon\\www\\solarflood\\app\\Views\\show_message.php')
+ 3 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('show_message', [], true)
+ 5 APPPATH\Controllers\Home.php(201): view('show_message', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->showMessage('09952927249')
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')
+CRITICAL - 2024-05-26 08:27:12 --> ErrorException: Undefined variable $phoneNumber
+in APPPATH\Views\show_message.php on line 8.
+ 1 APPPATH\Views\show_message.php(8): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $phoneNumber', 'C:\\laragon\\www\\solarflood\\app\\Views\\show_message.php', 8)
+ 2 SYSTEMPATH\View\View.php(228): include('C:\\laragon\\www\\solarflood\\app\\Views\\show_message.php')
+ 3 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('show_message', [], true)
+ 5 APPPATH\Controllers\Home.php(201): view('show_message', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->showMessage('09952927249')
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')
+CRITICAL - 2024-05-26 08:39:14 --> TypeError: CodeIgniter\BaseModel::findAll(): Argument #1 ($limit) must be of type int, null given, called in C:\laragon\www\solarflood\app\Controllers\Home.php on line 195
+in SYSTEMPATH\BaseModel.php on line 621.
+ 1 APPPATH\Controllers\Home.php(195): CodeIgniter\BaseModel->findAll(null, null, [...])
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->message()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')
+ERROR - 2024-05-26 08:40:04 --> mysqli_sql_exception: Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'capstone.receive_message.id' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by in C:\laragon\www\solarflood\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\solarflood\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\laragon\www\solarflood\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\laragon\www\solarflood\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\laragon\www\solarflood\system\Database\BaseBuilder.php(1613): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\laragon\www\solarflood\system\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\solarflood\system\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\solarflood\app\Controllers\Home.php(197): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\solarflood\system\CodeIgniter.php(941): App\Controllers\Home->message()
+#8 C:\laragon\www\solarflood\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#9 C:\laragon\www\solarflood\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\solarflood\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#11 C:\laragon\www\solarflood\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#12 {main}
+CRITICAL - 2024-05-26 08:40:04 --> CodeIgniter\Database\Exceptions\DatabaseException: Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'capstone.receive_message.id' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1613): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `receive_message`
+GROUP BY `phone_number`', [], false)
+ 2 SYSTEMPATH\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\Home.php(197): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->message()
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')
+CRITICAL - 2024-05-26 08:40:04 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'capstone.receive_message.id' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `receive_message`
+GROUP BY `phone_number`')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `receive_message`
+GROUP BY `phone_number`')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1613): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `receive_message`
+GROUP BY `phone_number`', [], false)
+ 4 SYSTEMPATH\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+ 6 APPPATH\Controllers\Home.php(197): CodeIgniter\BaseModel->findAll()
+ 7 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->message()
+ 8 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 9 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')
+CRITICAL - 2024-05-26 08:40:04 --> [Caused by] mysqli_sql_exception: Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'capstone.receive_message.id' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('SELECT *
+FROM `receive_message`
+GROUP BY `phone_number`', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `receive_message`
+GROUP BY `phone_number`')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `receive_message`
+GROUP BY `phone_number`')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1613): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `receive_message`
+GROUP BY `phone_number`', [], false)
+ 5 SYSTEMPATH\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Controllers\Home.php(197): CodeIgniter\BaseModel->findAll()
+ 8 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->message()
+ 9 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+10 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')
+CRITICAL - 2024-05-26 08:42:26 --> ErrorException: Cannot redeclare App\Controllers\Home::showMessage()
+in APPPATH\Controllers\Home.php on line 203.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+ERROR - 2024-05-26 08:43:47 --> mysqli_sql_exception: Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'capstone.receive_message.id' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by in C:\laragon\www\solarflood\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\solarflood\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\laragon\www\solarflood\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\laragon\www\solarflood\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\laragon\www\solarflood\system\Database\BaseBuilder.php(1613): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\laragon\www\solarflood\system\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\solarflood\system\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\solarflood\app\Controllers\Home.php(197): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\solarflood\system\CodeIgniter.php(941): App\Controllers\Home->message()
+#8 C:\laragon\www\solarflood\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#9 C:\laragon\www\solarflood\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\solarflood\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#11 C:\laragon\www\solarflood\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#12 {main}
+CRITICAL - 2024-05-26 08:43:47 --> CodeIgniter\Database\Exceptions\DatabaseException: Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'capstone.receive_message.id' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1613): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `receive_message`
+GROUP BY `phone_number`', [], false)
+ 2 SYSTEMPATH\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\Home.php(197): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->message()
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')
+CRITICAL - 2024-05-26 08:43:47 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'capstone.receive_message.id' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `receive_message`
+GROUP BY `phone_number`')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `receive_message`
+GROUP BY `phone_number`')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1613): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `receive_message`
+GROUP BY `phone_number`', [], false)
+ 4 SYSTEMPATH\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+ 6 APPPATH\Controllers\Home.php(197): CodeIgniter\BaseModel->findAll()
+ 7 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->message()
+ 8 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 9 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')
+CRITICAL - 2024-05-26 08:43:47 --> [Caused by] mysqli_sql_exception: Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'capstone.receive_message.id' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('SELECT *
+FROM `receive_message`
+GROUP BY `phone_number`', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `receive_message`
+GROUP BY `phone_number`')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `receive_message`
+GROUP BY `phone_number`')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1613): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `receive_message`
+GROUP BY `phone_number`', [], false)
+ 5 SYSTEMPATH\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Controllers\Home.php(197): CodeIgniter\BaseModel->findAll()
+ 8 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->message()
+ 9 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+10 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')
+ERROR - 2024-05-26 08:44:10 --> mysqli_sql_exception: Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'capstone.receive_message.id' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by in C:\laragon\www\solarflood\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\solarflood\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\laragon\www\solarflood\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\laragon\www\solarflood\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\laragon\www\solarflood\system\Database\BaseBuilder.php(1613): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\laragon\www\solarflood\system\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\solarflood\system\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\solarflood\app\Controllers\Home.php(197): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\solarflood\system\CodeIgniter.php(941): App\Controllers\Home->message()
+#8 C:\laragon\www\solarflood\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#9 C:\laragon\www\solarflood\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\solarflood\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#11 C:\laragon\www\solarflood\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#12 {main}
+CRITICAL - 2024-05-26 08:44:10 --> CodeIgniter\Database\Exceptions\DatabaseException: Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'capstone.receive_message.id' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1613): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `receive_message`
+GROUP BY `phone_number`', [], false)
+ 2 SYSTEMPATH\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\Home.php(197): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->message()
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')
+CRITICAL - 2024-05-26 08:44:10 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'capstone.receive_message.id' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `receive_message`
+GROUP BY `phone_number`')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `receive_message`
+GROUP BY `phone_number`')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1613): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `receive_message`
+GROUP BY `phone_number`', [], false)
+ 4 SYSTEMPATH\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+ 6 APPPATH\Controllers\Home.php(197): CodeIgniter\BaseModel->findAll()
+ 7 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->message()
+ 8 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 9 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')
+CRITICAL - 2024-05-26 08:44:10 --> [Caused by] mysqli_sql_exception: Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'capstone.receive_message.id' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('SELECT *
+FROM `receive_message`
+GROUP BY `phone_number`', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `receive_message`
+GROUP BY `phone_number`')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `receive_message`
+GROUP BY `phone_number`')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1613): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `receive_message`
+GROUP BY `phone_number`', [], false)
+ 5 SYSTEMPATH\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Controllers\Home.php(197): CodeIgniter\BaseModel->findAll()
+ 8 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->message()
+ 9 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+10 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')
+CRITICAL - 2024-05-26 08:46:50 --> ErrorException: Undefined variable $phoneNumber
+in APPPATH\Views\show_message.php on line 8.
+ 1 APPPATH\Views\show_message.php(8): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $phoneNumber', 'C:\\laragon\\www\\solarflood\\app\\Views\\show_message.php', 8)
+ 2 SYSTEMPATH\View\View.php(228): include('C:\\laragon\\www\\solarflood\\app\\Views\\show_message.php')
+ 3 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('show_message', [], true)
+ 5 APPPATH\Controllers\Home.php(219): view('show_message', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->showMessage('09952927249')
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')
+CRITICAL - 2024-05-26 08:50:02 --> ErrorException: Undefined variable $messages
+in APPPATH\Views\message.php on line 30.
+ 1 APPPATH\Views\message.php(30): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $messages', 'C:\\laragon\\www\\solarflood\\app\\Views\\message.php', 30)
+ 2 SYSTEMPATH\View\View.php(228): include('C:\\laragon\\www\\solarflood\\app\\Views\\message.php')
+ 3 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('message', [], true)
+ 5 APPPATH\Controllers\Home.php(208): view('message', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->message()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')
+CRITICAL - 2024-05-26 08:52:23 --> ErrorException: Undefined variable $phoneNumber
+in APPPATH\Views\show_message.php on line 8.
+ 1 APPPATH\Views\show_message.php(8): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $phoneNumber', 'C:\\laragon\\www\\solarflood\\app\\Views\\show_message.php', 8)
+ 2 SYSTEMPATH\View\View.php(228): include('C:\\laragon\\www\\solarflood\\app\\Views\\show_message.php')
+ 3 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('show_message', [], true)
+ 5 APPPATH\Controllers\Home.php(220): view('show_message', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->showMessage('09952927249')
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')
+CRITICAL - 2024-05-26 08:56:02 --> ErrorException: Undefined array key "id"
+in APPPATH\Views\message.php on line 44.
+ 1 APPPATH\Views\message.php(44): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "id"', 'C:\\laragon\\www\\solarflood\\app\\Views\\message.php', 44)
+ 2 SYSTEMPATH\View\View.php(228): include('C:\\laragon\\www\\solarflood\\app\\Views\\message.php')
+ 3 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('message', [], true)
+ 5 APPPATH\Controllers\Home.php(212): view('message', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->message()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')
+CRITICAL - 2024-05-26 08:57:58 --> ErrorException: Undefined variable $distinctMessages
+in APPPATH\Views\message.php on line 30.
+ 1 APPPATH\Views\message.php(30): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $distinctMessages', 'C:\\laragon\\www\\solarflood\\app\\Views\\message.php', 30)
+ 2 SYSTEMPATH\View\View.php(228): include('C:\\laragon\\www\\solarflood\\app\\Views\\message.php')
+ 3 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('message', [], true)
+ 5 APPPATH\Controllers\Home.php(208): view('message', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->message()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')
+CRITICAL - 2024-05-26 09:00:13 --> ErrorException: Undefined variable $distinctMessages
+in APPPATH\Views\message.php on line 30.
+ 1 APPPATH\Views\message.php(30): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $distinctMessages', 'C:\\laragon\\www\\solarflood\\app\\Views\\message.php', 30)
+ 2 SYSTEMPATH\View\View.php(228): include('C:\\laragon\\www\\solarflood\\app\\Views\\message.php')
+ 3 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('message', [], true)
+ 5 APPPATH\Controllers\Home.php(208): view('message', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->message()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')
+CRITICAL - 2024-05-26 09:06:50 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "message_view.php"
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(216): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('message_view.php')
+ 2 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('message_view', [], true)
+ 3 APPPATH\Controllers\Home.php(211): view('message_view', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->message()
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')
+CRITICAL - 2024-05-26 09:07:03 --> ErrorException: Undefined variable $phoneNumber
+in APPPATH\Views\show_message.php on line 8.
+ 1 APPPATH\Views\show_message.php(8): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $phoneNumber', 'C:\\laragon\\www\\solarflood\\app\\Views\\show_message.php', 8)
+ 2 SYSTEMPATH\View\View.php(228): include('C:\\laragon\\www\\solarflood\\app\\Views\\show_message.php')
+ 3 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('show_message', [], true)
+ 5 APPPATH\Controllers\Home.php(211): view('show_message', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->message()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')
+CRITICAL - 2024-05-26 09:08:04 --> ErrorException: Undefined variable $phoneNumber
+in APPPATH\Views\show_message.php on line 8.
+ 1 APPPATH\Views\show_message.php(8): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $phoneNumber', 'C:\\laragon\\www\\solarflood\\app\\Views\\show_message.php', 8)
+ 2 SYSTEMPATH\View\View.php(228): include('C:\\laragon\\www\\solarflood\\app\\Views\\show_message.php')
+ 3 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('show_message', [], true)
+ 5 APPPATH\Controllers\Home.php(223): view('show_message', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->showMessage('09952927249')
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')
+CRITICAL - 2024-05-26 09:13:42 --> Error: Class "App\Controllers\MessageModel" not found
+in APPPATH\Controllers\Home.php on line 228.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->show('09952927249')
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')
+CRITICAL - 2024-05-26 09:14:03 --> ErrorException: Undefined variable $phoneNumber
+in APPPATH\Views\show_message.php on line 8.
+ 1 APPPATH\Views\show_message.php(8): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $phoneNumber', 'C:\\laragon\\www\\solarflood\\app\\Views\\show_message.php', 8)
+ 2 SYSTEMPATH\View\View.php(228): include('C:\\laragon\\www\\solarflood\\app\\Views\\show_message.php')
+ 3 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('show_message', [], true)
+ 5 APPPATH\Controllers\Home.php(236): view('show_message', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->show('09952927249')
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')
+CRITICAL - 2024-05-26 09:15:06 --> ErrorException: Undefined variable $phoneNumber
+in APPPATH\Views\show_message.php on line 8.
+ 1 APPPATH\Views\show_message.php(8): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $phoneNumber', 'C:\\laragon\\www\\solarflood\\app\\Views\\show_message.php', 8)
+ 2 SYSTEMPATH\View\View.php(228): include('C:\\laragon\\www\\solarflood\\app\\Views\\show_message.php')
+ 3 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('show_message', [], true)
+ 5 APPPATH\Controllers\Home.php(236): view('show_message', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->show('09952927249')
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')
+CRITICAL - 2024-05-26 09:18:54 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "headers.php"
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(216): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('headers.php')
+ 2 SYSTEMPATH\View\View.php(469): CodeIgniter\View\View->render('headers', null, true)
+ 3 APPPATH\Views\message.php(1): CodeIgniter\View\View->include('headers')
+ 4 SYSTEMPATH\View\View.php(228): include('C:\\laragon\\www\\solarflood\\app\\Views\\message.php')
+ 5 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 6 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('message', [], true)
+ 7 APPPATH\Controllers\Home.php(211): view('message', [...])
+ 8 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->message()
+ 9 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+10 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')
+CRITICAL - 2024-05-26 09:23:54 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "view/header.php"
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(216): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('view/header.php')
+ 2 SYSTEMPATH\View\View.php(469): CodeIgniter\View\View->render('view/header', null, true)
+ 3 APPPATH\Views\show_message.php(1): CodeIgniter\View\View->include('view/header')
+ 4 SYSTEMPATH\View\View.php(228): include('C:\\laragon\\www\\solarflood\\app\\Views\\show_message.php')
+ 5 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 6 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('show_message', [], true)
+ 7 APPPATH\Controllers\Home.php(236): view('show_message', [...])
+ 8 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->show('09952927249')
+ 9 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+10 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')
+CRITICAL - 2024-05-26 09:24:24 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "../header.php"
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(216): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('../header.php')
+ 2 SYSTEMPATH\View\View.php(469): CodeIgniter\View\View->render('../header', null, true)
+ 3 APPPATH\Views\show_message.php(1): CodeIgniter\View\View->include('../header')
+ 4 SYSTEMPATH\View\View.php(228): include('C:\\laragon\\www\\solarflood\\app\\Views\\show_message.php')
+ 5 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 6 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('show_message', [], true)
+ 7 APPPATH\Controllers\Home.php(236): view('show_message', [...])
+ 8 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->show('09952927249')
+ 9 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+10 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')
+ERROR - 2024-05-26 10:46:19 --> mysqli_sql_exception: Unknown column 'phone_number' in 'where clause' in C:\laragon\www\solarflood\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\solarflood\system\Database\MySQLi\Connection.php(306): mysqli->query('DELETE FROM `se...', 0)
+#1 C:\laragon\www\solarflood\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('DELETE FROM `se...')
+#2 C:\laragon\www\solarflood\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('DELETE FROM `se...')
+#3 C:\laragon\www\solarflood\system\Database\BaseBuilder.php(2782): CodeIgniter\Database\BaseConnection->query('DELETE FROM `se...', Array, false)
+#4 C:\laragon\www\solarflood\system\Model.php(453): CodeIgniter\Database\BaseBuilder->delete()
+#5 C:\laragon\www\solarflood\system\BaseModel.php(1117): CodeIgniter\Model->doDelete(NULL, false)
+#6 C:\laragon\www\solarflood\app\Controllers\Home.php(271): CodeIgniter\BaseModel->delete()
+#7 C:\laragon\www\solarflood\system\CodeIgniter.php(941): App\Controllers\Home->deleteByPhoneNumber('09952927249')
+#8 C:\laragon\www\solarflood\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#9 C:\laragon\www\solarflood\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\solarflood\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#11 C:\laragon\www\solarflood\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#12 {main}
+CRITICAL - 2024-05-26 10:46:19 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'phone_number' in 'where clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2782): CodeIgniter\Database\BaseConnection->query('DELETE FROM `sent_message`
+WHERE `phone_number` = :phone_number:', [...], false)
+ 2 SYSTEMPATH\Model.php(453): CodeIgniter\Database\BaseBuilder->delete()
+ 3 SYSTEMPATH\BaseModel.php(1117): CodeIgniter\Model->doDelete(null, false)
+ 4 APPPATH\Controllers\Home.php(271): CodeIgniter\BaseModel->delete()
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->deleteByPhoneNumber('09952927249')
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')
+CRITICAL - 2024-05-26 10:46:19 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'phone_number' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('DELETE FROM `sent_message`
+WHERE `phone_number` = \'09952927249\'')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('DELETE FROM `sent_message`
+WHERE `phone_number` = \'09952927249\'')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(2782): CodeIgniter\Database\BaseConnection->query('DELETE FROM `sent_message`
+WHERE `phone_number` = :phone_number:', [...], false)
+ 4 SYSTEMPATH\Model.php(453): CodeIgniter\Database\BaseBuilder->delete()
+ 5 SYSTEMPATH\BaseModel.php(1117): CodeIgniter\Model->doDelete(null, false)
+ 6 APPPATH\Controllers\Home.php(271): CodeIgniter\BaseModel->delete()
+ 7 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->deleteByPhoneNumber('09952927249')
+ 8 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 9 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')
+CRITICAL - 2024-05-26 10:46:19 --> [Caused by] mysqli_sql_exception: Unknown column 'phone_number' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('DELETE FROM `sent_message`
+WHERE `phone_number` = \'09952927249\'', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('DELETE FROM `sent_message`
+WHERE `phone_number` = \'09952927249\'')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('DELETE FROM `sent_message`
+WHERE `phone_number` = \'09952927249\'')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2782): CodeIgniter\Database\BaseConnection->query('DELETE FROM `sent_message`
+WHERE `phone_number` = :phone_number:', [...], false)
+ 5 SYSTEMPATH\Model.php(453): CodeIgniter\Database\BaseBuilder->delete()
+ 6 SYSTEMPATH\BaseModel.php(1117): CodeIgniter\Model->doDelete(null, false)
+ 7 APPPATH\Controllers\Home.php(271): CodeIgniter\BaseModel->delete()
+ 8 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->deleteByPhoneNumber('09952927249')
+ 9 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+10 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')
+ERROR - 2024-05-26 10:46:50 --> mysqli_sql_exception: Unknown column 'phone_number' in 'where clause' in C:\laragon\www\solarflood\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\solarflood\system\Database\MySQLi\Connection.php(306): mysqli->query('DELETE FROM `se...', 0)
+#1 C:\laragon\www\solarflood\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('DELETE FROM `se...')
+#2 C:\laragon\www\solarflood\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('DELETE FROM `se...')
+#3 C:\laragon\www\solarflood\system\Database\BaseBuilder.php(2782): CodeIgniter\Database\BaseConnection->query('DELETE FROM `se...', Array, false)
+#4 C:\laragon\www\solarflood\system\Model.php(453): CodeIgniter\Database\BaseBuilder->delete()
+#5 C:\laragon\www\solarflood\system\BaseModel.php(1117): CodeIgniter\Model->doDelete(NULL, false)
+#6 C:\laragon\www\solarflood\app\Controllers\Home.php(271): CodeIgniter\BaseModel->delete()
+#7 C:\laragon\www\solarflood\system\CodeIgniter.php(941): App\Controllers\Home->deleteByPhoneNumber('09952927249')
+#8 C:\laragon\www\solarflood\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#9 C:\laragon\www\solarflood\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\solarflood\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#11 C:\laragon\www\solarflood\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#12 {main}
+CRITICAL - 2024-05-26 10:46:50 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'phone_number' in 'where clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2782): CodeIgniter\Database\BaseConnection->query('DELETE FROM `sent_message`
+WHERE `phone_number` = :phone_number:', [...], false)
+ 2 SYSTEMPATH\Model.php(453): CodeIgniter\Database\BaseBuilder->delete()
+ 3 SYSTEMPATH\BaseModel.php(1117): CodeIgniter\Model->doDelete(null, false)
+ 4 APPPATH\Controllers\Home.php(271): CodeIgniter\BaseModel->delete()
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->deleteByPhoneNumber('09952927249')
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')
+CRITICAL - 2024-05-26 10:46:50 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'phone_number' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('DELETE FROM `sent_message`
+WHERE `phone_number` = \'09952927249\'')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('DELETE FROM `sent_message`
+WHERE `phone_number` = \'09952927249\'')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(2782): CodeIgniter\Database\BaseConnection->query('DELETE FROM `sent_message`
+WHERE `phone_number` = :phone_number:', [...], false)
+ 4 SYSTEMPATH\Model.php(453): CodeIgniter\Database\BaseBuilder->delete()
+ 5 SYSTEMPATH\BaseModel.php(1117): CodeIgniter\Model->doDelete(null, false)
+ 6 APPPATH\Controllers\Home.php(271): CodeIgniter\BaseModel->delete()
+ 7 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->deleteByPhoneNumber('09952927249')
+ 8 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 9 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')
+CRITICAL - 2024-05-26 10:46:50 --> [Caused by] mysqli_sql_exception: Unknown column 'phone_number' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('DELETE FROM `sent_message`
+WHERE `phone_number` = \'09952927249\'', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('DELETE FROM `sent_message`
+WHERE `phone_number` = \'09952927249\'')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('DELETE FROM `sent_message`
+WHERE `phone_number` = \'09952927249\'')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2782): CodeIgniter\Database\BaseConnection->query('DELETE FROM `sent_message`
+WHERE `phone_number` = :phone_number:', [...], false)
+ 5 SYSTEMPATH\Model.php(453): CodeIgniter\Database\BaseBuilder->delete()
+ 6 SYSTEMPATH\BaseModel.php(1117): CodeIgniter\Model->doDelete(null, false)
+ 7 APPPATH\Controllers\Home.php(271): CodeIgniter\BaseModel->delete()
+ 8 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->deleteByPhoneNumber('09952927249')
+ 9 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+10 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')
+ERROR - 2024-05-26 10:46:56 --> mysqli_sql_exception: Unknown column 'phone_number' in 'where clause' in C:\laragon\www\solarflood\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\solarflood\system\Database\MySQLi\Connection.php(306): mysqli->query('DELETE FROM `se...', 0)
+#1 C:\laragon\www\solarflood\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('DELETE FROM `se...')
+#2 C:\laragon\www\solarflood\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('DELETE FROM `se...')
+#3 C:\laragon\www\solarflood\system\Database\BaseBuilder.php(2782): CodeIgniter\Database\BaseConnection->query('DELETE FROM `se...', Array, false)
+#4 C:\laragon\www\solarflood\system\Model.php(453): CodeIgniter\Database\BaseBuilder->delete()
+#5 C:\laragon\www\solarflood\system\BaseModel.php(1117): CodeIgniter\Model->doDelete(NULL, false)
+#6 C:\laragon\www\solarflood\app\Controllers\Home.php(271): CodeIgniter\BaseModel->delete()
+#7 C:\laragon\www\solarflood\system\CodeIgniter.php(941): App\Controllers\Home->deleteByPhoneNumber('09952927249')
+#8 C:\laragon\www\solarflood\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#9 C:\laragon\www\solarflood\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\solarflood\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#11 C:\laragon\www\solarflood\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#12 {main}
+CRITICAL - 2024-05-26 10:46:56 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'phone_number' in 'where clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2782): CodeIgniter\Database\BaseConnection->query('DELETE FROM `sent_message`
+WHERE `phone_number` = :phone_number:', [...], false)
+ 2 SYSTEMPATH\Model.php(453): CodeIgniter\Database\BaseBuilder->delete()
+ 3 SYSTEMPATH\BaseModel.php(1117): CodeIgniter\Model->doDelete(null, false)
+ 4 APPPATH\Controllers\Home.php(271): CodeIgniter\BaseModel->delete()
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->deleteByPhoneNumber('09952927249')
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')
+CRITICAL - 2024-05-26 10:46:56 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'phone_number' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('DELETE FROM `sent_message`
+WHERE `phone_number` = \'09952927249\'')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('DELETE FROM `sent_message`
+WHERE `phone_number` = \'09952927249\'')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(2782): CodeIgniter\Database\BaseConnection->query('DELETE FROM `sent_message`
+WHERE `phone_number` = :phone_number:', [...], false)
+ 4 SYSTEMPATH\Model.php(453): CodeIgniter\Database\BaseBuilder->delete()
+ 5 SYSTEMPATH\BaseModel.php(1117): CodeIgniter\Model->doDelete(null, false)
+ 6 APPPATH\Controllers\Home.php(271): CodeIgniter\BaseModel->delete()
+ 7 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->deleteByPhoneNumber('09952927249')
+ 8 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 9 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')
+CRITICAL - 2024-05-26 10:46:56 --> [Caused by] mysqli_sql_exception: Unknown column 'phone_number' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('DELETE FROM `sent_message`
+WHERE `phone_number` = \'09952927249\'', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('DELETE FROM `sent_message`
+WHERE `phone_number` = \'09952927249\'')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('DELETE FROM `sent_message`
+WHERE `phone_number` = \'09952927249\'')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2782): CodeIgniter\Database\BaseConnection->query('DELETE FROM `sent_message`
+WHERE `phone_number` = :phone_number:', [...], false)
+ 5 SYSTEMPATH\Model.php(453): CodeIgniter\Database\BaseBuilder->delete()
+ 6 SYSTEMPATH\BaseModel.php(1117): CodeIgniter\Model->doDelete(null, false)
+ 7 APPPATH\Controllers\Home.php(271): CodeIgniter\BaseModel->delete()
+ 8 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->deleteByPhoneNumber('09952927249')
+ 9 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+10 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')
+CRITICAL - 2024-05-26 10:59:18 --> Error: Call to undefined method CodeIgniter\HTTP\SiteURI::getAbsoluteURL()
+in APPPATH\Controllers\Home.php on line 268.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->deleteMessage('8')
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')
+CRITICAL - 2024-05-26 11:05:23 --> Error: Call to undefined method CodeIgniter\HTTP\SiteURI::getAbsoluteURL()
+in APPPATH\Controllers\Home.php on line 268.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->deleteMessage('7')
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')

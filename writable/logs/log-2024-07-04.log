@@ -1,0 +1,740 @@
+ERROR - 2024-07-04 01:50:49 --> mysqli_sql_exception: Expression #2 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'capstone.status.status' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by in C:\laragon\www\solarflood\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\solarflood\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `compone...', 0)
+#1 C:\laragon\www\solarflood\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `compone...')
+#2 C:\laragon\www\solarflood\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `compone...')
+#3 C:\laragon\www\solarflood\system\Database\BaseBuilder.php(1613): CodeIgniter\Database\BaseConnection->query('SELECT `compone...', Array, false)
+#4 C:\laragon\www\solarflood\system\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\solarflood\system\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\solarflood\app\Controllers\Home.php(490): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\solarflood\app\Controllers\Home.php(494): App\Controllers\Home->getLatestStatus()
+#8 C:\laragon\www\solarflood\system\CodeIgniter.php(941): App\Controllers\Home->viewStatus()
+#9 C:\laragon\www\solarflood\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#10 C:\laragon\www\solarflood\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\solarflood\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#12 C:\laragon\www\solarflood\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#13 {main}
+CRITICAL - 2024-07-04 01:50:49 --> CodeIgniter\Database\Exceptions\DatabaseException: Expression #2 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'capstone.status.status' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1613): CodeIgniter\Database\BaseConnection->query('SELECT `component`, `status`, `value`, MAX(timestamp) as timestamp
+FROM `status`
+GROUP BY `component`', [], false)
+ 2 SYSTEMPATH\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\Home.php(490): CodeIgniter\BaseModel->findAll()
+ 5 APPPATH\Controllers\Home.php(494): App\Controllers\Home->getLatestStatus()
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->viewStatus()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')
+CRITICAL - 2024-07-04 01:50:49 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Expression #2 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'capstone.status.status' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `component`, `status`, `value`, MAX(timestamp) as timestamp
+FROM `status`
+GROUP BY `component`')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `component`, `status`, `value`, MAX(timestamp) as timestamp
+FROM `status`
+GROUP BY `component`')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1613): CodeIgniter\Database\BaseConnection->query('SELECT `component`, `status`, `value`, MAX(timestamp) as timestamp
+FROM `status`
+GROUP BY `component`', [], false)
+ 4 SYSTEMPATH\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+ 6 APPPATH\Controllers\Home.php(490): CodeIgniter\BaseModel->findAll()
+ 7 APPPATH\Controllers\Home.php(494): App\Controllers\Home->getLatestStatus()
+ 8 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->viewStatus()
+ 9 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+10 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')
+CRITICAL - 2024-07-04 01:50:49 --> [Caused by] mysqli_sql_exception: Expression #2 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'capstone.status.status' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `component`, `status`, `value`, MAX(timestamp) as timestamp
+FROM `status`
+GROUP BY `component`', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `component`, `status`, `value`, MAX(timestamp) as timestamp
+FROM `status`
+GROUP BY `component`')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `component`, `status`, `value`, MAX(timestamp) as timestamp
+FROM `status`
+GROUP BY `component`')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1613): CodeIgniter\Database\BaseConnection->query('SELECT `component`, `status`, `value`, MAX(timestamp) as timestamp
+FROM `status`
+GROUP BY `component`', [], false)
+ 5 SYSTEMPATH\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Controllers\Home.php(490): CodeIgniter\BaseModel->findAll()
+ 8 APPPATH\Controllers\Home.php(494): App\Controllers\Home->getLatestStatus()
+ 9 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->viewStatus()
+10 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+11 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')
+ERROR - 2024-07-04 01:51:41 --> mysqli_sql_exception: Expression #2 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'capstone.status.status' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by in C:\laragon\www\solarflood\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\solarflood\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `compone...', 0)
+#1 C:\laragon\www\solarflood\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `compone...')
+#2 C:\laragon\www\solarflood\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `compone...')
+#3 C:\laragon\www\solarflood\system\Database\BaseBuilder.php(1613): CodeIgniter\Database\BaseConnection->query('SELECT `compone...', Array, false)
+#4 C:\laragon\www\solarflood\system\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\solarflood\system\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\solarflood\app\Controllers\Home.php(490): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\solarflood\app\Controllers\Home.php(494): App\Controllers\Home->getLatestStatus()
+#8 C:\laragon\www\solarflood\system\CodeIgniter.php(941): App\Controllers\Home->viewStatus()
+#9 C:\laragon\www\solarflood\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#10 C:\laragon\www\solarflood\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\solarflood\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#12 C:\laragon\www\solarflood\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#13 {main}
+CRITICAL - 2024-07-04 01:51:41 --> CodeIgniter\Database\Exceptions\DatabaseException: Expression #2 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'capstone.status.status' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1613): CodeIgniter\Database\BaseConnection->query('SELECT `component`, `status`, `value`, MAX(timestamp) as timestamp
+FROM `status`
+GROUP BY `component`', [], false)
+ 2 SYSTEMPATH\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\Home.php(490): CodeIgniter\BaseModel->findAll()
+ 5 APPPATH\Controllers\Home.php(494): App\Controllers\Home->getLatestStatus()
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->viewStatus()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')
+CRITICAL - 2024-07-04 01:51:41 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Expression #2 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'capstone.status.status' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `component`, `status`, `value`, MAX(timestamp) as timestamp
+FROM `status`
+GROUP BY `component`')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `component`, `status`, `value`, MAX(timestamp) as timestamp
+FROM `status`
+GROUP BY `component`')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1613): CodeIgniter\Database\BaseConnection->query('SELECT `component`, `status`, `value`, MAX(timestamp) as timestamp
+FROM `status`
+GROUP BY `component`', [], false)
+ 4 SYSTEMPATH\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+ 6 APPPATH\Controllers\Home.php(490): CodeIgniter\BaseModel->findAll()
+ 7 APPPATH\Controllers\Home.php(494): App\Controllers\Home->getLatestStatus()
+ 8 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->viewStatus()
+ 9 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+10 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')
+CRITICAL - 2024-07-04 01:51:41 --> [Caused by] mysqli_sql_exception: Expression #2 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'capstone.status.status' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `component`, `status`, `value`, MAX(timestamp) as timestamp
+FROM `status`
+GROUP BY `component`', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `component`, `status`, `value`, MAX(timestamp) as timestamp
+FROM `status`
+GROUP BY `component`')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `component`, `status`, `value`, MAX(timestamp) as timestamp
+FROM `status`
+GROUP BY `component`')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1613): CodeIgniter\Database\BaseConnection->query('SELECT `component`, `status`, `value`, MAX(timestamp) as timestamp
+FROM `status`
+GROUP BY `component`', [], false)
+ 5 SYSTEMPATH\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Controllers\Home.php(490): CodeIgniter\BaseModel->findAll()
+ 8 APPPATH\Controllers\Home.php(494): App\Controllers\Home->getLatestStatus()
+ 9 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->viewStatus()
+10 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+11 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')
+CRITICAL - 2024-07-04 01:56:08 --> Error: Call to undefined method CodeIgniter\Database\MySQLi\Builder::joinSubquery()
+in APPPATH\Controllers\Home.php on line 500.
+ 1 APPPATH\Controllers\Home.php(508): App\Controllers\Home->getLatestStatus()
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->viewStatus()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')
+CRITICAL - 2024-07-04 02:26:20 --> ErrorException: Undefined variable $query
+in APPPATH\Controllers\Home.php on line 501.
+ 1 APPPATH\Controllers\Home.php(501): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $query', 'C:\\laragon\\www\\solarflood\\app\\Controllers\\Home.php', 501)
+ 2 APPPATH\Controllers\Home.php(505): App\Controllers\Home->getLatestStatus()
+ 3 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->viewStatus()
+ 4 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 5 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')
+CRITICAL - 2024-07-04 02:26:33 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "status_view.php"
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(216): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('status_view.php')
+ 2 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('status_view', [], true)
+ 3 APPPATH\Controllers\Home.php(504): view('status_view', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->viewStatus()
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')
+CRITICAL - 2024-07-04 02:26:57 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "status_view.php"
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(216): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('status_view.php')
+ 2 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('status_view', [], true)
+ 3 APPPATH\Controllers\Home.php(504): view('status_view', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->viewStatus()
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')
+CRITICAL - 2024-07-04 02:27:06 --> ErrorException: Undefined variable $statuses
+in APPPATH\Views\status.php on line 21.
+ 1 APPPATH\Views\status.php(21): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $statuses', 'C:\\laragon\\www\\solarflood\\app\\Views\\status.php', 21)
+ 2 SYSTEMPATH\View\View.php(228): include('C:\\laragon\\www\\solarflood\\app\\Views\\status.php')
+ 3 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('status', [], true)
+ 5 APPPATH\Controllers\Home.php(504): view('status', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->viewStatus()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')
+CRITICAL - 2024-07-04 02:27:28 --> ErrorException: foreach() argument must be of type array|object, null given
+in APPPATH\Views\status.php on line 21.
+ 1 APPPATH\Views\status.php(21): CodeIgniter\Debug\Exceptions->errorHandler(2, 'foreach() argument must be of type array|object, null given', 'C:\\laragon\\www\\solarflood\\app\\Views\\status.php', 21)
+ 2 SYSTEMPATH\View\View.php(228): include('C:\\laragon\\www\\solarflood\\app\\Views\\status.php')
+ 3 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('status', [], true)
+ 5 APPPATH\Controllers\Home.php(504): view('status', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->viewStatus()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')
+ERROR - 2024-07-04 02:28:26 --> mysqli_sql_exception: Expression #2 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'capstone.status.status' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by in C:\laragon\www\solarflood\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\solarflood\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `compone...', 0)
+#1 C:\laragon\www\solarflood\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `compone...')
+#2 C:\laragon\www\solarflood\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `compone...')
+#3 C:\laragon\www\solarflood\system\Database\BaseBuilder.php(1613): CodeIgniter\Database\BaseConnection->query('SELECT `compone...', Array, false)
+#4 C:\laragon\www\solarflood\system\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\solarflood\system\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\solarflood\app\Controllers\Home.php(490): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\solarflood\app\Controllers\Home.php(495): App\Controllers\Home->getLatestStatus()
+#8 C:\laragon\www\solarflood\system\CodeIgniter.php(941): App\Controllers\Home->viewStatus()
+#9 C:\laragon\www\solarflood\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#10 C:\laragon\www\solarflood\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\solarflood\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#12 C:\laragon\www\solarflood\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#13 {main}
+CRITICAL - 2024-07-04 02:28:26 --> CodeIgniter\Database\Exceptions\DatabaseException: Expression #2 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'capstone.status.status' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1613): CodeIgniter\Database\BaseConnection->query('SELECT `component`, `status`, `value`, MAX(timestamp) as timestamp
+FROM `status`
+GROUP BY `component`', [], false)
+ 2 SYSTEMPATH\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\Home.php(490): CodeIgniter\BaseModel->findAll()
+ 5 APPPATH\Controllers\Home.php(495): App\Controllers\Home->getLatestStatus()
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->viewStatus()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')
+CRITICAL - 2024-07-04 02:28:26 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Expression #2 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'capstone.status.status' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `component`, `status`, `value`, MAX(timestamp) as timestamp
+FROM `status`
+GROUP BY `component`')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `component`, `status`, `value`, MAX(timestamp) as timestamp
+FROM `status`
+GROUP BY `component`')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1613): CodeIgniter\Database\BaseConnection->query('SELECT `component`, `status`, `value`, MAX(timestamp) as timestamp
+FROM `status`
+GROUP BY `component`', [], false)
+ 4 SYSTEMPATH\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+ 6 APPPATH\Controllers\Home.php(490): CodeIgniter\BaseModel->findAll()
+ 7 APPPATH\Controllers\Home.php(495): App\Controllers\Home->getLatestStatus()
+ 8 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->viewStatus()
+ 9 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+10 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')
+CRITICAL - 2024-07-04 02:28:26 --> [Caused by] mysqli_sql_exception: Expression #2 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'capstone.status.status' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `component`, `status`, `value`, MAX(timestamp) as timestamp
+FROM `status`
+GROUP BY `component`', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `component`, `status`, `value`, MAX(timestamp) as timestamp
+FROM `status`
+GROUP BY `component`')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `component`, `status`, `value`, MAX(timestamp) as timestamp
+FROM `status`
+GROUP BY `component`')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1613): CodeIgniter\Database\BaseConnection->query('SELECT `component`, `status`, `value`, MAX(timestamp) as timestamp
+FROM `status`
+GROUP BY `component`', [], false)
+ 5 SYSTEMPATH\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Controllers\Home.php(490): CodeIgniter\BaseModel->findAll()
+ 8 APPPATH\Controllers\Home.php(495): App\Controllers\Home->getLatestStatus()
+ 9 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->viewStatus()
+10 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+11 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')
+CRITICAL - 2024-07-04 02:31:54 --> Error: Class "App\Controllers\Database" not found
+in APPPATH\Controllers\Home.php on line 494.
+ 1 APPPATH\Controllers\Home.php(512): App\Controllers\Home->getLatestStatus()
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->viewStatus()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')
+CRITICAL - 2024-07-04 02:32:46 --> Error: Call to undefined method CodeIgniter\Database\Database::connect()
+in APPPATH\Controllers\Home.php on line 495.
+ 1 APPPATH\Controllers\Home.php(513): App\Controllers\Home->getLatestStatus()
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->viewStatus()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')
+ERROR - 2024-07-04 02:33:39 --> mysqli_sql_exception: Table 'capstone.statuses' doesn't exist in C:\laragon\www\solarflood\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\solarflood\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT s.compon...', 0)
+#1 C:\laragon\www\solarflood\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT s.compon...')
+#2 C:\laragon\www\solarflood\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT s.compon...')
+#3 C:\laragon\www\solarflood\system\Model.php(868): CodeIgniter\Database\BaseConnection->query('SELECT s.compon...')
+#4 C:\laragon\www\solarflood\app\Controllers\Home.php(505): CodeIgniter\Model->__call('query', Array)
+#5 C:\laragon\www\solarflood\app\Controllers\Home.php(513): App\Controllers\Home->getLatestStatus()
+#6 C:\laragon\www\solarflood\system\CodeIgniter.php(941): App\Controllers\Home->viewStatus()
+#7 C:\laragon\www\solarflood\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#8 C:\laragon\www\solarflood\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\laragon\www\solarflood\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#10 C:\laragon\www\solarflood\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#11 {main}
+CRITICAL - 2024-07-04 02:33:39 --> CodeIgniter\Database\Exceptions\DatabaseException: Table 'capstone.statuses' doesn't exist
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Model.php(868): CodeIgniter\Database\BaseConnection->query('SELECT s.component, s.status, s.value, s.timestamp
+                FROM statuses s
+                INNER JOIN (
+                    SELECT component, MAX(timestamp) as max_timestamp
+                    FROM statuses
+                    GROUP BY component
+                ) latest ON s.component = latest.component AND s.timestamp = latest.max_timestamp')
+ 2 APPPATH\Controllers\Home.php(505): CodeIgniter\Model->__call('query', [...])
+ 3 APPPATH\Controllers\Home.php(513): App\Controllers\Home->getLatestStatus()
+ 4 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->viewStatus()
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')
+CRITICAL - 2024-07-04 02:33:39 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Table 'capstone.statuses' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT s.component, s.status, s.value, s.timestamp
+                FROM statuses s
+                INNER JOIN (
+                    SELECT component, MAX(timestamp) as max_timestamp
+                    FROM statuses
+                    GROUP BY component
+                ) latest ON s.component = latest.component AND s.timestamp = latest.max_timestamp')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT s.component, s.status, s.value, s.timestamp
+                FROM statuses s
+                INNER JOIN (
+                    SELECT component, MAX(timestamp) as max_timestamp
+                    FROM statuses
+                    GROUP BY component
+                ) latest ON s.component = latest.component AND s.timestamp = latest.max_timestamp')
+ 3 SYSTEMPATH\Model.php(868): CodeIgniter\Database\BaseConnection->query('SELECT s.component, s.status, s.value, s.timestamp
+                FROM statuses s
+                INNER JOIN (
+                    SELECT component, MAX(timestamp) as max_timestamp
+                    FROM statuses
+                    GROUP BY component
+                ) latest ON s.component = latest.component AND s.timestamp = latest.max_timestamp')
+ 4 APPPATH\Controllers\Home.php(505): CodeIgniter\Model->__call('query', [...])
+ 5 APPPATH\Controllers\Home.php(513): App\Controllers\Home->getLatestStatus()
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->viewStatus()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')
+CRITICAL - 2024-07-04 02:33:39 --> [Caused by] mysqli_sql_exception: Table 'capstone.statuses' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('SELECT s.component, s.status, s.value, s.timestamp
+                FROM statuses s
+                INNER JOIN (
+                    SELECT component, MAX(timestamp) as max_timestamp
+                    FROM statuses
+                    GROUP BY component
+                ) latest ON s.component = latest.component AND s.timestamp = latest.max_timestamp', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT s.component, s.status, s.value, s.timestamp
+                FROM statuses s
+                INNER JOIN (
+                    SELECT component, MAX(timestamp) as max_timestamp
+                    FROM statuses
+                    GROUP BY component
+                ) latest ON s.component = latest.component AND s.timestamp = latest.max_timestamp')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT s.component, s.status, s.value, s.timestamp
+                FROM statuses s
+                INNER JOIN (
+                    SELECT component, MAX(timestamp) as max_timestamp
+                    FROM statuses
+                    GROUP BY component
+                ) latest ON s.component = latest.component AND s.timestamp = latest.max_timestamp')
+ 4 SYSTEMPATH\Model.php(868): CodeIgniter\Database\BaseConnection->query('SELECT s.component, s.status, s.value, s.timestamp
+                FROM statuses s
+                INNER JOIN (
+                    SELECT component, MAX(timestamp) as max_timestamp
+                    FROM statuses
+                    GROUP BY component
+                ) latest ON s.component = latest.component AND s.timestamp = latest.max_timestamp')
+ 5 APPPATH\Controllers\Home.php(505): CodeIgniter\Model->__call('query', [...])
+ 6 APPPATH\Controllers\Home.php(513): App\Controllers\Home->getLatestStatus()
+ 7 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->viewStatus()
+ 8 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 9 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')
+CRITICAL - 2024-07-04 02:33:55 --> ErrorException: Undefined variable $statuses
+in APPPATH\Views\status.php on line 21.
+ 1 APPPATH\Views\status.php(21): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $statuses', 'C:\\laragon\\www\\solarflood\\app\\Views\\status.php', 21)
+ 2 SYSTEMPATH\View\View.php(228): include('C:\\laragon\\www\\solarflood\\app\\Views\\status.php')
+ 3 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('status', [], true)
+ 5 APPPATH\Controllers\Home.php(515): view('status', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->viewStatus()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')
+CRITICAL - 2024-07-04 03:29:16 --> TypeError: count(): Argument #1 ($value) must be of type Countable|array, null given
+in APPPATH\Views\dashboard.php on line 82.
+ 1 SYSTEMPATH\View\View.php(228): include()
+ 2 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('dashboard', [], true)
+ 4 APPPATH\Controllers\Home.php(66): view('dashboard', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->index()
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')
+CRITICAL - 2024-07-04 03:29:16 --> [Caused by] ErrorException: Undefined variable $latestWaterLevel
+in APPPATH\Views\dashboard.php on line 82.
+ 1 APPPATH\Views\dashboard.php(82): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $latestWaterLevel', 'C:\\laragon\\www\\solarflood\\app\\Views\\dashboard.php', 82)
+ 2 SYSTEMPATH\View\View.php(228): include('C:\\laragon\\www\\solarflood\\app\\Views\\dashboard.php')
+ 3 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('dashboard', [], true)
+ 5 APPPATH\Controllers\Home.php(66): view('dashboard', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->index()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')
+CRITICAL - 2024-07-04 03:29:46 --> TypeError: count(): Argument #1 ($value) must be of type Countable|array, null given
+in APPPATH\Views\dashboard.php on line 82.
+ 1 SYSTEMPATH\View\View.php(228): include()
+ 2 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('dashboard', [], true)
+ 4 APPPATH\Controllers\Home.php(66): view('dashboard', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->index()
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')
+CRITICAL - 2024-07-04 03:29:46 --> [Caused by] ErrorException: Undefined variable $latestWaterLevel
+in APPPATH\Views\dashboard.php on line 82.
+ 1 APPPATH\Views\dashboard.php(82): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $latestWaterLevel', 'C:\\laragon\\www\\solarflood\\app\\Views\\dashboard.php', 82)
+ 2 SYSTEMPATH\View\View.php(228): include('C:\\laragon\\www\\solarflood\\app\\Views\\dashboard.php')
+ 3 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('dashboard', [], true)
+ 5 APPPATH\Controllers\Home.php(66): view('dashboard', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->index()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')
+CRITICAL - 2024-07-04 03:31:03 --> ErrorException: Undefined variable $totalNotifications
+in APPPATH\Views\dashboard.php on line 83.
+ 1 APPPATH\Views\dashboard.php(83): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $totalNotifications', 'C:\\laragon\\www\\solarflood\\app\\Views\\dashboard.php', 83)
+ 2 SYSTEMPATH\View\View.php(228): include('C:\\laragon\\www\\solarflood\\app\\Views\\dashboard.php')
+ 3 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('dashboard', [], true)
+ 5 APPPATH\Controllers\Home.php(66): view('dashboard', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->index()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')
+CRITICAL - 2024-07-04 03:31:30 --> ErrorException: Undefined variable $latestWaterLevel
+in APPPATH\Views\dashboard.php on line 85.
+ 1 APPPATH\Views\dashboard.php(85): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $latestWaterLevel', 'C:\\laragon\\www\\solarflood\\app\\Views\\dashboard.php', 85)
+ 2 SYSTEMPATH\View\View.php(228): include('C:\\laragon\\www\\solarflood\\app\\Views\\dashboard.php')
+ 3 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('dashboard', [], true)
+ 5 APPPATH\Controllers\Home.php(66): view('dashboard', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->index()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')
+CRITICAL - 2024-07-04 03:36:50 --> Error: Class "App\Controllers\Pagination" not found
+in APPPATH\Controllers\Home.php on line 86.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->alertHistory()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')
+CRITICAL - 2024-07-04 03:37:11 --> ParseError: syntax error, unexpected token "class", expecting "," or ";"
+in APPPATH\Controllers\Home.php on line 22.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(288): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\laragon\\www\\solarflood\\app\\Controllers\\Home.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(266): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers\\Home')
+ 3 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers\\Home')
+ 4 SYSTEMPATH\CodeIgniter.php(899): class_exists('\\App\\Controllers\\Home', true)
+ 5 SYSTEMPATH\CodeIgniter.php(489): CodeIgniter\CodeIgniter->startController()
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')
+CRITICAL - 2024-07-04 03:37:21 --> Error: Class "App\Controllers\Pagination" not found
+in APPPATH\Controllers\Home.php on line 87.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->alertHistory()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')
+CRITICAL - 2024-07-04 03:37:53 --> Error: Class "App\Controllers\Pagination" not found
+in APPPATH\Controllers\Home.php on line 87.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->alertHistory()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')
+CRITICAL - 2024-07-04 03:38:42 --> Error: Class "App\Controllers\Pagination\Pagination" not found
+in APPPATH\Controllers\Home.php on line 87.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->alertHistory()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')
+CRITICAL - 2024-07-04 03:39:10 --> Error: Class "CodeIgniter\Pagination\Pagination" not found
+in APPPATH\Controllers\Home.php on line 87.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->alertHistory()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')
+CRITICAL - 2024-07-04 03:42:50 --> CodeIgniter\Pager\Exceptions\PagerException: "bootstrap_pagination" is not a valid Pager template.
+in SYSTEMPATH\Pager\Pager.php on line 122.
+ 1 SYSTEMPATH\Pager\Pager.php(122): CodeIgniter\Pager\Exceptions\PagerException::forInvalidTemplate('bootstrap_pagination')
+ 2 SYSTEMPATH\Pager\Pager.php(85): CodeIgniter\Pager\Pager->displayLinks('default', 'bootstrap_pagination')
+ 3 APPPATH\Views\alertHistory.php(30): CodeIgniter\Pager\Pager->links('default', 'bootstrap_pagination')
+ 4 SYSTEMPATH\View\View.php(228): include('C:\\laragon\\www\\solarflood\\app\\Views\\alertHistory.php')
+ 5 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 6 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('alertHistory', [], true)
+ 7 APPPATH\Controllers\Home.php(98): view('alertHistory', [...])
+ 8 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->alertHistory()
+ 9 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+10 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')
+CRITICAL - 2024-07-04 03:43:11 --> CodeIgniter\Pager\Exceptions\PagerException: "pagination" is not a valid Pager template.
+in SYSTEMPATH\Pager\Pager.php on line 122.
+ 1 SYSTEMPATH\Pager\Pager.php(122): CodeIgniter\Pager\Exceptions\PagerException::forInvalidTemplate('pagination')
+ 2 SYSTEMPATH\Pager\Pager.php(85): CodeIgniter\Pager\Pager->displayLinks('default', 'pagination')
+ 3 APPPATH\Views\alertHistory.php(30): CodeIgniter\Pager\Pager->links('default', 'pagination')
+ 4 SYSTEMPATH\View\View.php(228): include('C:\\laragon\\www\\solarflood\\app\\Views\\alertHistory.php')
+ 5 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 6 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('alertHistory', [], true)
+ 7 APPPATH\Controllers\Home.php(98): view('alertHistory', [...])
+ 8 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->alertHistory()
+ 9 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+10 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')
+CRITICAL - 2024-07-04 03:54:19 --> CodeIgniter\Pager\Exceptions\PagerException: "pagination" is not a valid Pager template.
+in SYSTEMPATH\Pager\Pager.php on line 122.
+ 1 SYSTEMPATH\Pager\Pager.php(122): CodeIgniter\Pager\Exceptions\PagerException::forInvalidTemplate('pagination')
+ 2 SYSTEMPATH\Pager\Pager.php(85): CodeIgniter\Pager\Pager->displayLinks('default', 'pagination')
+ 3 APPPATH\Views\alertHistory.php(29): CodeIgniter\Pager\Pager->links('default', 'pagination')
+ 4 SYSTEMPATH\View\View.php(228): include('C:\\laragon\\www\\solarflood\\app\\Views\\alertHistory.php')
+ 5 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 6 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('alertHistory', [], true)
+ 7 APPPATH\Controllers\Home.php(83): view('alertHistory', [...])
+ 8 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->alertHistory()
+ 9 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+10 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')
+CRITICAL - 2024-07-04 03:55:37 --> CodeIgniter\Pager\Exceptions\PagerException: "pagination" is not a valid Pager template.
+in SYSTEMPATH\Pager\Pager.php on line 122.
+ 1 SYSTEMPATH\Pager\Pager.php(122): CodeIgniter\Pager\Exceptions\PagerException::forInvalidTemplate('pagination')
+ 2 SYSTEMPATH\Pager\Pager.php(85): CodeIgniter\Pager\Pager->displayLinks('default', 'pagination')
+ 3 APPPATH\Views\alertHistory.php(29): CodeIgniter\Pager\Pager->links('default', 'pagination')
+ 4 SYSTEMPATH\View\View.php(228): include('C:\\laragon\\www\\solarflood\\app\\Views\\alertHistory.php')
+ 5 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 6 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('alertHistory', [], true)
+ 7 APPPATH\Controllers\Home.php(83): view('alertHistory', [...])
+ 8 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->alertHistory()
+ 9 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+10 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')
+CRITICAL - 2024-07-04 04:07:20 --> ErrorException: Undefined property: CodeIgniter\Pager\Pager::$link
+in APPPATH\Views\alertHistory.php on line 29.
+ 1 APPPATH\Views\alertHistory.php(29): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: CodeIgniter\\Pager\\Pager::$link', 'C:\\laragon\\www\\solarflood\\app\\Views\\alertHistory.php', 29)
+ 2 SYSTEMPATH\View\View.php(228): include('C:\\laragon\\www\\solarflood\\app\\Views\\alertHistory.php')
+ 3 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('alertHistory', [], true)
+ 5 APPPATH\Controllers\Home.php(83): view('alertHistory', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->alertHistory()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')
+CRITICAL - 2024-07-04 04:07:25 --> ErrorException: Undefined property: CodeIgniter\Pager\Pager::$links
+in APPPATH\Views\alertHistory.php on line 29.
+ 1 APPPATH\Views\alertHistory.php(29): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: CodeIgniter\\Pager\\Pager::$links', 'C:\\laragon\\www\\solarflood\\app\\Views\\alertHistory.php', 29)
+ 2 SYSTEMPATH\View\View.php(228): include('C:\\laragon\\www\\solarflood\\app\\Views\\alertHistory.php')
+ 3 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('alertHistory', [], true)
+ 5 APPPATH\Controllers\Home.php(83): view('alertHistory', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->alertHistory()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')
+CRITICAL - 2024-07-04 04:07:30 --> ParseError: syntax error, unexpected token ";"
+in APPPATH\Views\alertHistory.php on line 29.
+ 1 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 2 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('alertHistory', [], true)
+ 3 APPPATH\Controllers\Home.php(83): view('alertHistory', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->alertHistory()
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')
+CRITICAL - 2024-07-04 04:10:48 --> CodeIgniter\Pager\Exceptions\PagerException: "pagination" is not a valid Pager template.
+in SYSTEMPATH\Pager\Pager.php on line 122.
+ 1 SYSTEMPATH\Pager\Pager.php(122): CodeIgniter\Pager\Exceptions\PagerException::forInvalidTemplate('pagination')
+ 2 SYSTEMPATH\Pager\Pager.php(112): CodeIgniter\Pager\Pager->displayLinks('default', 'pagination')
+ 3 APPPATH\Controllers\Home.php(84): CodeIgniter\Pager\Pager->makeLinks(1, 10, 365, 'pagination')
+ 4 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->alertHistory()
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')
+CRITICAL - 2024-07-04 04:11:14 --> CodeIgniter\Pager\Exceptions\PagerException: "page" is not a valid Pager template.
+in SYSTEMPATH\Pager\Pager.php on line 122.
+ 1 SYSTEMPATH\Pager\Pager.php(122): CodeIgniter\Pager\Exceptions\PagerException::forInvalidTemplate('page')
+ 2 SYSTEMPATH\Pager\Pager.php(112): CodeIgniter\Pager\Pager->displayLinks('default', 'page')
+ 3 APPPATH\Controllers\Home.php(84): CodeIgniter\Pager\Pager->makeLinks(1, 10, 365, 'page')
+ 4 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->alertHistory()
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')
+CRITICAL - 2024-07-04 04:11:59 --> CodeIgniter\Pager\Exceptions\PagerException: "default" is not a valid Pager template.
+in SYSTEMPATH\Pager\Pager.php on line 122.
+ 1 SYSTEMPATH\Pager\Pager.php(122): CodeIgniter\Pager\Exceptions\PagerException::forInvalidTemplate('default')
+ 2 SYSTEMPATH\Pager\Pager.php(112): CodeIgniter\Pager\Pager->displayLinks('default', 'default')
+ 3 APPPATH\Controllers\Home.php(84): CodeIgniter\Pager\Pager->makeLinks(1, 10, 365, 'default')
+ 4 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->alertHistory()
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')
+CRITICAL - 2024-07-04 04:12:56 --> CodeIgniter\Pager\Exceptions\PagerException: "default" is not a valid Pager template.
+in SYSTEMPATH\Pager\Pager.php on line 122.
+ 1 SYSTEMPATH\Pager\Pager.php(122): CodeIgniter\Pager\Exceptions\PagerException::forInvalidTemplate('default')
+ 2 SYSTEMPATH\Pager\Pager.php(112): CodeIgniter\Pager\Pager->displayLinks('default', 'default')
+ 3 APPPATH\Controllers\Home.php(84): CodeIgniter\Pager\Pager->makeLinks(1, 10, 365, 'default')
+ 4 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->alertHistory()
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')
+CRITICAL - 2024-07-04 04:13:38 --> CodeIgniter\Pager\Exceptions\PagerException: "default" is not a valid Pager template.
+in SYSTEMPATH\Pager\Pager.php on line 122.
+ 1 SYSTEMPATH\Pager\Pager.php(122): CodeIgniter\Pager\Exceptions\PagerException::forInvalidTemplate('default')
+ 2 SYSTEMPATH\Pager\Pager.php(112): CodeIgniter\Pager\Pager->displayLinks('default', 'default')
+ 3 APPPATH\Controllers\Home.php(84): CodeIgniter\Pager\Pager->makeLinks(1, 10, 365, 'default')
+ 4 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->alertHistory()
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')
+CRITICAL - 2024-07-04 04:15:17 --> ParseError: syntax error, unexpected token "public", expecting ";" or "{"
+in APPPATH\Controllers\Home.php on line 72.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(288): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\laragon\\www\\solarflood\\app\\Controllers\\Home.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(266): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers\\Home')
+ 3 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers\\Home')
+ 4 SYSTEMPATH\CodeIgniter.php(899): class_exists('\\App\\Controllers\\Home', true)
+ 5 SYSTEMPATH\CodeIgniter.php(489): CodeIgniter\CodeIgniter->startController()
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')
+CRITICAL - 2024-07-04 04:15:26 --> CodeIgniter\Pager\Exceptions\PagerException: "custom_pagination" is not a valid Pager template.
+in SYSTEMPATH\Pager\Pager.php on line 122.
+ 1 SYSTEMPATH\Pager\Pager.php(122): CodeIgniter\Pager\Exceptions\PagerException::forInvalidTemplate('custom_pagination')
+ 2 SYSTEMPATH\Pager\Pager.php(112): CodeIgniter\Pager\Pager->displayLinks('default', 'custom_pagination')
+ 3 APPPATH\Controllers\Home.php(87): CodeIgniter\Pager\Pager->makeLinks(1, 10, 365, 'custom_pagination')
+ 4 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->alertHistory()
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')
+CRITICAL - 2024-07-04 04:16:38 --> CodeIgniter\Pager\Exceptions\PagerException: "custom_pagination" is not a valid Pager template.
+in SYSTEMPATH\Pager\Pager.php on line 122.
+ 1 SYSTEMPATH\Pager\Pager.php(122): CodeIgniter\Pager\Exceptions\PagerException::forInvalidTemplate('custom_pagination')
+ 2 SYSTEMPATH\Pager\Pager.php(112): CodeIgniter\Pager\Pager->displayLinks('default', 'custom_pagination')
+ 3 APPPATH\Controllers\Home.php(87): CodeIgniter\Pager\Pager->makeLinks(1, 10, 365, 'custom_pagination')
+ 4 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->alertHistory()
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')
+CRITICAL - 2024-07-04 04:18:32 --> CodeIgniter\Pager\Exceptions\PagerException: "custom_pagination" is not a valid Pager template.
+in SYSTEMPATH\Pager\Pager.php on line 122.
+ 1 SYSTEMPATH\Pager\Pager.php(122): CodeIgniter\Pager\Exceptions\PagerException::forInvalidTemplate('custom_pagination')
+ 2 SYSTEMPATH\Pager\Pager.php(112): CodeIgniter\Pager\Pager->displayLinks('default', 'custom_pagination')
+ 3 APPPATH\Controllers\Home.php(87): CodeIgniter\Pager\Pager->makeLinks(1, 10, 365, 'custom_pagination')
+ 4 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->alertHistory()
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')
+CRITICAL - 2024-07-04 04:18:47 --> CodeIgniter\Pager\Exceptions\PagerException: "custom_pagination" is not a valid Pager template.
+in SYSTEMPATH\Pager\Pager.php on line 122.
+ 1 SYSTEMPATH\Pager\Pager.php(122): CodeIgniter\Pager\Exceptions\PagerException::forInvalidTemplate('custom_pagination')
+ 2 SYSTEMPATH\Pager\Pager.php(112): CodeIgniter\Pager\Pager->displayLinks('default', 'custom_pagination')
+ 3 APPPATH\Controllers\Home.php(87): CodeIgniter\Pager\Pager->makeLinks(1, 10, 365, 'custom_pagination')
+ 4 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->alertHistory()
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')
+CRITICAL - 2024-07-04 04:18:47 --> CodeIgniter\Pager\Exceptions\PagerException: "custom_pagination" is not a valid Pager template.
+in SYSTEMPATH\Pager\Pager.php on line 122.
+ 1 SYSTEMPATH\Pager\Pager.php(122): CodeIgniter\Pager\Exceptions\PagerException::forInvalidTemplate('custom_pagination')
+ 2 SYSTEMPATH\Pager\Pager.php(112): CodeIgniter\Pager\Pager->displayLinks('default', 'custom_pagination')
+ 3 APPPATH\Controllers\Home.php(87): CodeIgniter\Pager\Pager->makeLinks(1, 10, 365, 'custom_pagination')
+ 4 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->alertHistory()
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')
+CRITICAL - 2024-07-04 04:18:47 --> CodeIgniter\Pager\Exceptions\PagerException: "custom_pagination" is not a valid Pager template.
+in SYSTEMPATH\Pager\Pager.php on line 122.
+ 1 SYSTEMPATH\Pager\Pager.php(122): CodeIgniter\Pager\Exceptions\PagerException::forInvalidTemplate('custom_pagination')
+ 2 SYSTEMPATH\Pager\Pager.php(112): CodeIgniter\Pager\Pager->displayLinks('default', 'custom_pagination')
+ 3 APPPATH\Controllers\Home.php(87): CodeIgniter\Pager\Pager->makeLinks(1, 10, 365, 'custom_pagination')
+ 4 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->alertHistory()
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')
+CRITICAL - 2024-07-04 04:19:07 --> CodeIgniter\Pager\Exceptions\PagerException: "custom_pagination" is not a valid Pager template.
+in SYSTEMPATH\Pager\Pager.php on line 122.
+ 1 SYSTEMPATH\Pager\Pager.php(122): CodeIgniter\Pager\Exceptions\PagerException::forInvalidTemplate('custom_pagination')
+ 2 SYSTEMPATH\Pager\Pager.php(112): CodeIgniter\Pager\Pager->displayLinks('default', 'custom_pagination')
+ 3 APPPATH\Controllers\Home.php(87): CodeIgniter\Pager\Pager->makeLinks(1, 10, 365, 'custom_pagination')
+ 4 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->alertHistory()
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')

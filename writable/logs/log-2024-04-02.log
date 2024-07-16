@@ -1,0 +1,93 @@
+ERROR - 2024-04-02 03:22:17 --> mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'IS NULL
+AND `date` < IS NULL
+GROUP BY `date`' at line 3 in C:\laragon\www\solarflood\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\solarflood\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `date`, ...', 0)
+#1 C:\laragon\www\solarflood\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `date`, ...')
+#2 C:\laragon\www\solarflood\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `date`, ...')
+#3 C:\laragon\www\solarflood\system\Database\BaseBuilder.php(1613): CodeIgniter\Database\BaseConnection->query('SELECT `date`, ...', Array, false)
+#4 C:\laragon\www\solarflood\system\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\solarflood\system\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\solarflood\app\Controllers\Home.php(216): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\solarflood\system\CodeIgniter.php(941): App\Controllers\Home->filterRainfall()
+#8 C:\laragon\www\solarflood\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#9 C:\laragon\www\solarflood\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\solarflood\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#11 C:\laragon\www\solarflood\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#12 {main}
+CRITICAL - 2024-04-02 03:22:17 --> CodeIgniter\Database\Exceptions\DatabaseException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'IS NULL
+AND `date` < IS NULL
+GROUP BY `date`' at line 3
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1613): CodeIgniter\Database\BaseConnection->query('SELECT `date`, SUM(rainfall) as total_rainfall
+FROM `rainfall`
+WHERE `date` > IS NULL
+AND `date` < IS NULL
+GROUP BY `date`', [], false)
+ 2 SYSTEMPATH\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\Home.php(216): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->filterRainfall()
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')
+CRITICAL - 2024-04-02 03:22:17 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'IS NULL
+AND `date` < IS NULL
+GROUP BY `date`' at line 3
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `date`, SUM(rainfall) as total_rainfall
+FROM `rainfall`
+WHERE `date` > IS NULL
+AND `date` < IS NULL
+GROUP BY `date`')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `date`, SUM(rainfall) as total_rainfall
+FROM `rainfall`
+WHERE `date` > IS NULL
+AND `date` < IS NULL
+GROUP BY `date`')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1613): CodeIgniter\Database\BaseConnection->query('SELECT `date`, SUM(rainfall) as total_rainfall
+FROM `rainfall`
+WHERE `date` > IS NULL
+AND `date` < IS NULL
+GROUP BY `date`', [], false)
+ 4 SYSTEMPATH\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+ 6 APPPATH\Controllers\Home.php(216): CodeIgniter\BaseModel->findAll()
+ 7 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->filterRainfall()
+ 8 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 9 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')
+CRITICAL - 2024-04-02 03:22:17 --> [Caused by] mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'IS NULL
+AND `date` < IS NULL
+GROUP BY `date`' at line 3
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `date`, SUM(rainfall) as total_rainfall
+FROM `rainfall`
+WHERE `date` > IS NULL
+AND `date` < IS NULL
+GROUP BY `date`', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `date`, SUM(rainfall) as total_rainfall
+FROM `rainfall`
+WHERE `date` > IS NULL
+AND `date` < IS NULL
+GROUP BY `date`')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `date`, SUM(rainfall) as total_rainfall
+FROM `rainfall`
+WHERE `date` > IS NULL
+AND `date` < IS NULL
+GROUP BY `date`')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1613): CodeIgniter\Database\BaseConnection->query('SELECT `date`, SUM(rainfall) as total_rainfall
+FROM `rainfall`
+WHERE `date` > IS NULL
+AND `date` < IS NULL
+GROUP BY `date`', [], false)
+ 5 SYSTEMPATH\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Controllers\Home.php(216): CodeIgniter\BaseModel->findAll()
+ 8 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->filterRainfall()
+ 9 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+10 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')

@@ -1,0 +1,55 @@
+CRITICAL - 2024-07-05 00:55:07 --> CodeIgniter\Pager\Exceptions\PagerException: "custom_pagination" is not a valid Pager template.
+in SYSTEMPATH\Pager\Pager.php on line 122.
+ 1 SYSTEMPATH\Pager\Pager.php(122): CodeIgniter\Pager\Exceptions\PagerException::forInvalidTemplate('custom_pagination')
+ 2 SYSTEMPATH\Pager\Pager.php(112): CodeIgniter\Pager\Pager->displayLinks('default', 'custom_pagination')
+ 3 APPPATH\Controllers\Home.php(87): CodeIgniter\Pager\Pager->makeLinks(1, 10, 365, 'custom_pagination')
+ 4 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->alertHistory()
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')
+CRITICAL - 2024-07-05 00:56:17 --> CodeIgniter\Pager\Exceptions\PagerException: "custom_pagination" is not a valid Pager template.
+in SYSTEMPATH\Pager\Pager.php on line 122.
+ 1 SYSTEMPATH\Pager\Pager.php(122): CodeIgniter\Pager\Exceptions\PagerException::forInvalidTemplate('custom_pagination')
+ 2 SYSTEMPATH\Pager\Pager.php(112): CodeIgniter\Pager\Pager->displayLinks('default', 'custom_pagination')
+ 3 APPPATH\Controllers\Home.php(87): CodeIgniter\Pager\Pager->makeLinks(1, 10, 365, 'custom_pagination')
+ 4 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->alertHistory()
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')
+CRITICAL - 2024-07-05 00:56:37 --> Error: Call to a member function links() on string
+in APPPATH\Views\alertHistory.php on line 30.
+ 1 SYSTEMPATH\View\View.php(228): include()
+ 2 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('alertHistory', [], true)
+ 4 APPPATH\Controllers\Home.php(91): view('alertHistory', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->alertHistory()
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')
+CRITICAL - 2024-07-05 01:21:48 --> ErrorException: Undefined variable $latestWaterLevel
+in APPPATH\Views\alertHistory.php on line 21.
+ 1 APPPATH\Views\alertHistory.php(21): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $latestWaterLevel', 'C:\\laragon\\www\\solarflood\\app\\Views\\alertHistory.php', 21)
+ 2 SYSTEMPATH\View\View.php(228): include('C:\\laragon\\www\\solarflood\\app\\Views\\alertHistory.php')
+ 3 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('alertHistory', [], true)
+ 5 APPPATH\Controllers\Home.php(78): view('alertHistory', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->alertHistory()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')
+CRITICAL - 2024-07-05 01:21:49 --> ErrorException: Undefined variable $latestWaterLevel
+in APPPATH\Views\alertHistory.php on line 21.
+ 1 APPPATH\Views\alertHistory.php(21): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $latestWaterLevel', 'C:\\laragon\\www\\solarflood\\app\\Views\\alertHistory.php', 21)
+ 2 SYSTEMPATH\View\View.php(228): include('C:\\laragon\\www\\solarflood\\app\\Views\\alertHistory.php')
+ 3 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('alertHistory', [], true)
+ 5 APPPATH\Controllers\Home.php(78): view('alertHistory', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->alertHistory()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')
