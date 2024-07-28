@@ -21,8 +21,11 @@ $routes->post('/filterWaterLevel', 'Home::filterWaterlevel');
 $routes->get('/logout', 'Home::logout');
 $routes->get('/status', 'Home::viewStatus');
 $routes->get('/alertHistory', 'Home::alertHistory');
+$routes->get('/weather', 'Home::weather');
+
 // app/Config/Routes.php
 // app/Config/Routes.php
+
 
 $routes->get('/signin', 'Home::signin');
 $routes->post('/adminSignin', 'Home::adminSignin');

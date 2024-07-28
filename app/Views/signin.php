@@ -29,6 +29,7 @@
 
     <!-- Template Stylesheet -->
     <link href="../assets/css/style.css" rel="stylesheet">
+    <link href="../assets/css/login.css" rel="stylesheet">
 </head>
 
 <body>
@@ -37,33 +38,31 @@
 
     <!-- Sign In Start -->
     <div class="container-fluid">
-        <div class="row h-100 align-items-center justify-content-center" style="min-height: 100vh;">
+        <div class="row h-100 align-items-center justify-content-center bg-secondary" style="min-height: 100vh;">
             <div class="col-12 col-sm-8 col-md-6 col-lg-5 col-xl-4">
-                <div class="bg-secondary rounded p-4 p-sm-5 my-4 mx-3">
-                    <div class="d-flex align-items-center justify-content-between mb-3">
-                        <h3>Sign In</h3>
-                    </div>
+                <div class="bg-white rounded p-4 p-sm-5 my-4 mx-3">
+                   
                     <?php if(session()->getFlashdata('error')): ?>
                         <div class="alert alert-danger text-center" role="alert" id="errorAlert">
                             <?= session()->getFlashdata('error') ?>
                         </div>
                     <?php endif; ?>
-                    <form action="<?= base_url('adminSignin');?>" method="post">
-                            <div class="form-floating mb-3">
-                                <input type="email" class="form-control bg-white text-dark" name="email" placeholder="name@example.com">
-                                <label for="floatingInput">Email address</label>
-                            </div>
-                            <div class="form-floating mb-4">
-                                <input type="password" class="form-control bg-white text-dark" name="password" placeholder="Password">
-                                <label for="floatingPassword">Password</label>
-                            </div>
-                            <div class="d-flex align-items-center justify-content-between mb-4">
-                                <div class="form-check">
-                                </div>
-                                <a href="" class="text-white">Forgot Password</a>
-                            </div>
-                            <button type="submit" class="btn btn-primary py-3 w-100 mb-4 bg-info text-dark">Sign In</button>
+
+                    <img src="../assets/img/floodlogin.jpg" alt="Flood Monitoring" class="login-image" >
+                    <h1 class="text-center">Welcome Back!</h1>
+                    <p class="text-center">Please log in to continue</p>
+                    <form action="<?= base_url('adminSignin');?>" method="post" id="loginForm" class="">
+                        <div class="input-group">
+                            <input type="email" id="email" name="email" required placeholder=" " class="rounded">
+                            <label for="email">Email</label>
+                        </div>
+                        <div class="input-group">
+                            <input type="password" id="password" name="password" required placeholder=" " class="rounded">
+                            <label for="password">Password</label>
+                        </div>
+                        <button type="submit">Login</button>
                     </form>
+                    <div id="error-message" class="error-message"></div>
                 </div>
             </div>
         </div>
@@ -77,6 +76,8 @@
             document.getElementById('errorAlert').style.display = 'none';
         }, 3000); // 3000 milliseconds = 3 seconds
     </script>
+
+    
    
     <script src="../assets/https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="../assets/https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>

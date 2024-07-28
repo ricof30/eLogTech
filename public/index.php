@@ -20,6 +20,9 @@ if (getcwd() . DIRECTORY_SEPARATOR !== FCPATH) {
     chdir(FCPATH);
 }
 
+// Include Composer's autoload file
+require_once __DIR__ . '/../vendor/autoload.php';
+
 /*
  *---------------------------------------------------------------
  * BOOTSTRAP THE APPLICATION

@@ -1,0 +1,288 @@
+CRITICAL - 2024-07-22 04:31:58 --> Error: Class "PhpMl\Dataset\ArrayDataset" not found
+in APPPATH\Controllers\Home.php on line 578.
+ 1 APPPATH\Controllers\Home.php(558): App\Controllers\Home->predict('flood', [...])
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->predictionUpload()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')
+CRITICAL - 2024-07-22 04:33:36 --> ErrorException: Cannot use Phpml\Dataset\ArrayDataset as ArrayDataset because the name is already in use
+in APPPATH\Controllers\Home.php on line 23.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2024-07-22 04:33:52 --> Error: Class "PhpMl\Dataset\ArrayDataset" not found
+in APPPATH\Controllers\Home.php on line 581.
+ 1 APPPATH\Controllers\Home.php(561): App\Controllers\Home->predict('flood', [...])
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->predictionUpload()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')
+CRITICAL - 2024-07-22 04:39:25 --> Error: Class "PhpMl\Dataset\ArrayDataset" not found
+in APPPATH\Controllers\Home.php on line 581.
+ 1 APPPATH\Controllers\Home.php(561): App\Controllers\Home->predict('flood', [...])
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->predictionUpload()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')
+CRITICAL - 2024-07-22 04:43:29 --> Error: Class "PhpMl\Dataset\ArrayDataset" not found
+in APPPATH\Controllers\Home.php on line 581.
+ 1 APPPATH\Controllers\Home.php(561): App\Controllers\Home->predict('flood', [...])
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->predictionUpload()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(82): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')
+CRITICAL - 2024-07-22 04:45:04 --> Error: Class "PhpMl\Dataset\ArrayDataset" not found
+in APPPATH\Controllers\Home.php on line 581.
+ 1 APPPATH\Controllers\Home.php(561): App\Controllers\Home->predict('flood', [...])
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->predictionUpload()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(82): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')
+CRITICAL - 2024-07-22 04:47:18 --> CodeIgniter\HTTP\Exceptions\HTTPException: Could not move file "php6086.tmp" to "C:\laragon\www\solarflood\writable\uploads/". Reason: 
+in SYSTEMPATH\HTTP\Files\UploadedFile.php on line 158.
+ 1 SYSTEMPATH\HTTP\Files\UploadedFile.php(158): CodeIgniter\HTTP\Exceptions\HTTPException::forMoveFailed('php6086.tmp', 'C:\\laragon\\www\\solarflood\\writable\\uploads/', '')
+ 2 APPPATH\Controllers\Home.php(602): CodeIgniter\HTTP\Files\UploadedFile->move('C:\\laragon\\www\\solarflood\\writable\\uploads/', 'C:\\laragon\\www\\solarflood\\writable\\uploads/1721623637_07f98a9b9a7870ea1dce.xlsx')
+ 3 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->predictionUpload()
+ 4 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 5 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(82): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')
+CRITICAL - 2024-07-22 04:47:37 --> Error: Class "PhpMl\Dataset\ArrayDataset" not found
+in APPPATH\Controllers\Home.php on line 581.
+ 1 APPPATH\Controllers\Home.php(561): App\Controllers\Home->predict('flood', [...])
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->predictionUpload()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(82): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')
+CRITICAL - 2024-07-22 04:50:35 --> Error: Class "App\Controllers\ArrayDataset" not found
+in APPPATH\Controllers\Home.php on line 581.
+ 1 APPPATH\Controllers\Home.php(561): App\Controllers\Home->predict('flood', [...])
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->predictionUpload()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(82): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')
+CRITICAL - 2024-07-22 04:51:07 --> Error: Class "PhpMl\Dataset\ArrayDataset" not found
+in APPPATH\Controllers\Home.php on line 582.
+ 1 APPPATH\Controllers\Home.php(562): App\Controllers\Home->predict('flood', [...])
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->predictionUpload()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(82): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')
+CRITICAL - 2024-07-22 04:53:18 --> Error: Class "PhpMl\Dataset\ArrayDataset" not found
+in APPPATH\Controllers\Home.php on line 582.
+ 1 APPPATH\Controllers\Home.php(562): App\Controllers\Home->predict('flood', [...])
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->predictionUpload()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(82): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')
+CRITICAL - 2024-07-22 04:55:32 --> Error: Class "PhpMl\Classification\KNearestNeighbors" not found
+in APPPATH\Controllers\Home.php on line 585.
+ 1 APPPATH\Controllers\Home.php(562): App\Controllers\Home->predict('flood', [...])
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->predictionUpload()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(82): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')
+CRITICAL - 2024-07-22 04:55:52 --> Error: Class "PhpMl\Classification\KNearestNeighbors" not found
+in APPPATH\Controllers\Home.php on line 585.
+ 1 APPPATH\Controllers\Home.php(562): App\Controllers\Home->predict('flood', [...])
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->predictionUpload()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(82): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')
+CRITICAL - 2024-07-22 04:56:28 --> Error: Class "PhpMl\Classification\KNearestNeighbors" not found
+in APPPATH\Controllers\Home.php on line 586.
+ 1 APPPATH\Controllers\Home.php(563): App\Controllers\Home->predict('flood', [...])
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->predictionUpload()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(82): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')
+CRITICAL - 2024-07-22 05:06:50 --> TypeError: Unsupported operand types: string - string
+in VENDORPATH\php-ai\php-ml\src\Math\Distance\Distance.php on line 56.
+ 1 VENDORPATH\php-ai\php-ml\src\Math\Distance\Distance.php(35): Phpml\Math\Distance\Distance->deltas([...], [...])
+ 2 VENDORPATH\php-ai\php-ml\src\Classification\KNearestNeighbors.php(68): Phpml\Math\Distance\Distance->distance([...], [...])
+ 3 VENDORPATH\php-ai\php-ml\src\Classification\KNearestNeighbors.php(47): Phpml\Classification\KNearestNeighbors->kNeighborsDistances([...])
+ 4 VENDORPATH\php-ai\php-ml\src\Helper\Predictable.php(20): Phpml\Classification\KNearestNeighbors->predictSample([...])
+ 5 APPPATH\Controllers\Home.php(580): Phpml\Classification\KNearestNeighbors->predict([...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->predictionUpload()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(82): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')
+CRITICAL - 2024-07-22 05:10:28 --> TypeError: Unsupported operand types: string - int
+in VENDORPATH\php-ai\php-ml\src\Math\Distance\Distance.php on line 56.
+ 1 VENDORPATH\php-ai\php-ml\src\Math\Distance\Distance.php(35): Phpml\Math\Distance\Distance->deltas([...], [...])
+ 2 VENDORPATH\php-ai\php-ml\src\Classification\KNearestNeighbors.php(68): Phpml\Math\Distance\Distance->distance([...], [...])
+ 3 VENDORPATH\php-ai\php-ml\src\Classification\KNearestNeighbors.php(47): Phpml\Classification\KNearestNeighbors->kNeighborsDistances([...])
+ 4 VENDORPATH\php-ai\php-ml\src\Helper\Predictable.php(20): Phpml\Classification\KNearestNeighbors->predictSample([...])
+ 5 APPPATH\Controllers\Home.php(582): Phpml\Classification\KNearestNeighbors->predict([...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->predictionUpload()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(82): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')
+CRITICAL - 2024-07-22 05:25:33 --> Error: Class "App\Controllers\LeastSquares" not found
+in APPPATH\Controllers\Home.php on line 632.
+ 1 APPPATH\Controllers\Home.php(605): App\Controllers\Home->predictWaterLevel('C:\\laragon\\www\\solarflood\\writable\\uploads/water_level_data_2024-04-16 (1).xlsx')
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->predictionUpload()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(82): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')
+CRITICAL - 2024-07-22 05:26:16 --> Error: Class "App\Controllers\LeastSquares" not found
+in APPPATH\Controllers\Home.php on line 633.
+ 1 APPPATH\Controllers\Home.php(606): App\Controllers\Home->predictWaterLevel('C:\\laragon\\www\\solarflood\\writable\\uploads/water_level_data_2024-04-16 (1).xlsx')
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->predictionUpload()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(82): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')
+CRITICAL - 2024-07-22 05:27:19 --> Phpml\Exception\MatrixException: Matrix is singular
+in VENDORPATH\php-ai\php-ml\src\Math\LinearAlgebra\LUDecomposition.php on line 254.
+ 1 VENDORPATH\php-ai\php-ml\src\Math\Matrix.php(223): Phpml\Math\LinearAlgebra\LUDecomposition->solve(Object(Phpml\Math\Matrix))
+ 2 VENDORPATH\php-ai\php-ml\src\Regression\LeastSquares.php(73): Phpml\Math\Matrix->inverse()
+ 3 VENDORPATH\php-ai\php-ml\src\Regression\LeastSquares.php(39): Phpml\Regression\LeastSquares->computeCoefficients()
+ 4 APPPATH\Controllers\Home.php(634): Phpml\Regression\LeastSquares->train([...], [...])
+ 5 APPPATH\Controllers\Home.php(606): App\Controllers\Home->predictWaterLevel('C:\\laragon\\www\\solarflood\\writable\\uploads/water_level_data_2024-04-16 (1).xlsx')
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->predictionUpload()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(82): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')
+CRITICAL - 2024-07-22 05:28:20 --> Phpml\Exception\MatrixException: Matrix is singular
+in VENDORPATH\php-ai\php-ml\src\Math\LinearAlgebra\LUDecomposition.php on line 254.
+ 1 VENDORPATH\php-ai\php-ml\src\Math\Matrix.php(223): Phpml\Math\LinearAlgebra\LUDecomposition->solve(Object(Phpml\Math\Matrix))
+ 2 VENDORPATH\php-ai\php-ml\src\Regression\LeastSquares.php(73): Phpml\Math\Matrix->inverse()
+ 3 VENDORPATH\php-ai\php-ml\src\Regression\LeastSquares.php(39): Phpml\Regression\LeastSquares->computeCoefficients()
+ 4 APPPATH\Controllers\Home.php(635): Phpml\Regression\LeastSquares->train([...], [...])
+ 5 APPPATH\Controllers\Home.php(607): App\Controllers\Home->predictWaterLevel('C:\\laragon\\www\\solarflood\\writable\\uploads/water_level_data_2024-04-16 (1).xlsx')
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->predictionUpload()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(82): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')
+CRITICAL - 2024-07-22 05:28:51 --> Error: Class "Phpml\Regression\Ridge" not found
+in APPPATH\Controllers\Home.php on line 634.
+ 1 APPPATH\Controllers\Home.php(607): App\Controllers\Home->predictWaterLevel('C:\\laragon\\www\\solarflood\\writable\\uploads/water_level_data_2024-04-16 (1).xlsx')
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->predictionUpload()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(82): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')
+CRITICAL - 2024-07-22 05:30:39 --> Error: Class "Phpml\Regression\Ridge" not found
+in APPPATH\Controllers\Home.php on line 635.
+ 1 APPPATH\Controllers\Home.php(608): App\Controllers\Home->predictWaterLevel('C:\\laragon\\www\\solarflood\\writable\\uploads/water_level_data_2024-04-16 (1).xlsx')
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->predictionUpload()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(82): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')
+CRITICAL - 2024-07-22 05:30:46 --> Error: Class "Phpml\Regression\Ridge" not found
+in APPPATH\Controllers\Home.php on line 635.
+ 1 APPPATH\Controllers\Home.php(608): App\Controllers\Home->predictWaterLevel('C:\\laragon\\www\\solarflood\\writable\\uploads/water_level_data_2024-04-16 (1).xlsx')
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->predictionUpload()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(82): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')
+CRITICAL - 2024-07-22 05:31:35 --> Phpml\Exception\LibsvmCommandException: Failed running libsvm command: "C:\laragon\www\solarflood\vendor\php-ai\php-ml\bin\libsvm\svm-train.exe -s 3 -t 0 -c 1 -n 0.500000 -d 3 -r 0 -p 0.100000 -m 100.000000 -e 0.001000 -h 1 -b 0 "C:\laragon\www\solarflood\vendor\php-ai\php-ml\var\phpml669deeb6b33a98.53532446" "C:\laragon\www\solarflood\vendor\php-ai\php-ml\var\phpml669deeb6b33a98.53532446-model"" with reason: "Wrong input format at line 1"
+in VENDORPATH\php-ai\php-ml\src\SupportVectorMachine\SupportVectorMachine.php on line 163.
+ 1 APPPATH\Controllers\Home.php(636): Phpml\SupportVectorMachine\SupportVectorMachine->train([...], [...])
+ 2 APPPATH\Controllers\Home.php(608): App\Controllers\Home->predictWaterLevel('C:\\laragon\\www\\solarflood\\writable\\uploads/water_level_data_2024-04-16 (1).xlsx')
+ 3 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->predictionUpload()
+ 4 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 5 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(82): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')
+CRITICAL - 2024-07-22 05:34:34 --> ErrorException: require_once(C:\laragon\www\solarflood\app\Controllers/vendor/autoload.php): Failed to open stream: No such file or directory
+in APPPATH\Controllers\Home.php on line 4.
+ 1 APPPATH\Controllers\Home.php(4): CodeIgniter\Debug\Exceptions->errorHandler(2, 'require_once(C:\\laragon\\www\\solarflood\\app\\Controllers/vendor/autoload.php): Failed to open stream: No such file or directory', 'C:\\laragon\\www\\solarflood\\app\\Controllers\\Home.php', 4)
+ 2 APPPATH\Controllers\Home.php(4): require_once()
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(309): include_once('C:\\laragon\\www\\solarflood\\app\\Controllers\\Home.php')
+ 4 SYSTEMPATH\Autoloader\Autoloader.php(288): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\laragon\\www\\solarflood\\app\\Controllers\\Home.php')
+ 5 SYSTEMPATH\Autoloader\Autoloader.php(266): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers\\Home')
+ 6 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers\\Home')
+ 7 SYSTEMPATH\CodeIgniter.php(899): class_exists('\\App\\Controllers\\Home', true)
+ 8 SYSTEMPATH\CodeIgniter.php(489): CodeIgniter\CodeIgniter->startController()
+ 9 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(82): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')
+CRITICAL - 2024-07-22 05:34:44 --> ErrorException: Namespace declaration statement has to be the very first statement or after any declare call in the script
+in APPPATH\Controllers\Home.php on line 4.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2024-07-22 05:34:52 --> Phpml\Exception\LibsvmCommandException: Failed running libsvm command: "C:\laragon\www\solarflood\vendor\php-ai\php-ml\bin\libsvm\svm-train.exe -s 3 -t 0 -c 1 -n 0.500000 -d 3 -r 0 -p 0.100000 -m 100.000000 -e 0.001000 -h 1 -b 0 "C:\laragon\www\solarflood\vendor\php-ai\php-ml\var\phpml669def7c2628e3.83885682" "C:\laragon\www\solarflood\vendor\php-ai\php-ml\var\phpml669def7c2628e3.83885682-model"" with reason: "Wrong input format at line 1"
+in VENDORPATH\php-ai\php-ml\src\SupportVectorMachine\SupportVectorMachine.php on line 163.
+ 1 APPPATH\Controllers\Home.php(636): Phpml\SupportVectorMachine\SupportVectorMachine->train([...], [...])
+ 2 APPPATH\Controllers\Home.php(608): App\Controllers\Home->predictWaterLevel('C:\\laragon\\www\\solarflood\\writable\\uploads/water_level_data_2024-04-16 (1).xlsx')
+ 3 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->predictionUpload()
+ 4 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 5 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(82): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')
+CRITICAL - 2024-07-22 05:35:04 --> Error: Class "Phpml\Regression\Ridge" not found
+in APPPATH\Controllers\Home.php on line 635.
+ 1 APPPATH\Controllers\Home.php(608): App\Controllers\Home->predictWaterLevel('C:\\laragon\\www\\solarflood\\writable\\uploads/water_level_data_2024-04-16 (1).xlsx')
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->predictionUpload()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(82): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')
+CRITICAL - 2024-07-22 05:52:33 --> Phpml\Exception\MatrixException: Matrix is singular
+in VENDORPATH\php-ai\php-ml\src\Math\LinearAlgebra\LUDecomposition.php on line 254.
+ 1 VENDORPATH\php-ai\php-ml\src\Math\Matrix.php(223): Phpml\Math\LinearAlgebra\LUDecomposition->solve(Object(Phpml\Math\Matrix))
+ 2 VENDORPATH\php-ai\php-ml\src\Regression\LeastSquares.php(73): Phpml\Math\Matrix->inverse()
+ 3 VENDORPATH\php-ai\php-ml\src\Regression\LeastSquares.php(39): Phpml\Regression\LeastSquares->computeCoefficients()
+ 4 APPPATH\Controllers\Home.php(676): Phpml\Regression\LeastSquares->train([...], [...])
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->upload()
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(82): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')
+CRITICAL - 2024-07-22 05:59:35 --> DivisionByZeroError: Division by zero
+in APPPATH\Controllers\Home.php on line 683.
+ 1 [internal function]: App\Controllers\Home->App\Controllers\{closure}(false)
+ 2 APPPATH\Controllers\Home.php(682): array_map(Object(Closure), [...])
+ 3 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->upload()
+ 4 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 5 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(82): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')
+CRITICAL - 2024-07-22 06:12:10 --> TypeError: Unsupported operand types: string - float
+in APPPATH\Controllers\Home.php on line 679.
+ 1 [internal function]: App\Controllers\Home->App\Controllers\{closure}('Rainfall')
+ 2 APPPATH\Controllers\Home.php(678): array_map(Object(Closure), [...])
+ 3 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->upload()
+ 4 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 5 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(82): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')
+CRITICAL - 2024-07-22 06:15:59 --> TypeError: Unsupported operand types: string - float
+in APPPATH\Controllers\Home.php on line 693.
+ 1 [internal function]: App\Controllers\Home->App\Controllers\{closure}('Rainfall')
+ 2 APPPATH\Controllers\Home.php(692): array_map(Object(Closure), [...])
+ 3 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->upload()
+ 4 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 5 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(82): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')
+CRITICAL - 2024-07-22 06:21:25 --> ErrorException: Undefined variable $dates
+in APPPATH\Views\result.php on line 10.
+ 1 APPPATH\Views\result.php(10): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $dates', 'C:\\laragon\\www\\solarflood\\app\\Views\\result.php', 10)
+ 2 SYSTEMPATH\View\View.php(228): include('C:\\laragon\\www\\solarflood\\app\\Views\\result.php')
+ 3 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('result', [], true)
+ 5 APPPATH\Controllers\Home.php(711): view('result', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->upload()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(82): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')

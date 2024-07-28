@@ -289,7 +289,23 @@
 }
 
 #eLogTech{
-fon:white;
+font:white;
 height: 50px;
 
+}
+.menu-bar {
+    display: none;
+}
+.form-card {
+    max-width: 600px;
+    margin: auto;
+    border-radius: 15px;
+    padding: 20px;
+}
+
+/* Show the menu-bar only on screens smaller than 768px */
+@media screen and (max-width: 768px) {
+    .menu-bar {
+        display: block;
+    }
 }

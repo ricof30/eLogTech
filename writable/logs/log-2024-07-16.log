@@ -1,0 +1,12 @@
+CRITICAL - 2024-07-16 01:40:08 --> ErrorException: Undefined variable $data
+in APPPATH\Views\alertHistory.php on line 43.
+ 1 APPPATH\Views\alertHistory.php(43): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $data', 'C:\\laragon\\www\\solarflood\\app\\Views\\alertHistory.php', 43)
+ 2 SYSTEMPATH\View\View.php(228): include('C:\\laragon\\www\\solarflood\\app\\Views\\alertHistory.php')
+ 3 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('alertHistory', [], true)
+ 5 APPPATH\Controllers\Home.php(78): view('alertHistory', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->alertHistory()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')
