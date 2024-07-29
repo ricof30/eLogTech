@@ -31,53 +31,56 @@ use PhpOffice\PhpSpreadsheet\IOFactory;
 class Home extends BaseController
 {
     public function index(): string
-    {
-        $waterLevelModel = new WaterLevelModel();
-        $waterLevels = $waterLevelModel->findAll();
+{
+    $waterLevelModel = new WaterLevelModel();
+    $waterLevels = $waterLevelModel->findAll();
     
-        
-        $monthlyWaterLevels = [];
-        foreach ($waterLevels as $level) {
-            $month = date('F', strtotime($level['date']));
-            if (!isset($monthlyWaterLevels[$month])) {
-                $monthlyWaterLevels[$month] = ['total' => 0, '1.00' => 0, '2.00' => 0, '3.00' => 0]; 
-            }
-            $monthlyWaterLevels[$month]['total']++;
-            
-            $monthlyWaterLevels[$month][$level['waterlevel']]++;
+    $monthlyWaterLevels = [];
+    foreach ($waterLevels as $level) {
+        $month = date('F', strtotime($level['date']));
+        if (!isset($monthlyWaterLevels[$month])) {
+            $monthlyWaterLevels[$month] = ['total' => 0, '1.00' => 0, '2.00' => 0, '3.00' => 0]; 
         }
-
-        $solarVoltageModel = new SolarVoltageModel();
-        $solarVoltages = $solarVoltageModel->findAll();
-        $dailyVoltages = [];
-        foreach ($solarVoltages as $voltage) {
-            $date = date('Y-m-d', strtotime($voltage['date']));
-            if (!isset($dailyVoltages[$date])) {
-                $dailyVoltages[$date] = 0;
-            }
-            $dailyVoltages[$date] += $voltage['voltage'];
-        }
-    
-        $rainfallModel = new RainfallModel();
-        $rainfalls = $rainfallModel->findAll(); 
-    
-        $rainfallData = $this->prepareRainfallData($rainfalls); 
-    
-        
-        $messages = $this->getLastThreeMessages();
-   
-        $latestWaterLevel = $this->getLatestWaterLevel();
-    
-        
-        return view('dashboard', [
-            'monthlyWaterLevels' => $monthlyWaterLevels,
-            'dailyVoltages' => $dailyVoltages,
-            'rainfallData' => $rainfallData,
-            'messages' => $messages,
-            'latestWaterLevel' => $latestWaterLevel
-             
-        ]);
+        $monthlyWaterLevels[$month]['total']++;
+        $monthlyWaterLevels[$month][$level['waterlevel']]++;
     }
+
+    $solarVoltageModel = new SolarVoltageModel();
+    $solarVoltages = $solarVoltageModel->findAll();
+    $dailyVoltages = [];
+    foreach ($solarVoltages as $voltage) {
+        $date = date('Y-m-d', strtotime($voltage['date']));
+        if (!isset($dailyVoltages[$date])) {
+            $dailyVoltages[$date] = 0;
+        }
+        $dailyVoltages[$date] += $voltage['voltage'];
+    }
+    
+    $rainfallModel = new RainfallModel();
+    $rainfalls = $rainfallModel->findAll(); 
+    $rainfallData = $this->prepareRainfallData($rainfalls); 
+
+    $userModel = new UserModel();
+    
+    // Assume you have a way to get the current user ID, e.g., from session
+    $currentUserId = session()->get('user_id'); // Replace this with your method of retrieving the current user ID
+    
+    // Fetch the specific user data
+    $user = $userModel->find($currentUserId);
+    
+    $messages = $this->getLastThreeMessages();
+    $latestWaterLevel = $this->getLatestWaterLevel();
+    
+    return view('dashboard', [
+        'monthlyWaterLevels' => $monthlyWaterLevels,
+        'dailyVoltages' => $dailyVoltages,
+        'rainfallData' => $rainfallData,
+        'messages' => $messages,
+        'latestWaterLevel' => $latestWaterLevel,
+        'user' => $user
+    ]);
+}
+
    
     public function alertHistory()
     {
@@ -513,6 +516,44 @@ public function deleteMessage($id)
 
         return view('status', $data);
     }
+
+    public function updatePhoto()
+    {
+        $userModel = new UserModel();
+    
+        // Get user ID from session or other source
+        $userId = session()->get('user_id');
+    
+        // Handle file upload
+        $profilePhoto = $this->request->getFile('profilePhoto');
+        $currentPhoto = $userModel->find($userId)['image']; // Get current photo name
+    
+        if ($profilePhoto->isValid() && !$profilePhoto->hasMoved()) {
+            // Use the original name of the file
+            $profilePhotoName = $profilePhoto->getName();
+            $profilePhoto->move(ROOTPATH . 'public/assets/img', $profilePhotoName);
+    
+            // Delete old photo if it exists
+            if ($currentPhoto && file_exists(ROOTPATH . 'public/assets/img/' . $currentPhoto)) {
+                unlink(ROOTPATH . 'public/assets/img/' . $currentPhoto);
+            }
+        } else {
+            // If no new photo uploaded, keep the current one
+            $profilePhotoName = $currentPhoto;
+        }
+    
+        // Update the user's photo in the database
+        $updateData = [
+            'image' => $profilePhotoName,
+        ];
+    
+        $userModel->update($userId, $updateData);
+    
+        return redirect()->to('/')->with('success', 'Profile photo updated successfully');
+    }
+    
+
+
 
    
     

@@ -22,6 +22,7 @@ $routes->get('/logout', 'Home::logout');
 $routes->get('/status', 'Home::viewStatus');
 $routes->get('/alertHistory', 'Home::alertHistory');
 $routes->get('/weather', 'Home::weather');
+$routes->post('/updatePhoto', 'Home::updatePhoto');
 
 // app/Config/Routes.php
 // app/Config/Routes.php

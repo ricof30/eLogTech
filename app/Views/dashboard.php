@@ -105,11 +105,12 @@
 
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                            <img class="rounded-circle me-lg-2" src="../assets/img/user logo.jpg" alt="" style="width: 40px; height: 40px;">
-                            <span class="d-none d-lg-inline-flex">Rico Fontecilla</span>
+                            <img class="rounded-circle me-lg-2" src="<?= base_url('../assets/img/' . $user['image']); ?>"  alt="" style="width: 40px; height: 40px;">
+                            <span class="d-none d-lg-inline-flex"><?= $user['username']; ?></span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
-                            <a href="#" class="dropdown-item">My Profile</a>
+                          <a href="#" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#profileModal">My Profile</a>
+
                             <a href="#" class="dropdown-item">Settings</a>
                             <a href="logout" class="dropdown-item">Log Out</a>
                         </div>
@@ -117,6 +118,51 @@
                 </div>
             </nav>
             <!-- Navbar End -->
+
+        <!-- Profile Modal -->
+<div class="modal fade" id="profileModal" tabindex="-1" aria-labelledby="profileModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-danger" id="profileModalLabel">My Profile</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                    <!-- Display current photo -->
+                    <div class="text-center mb-4">
+                    <form action="<?= base_url('updatePhoto'); ?>" method="post" enctype="multipart/form-data">
+
+                        <img id="profilePhotoPreview" src="<?= base_url('../assets/img/' . $user['image']); ?>" alt="Profile Photo" class="img-fluid rounded-circle" style="width: 150px; height: 150px; object-fit: cover;">
+                        <div class="position-relative">
+                            <input type="file" class="form-control bg-white position-absolute top-100 start-50 translate-middle" id="profilePhoto" name="profilePhoto" style="opacity: 0; width: 100%; height: 100%; z-index: 2;">
+                            <label for="profilePhoto" class="position-absolute top-0 start-10 translate-middle rounded-circle bg-light text-dark" style="width: 40px; height: 40px; line-height: 40px; text-align: center; cursor: pointer;">
+                                <i class="fa fa-camera"></i>
+                            </label>
+                        </div>
+                        
+                    </div>
+
+                    <!-- Username Field -->
+                    <div class="mb-3">
+                        <label for="username" class="form-label">Username</label>
+                        <input type="text" class="form-control bg-white" id="username" name="username" value="<?= esc($user['username']); ?>" required>
+                    </div>
+
+                    <!-- Email Field -->
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" class="form-control bg-white" id="email" name="email" value="<?= esc($user['email']); ?>" required>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Save changes</button>
+                    </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
 
             <!-- Sale & Revenue Start -->
             <div class="container-fluid pt-4 px-4">
@@ -282,6 +328,20 @@
       <!-- Script Start -->
     <?= $this->include('script');?>
     <?= $this->include('script1');?>
+    <script>
+        document.getElementById('profilePhoto').addEventListener('change', function(event) {
+    const file = event.target.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            document.getElementById('profilePhotoPreview').src = e.target.result;
+        }
+        reader.readAsDataURL(file);
+    }
+});
+
+    </script>
+
 
       <!-- Script End -->
 </body>
