@@ -12,6 +12,7 @@ $routes->post('/add_contact', 'Home::add_contact');
 $routes->get('/delete/(:num)', 'Home::delete_contact/$1');
 $routes->get('/delete_message/(:num)', 'Home::deleteMessage/$1');
 $routes->get('/deleteByPhone/(:num)', 'Home::deleteByPhoneNumber/$1');
+$routes->get('/deleteSentMessage/(:num)', 'Home::deleteSentMessage/$1');
 // $routes->get('/signin', 'Home::signin');
 //$routes->post('/adminSignin', 'Home::adminSignin');
 $routes->post('/update', 'Home::update');
@@ -23,6 +24,7 @@ $routes->get('/status', 'Home::viewStatus');
 $routes->get('/alertHistory', 'Home::alertHistory');
 $routes->get('/weather', 'Home::weather');
 $routes->post('/updatePhoto', 'Home::updatePhoto');
+$routes->get('/sentMessage', 'Home::sentMessage');
 
 // app/Config/Routes.php
 // app/Config/Routes.php

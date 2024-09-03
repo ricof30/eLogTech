@@ -87,9 +87,19 @@ class Home extends BaseController
         $model = new WaterLevelModel();
 
         $data['latestWaterLevel'] = $model->findAll();
-        $data['pager'] = $model->pager;
-        return view('alertHistory', $data);
-    }
+        // $data['pager'] = $model->pager;
+
+        $userModel = new UserModel();
+    
+        // Assume you have a way to get the current user ID, e.g., from session
+        $currentUserId = session()->get('user_id'); // Replace this with your method of retrieving the current user ID
+        
+        // Fetch the specific user data
+        $user = $userModel->find($currentUserId);
+        return view('alertHistory', [
+            'latestWaterLevel' => $data['latestWaterLevel'],
+         'user' => $user
+     ]);}
 
 
 
@@ -133,7 +143,17 @@ class Home extends BaseController
     {
         $model = new ContactModel();
         $data['contact'] = $model->findAll();
-        return view('contact', $data);
+        $userModel = new UserModel();
+    
+        // Assume you have a way to get the current user ID, e.g., from session
+        $currentUserId = session()->get('user_id'); // Replace this with your method of retrieving the current user ID
+        
+        // Fetch the specific user data
+        $user = $userModel->find($currentUserId);
+        return view('contact', [
+            'contact' => $data['contact'],
+            'user' => $user
+        ]);
     }
 
     public function add_contact(){
@@ -174,7 +194,7 @@ class Home extends BaseController
       if($model->delete($id)) {
          session()->setFlashdata('success', 'Deleted successfully');
     } else { 
-        session()->setFlashdata('error', 'Delet failed');
+        session()->setFlashdata('error', 'Delete failed');
     }
          return redirect()->to('/contact');
     }
@@ -234,8 +254,18 @@ class Home extends BaseController
         $data = [
             'distinctMessages' => $messages
         ];
+        $userModel = new UserModel();
     
-        return view('message', $data);
+        // Assume you have a way to get the current user ID, e.g., from session
+        $currentUserId = session()->get('user_id'); // Replace this with your method of retrieving the current user ID
+        
+        // Fetch the specific user data
+        $user = $userModel->find($currentUserId);
+        return view('message', [
+            'distinctMessages' => $messages,
+            'user' => $user
+        ]);
+    
     }
     
 public function show($phone_number)
@@ -243,12 +273,34 @@ public function show($phone_number)
     $messageModel = new ReceiveMessageModel();
     $messages = $messageModel->where('phone_number', $phone_number)->findAll();
 
-    $data = [
+    $userModel = new UserModel();
+    
+    // Assume you have a way to get the current user ID, e.g., from session
+    $currentUserId = session()->get('user_id'); // Replace this with your method of retrieving the current user ID
+    
+    // Fetch the specific user data
+    $user = $userModel->find($currentUserId);
+    return view('showMessage', [
         'phone_number' => $phone_number,
-        'messages' => $messages
-    ];
+        'messages' => $messages,
+        'user' => $user
+    ]);
+}
 
-    return view('showMessage', $data);
+public function sentMessage(){
+    $sentSMS = new SentMessageModel();
+    $data['sentSMS'] = $sentSMS->findAll();
+    $userModel = new UserModel();
+    
+    // Assume you have a way to get the current user ID, e.g., from session
+    $currentUserId = session()->get('user_id'); // Replace this with your method of retrieving the current user ID
+    
+    // Fetch the specific user data
+    $user = $userModel->find($currentUserId);
+    return view('sent_message', [
+        'sentSMS' => $data['sentSMS'],
+        'user' => $user
+    ]);
 }
         
 public function deleteMessage($id)
@@ -263,6 +315,16 @@ public function deleteMessage($id)
     
     $currentURL = base_url('message/show/' . $id);
     return redirect()->to($currentURL);
+}
+public function deleteSentMessage($id)
+{
+    $model = new SentMessageModel();
+    if ($model->delete($id)) {
+        session()->setFlashdata('success', 'Message deleted successfully');
+    } else {
+        session()->setFlashdata('error', 'Failed to delete message');
+    }
+    return redirect()->to('/sentMessage');
 }
 
     public function deleteByPhoneNumber($phoneNumber)
@@ -513,8 +575,18 @@ public function deleteMessage($id)
     public function viewStatus()
     {
         $data['statuses'] = $this->getLatestStatus();
+        $userModel = new UserModel();
+    
+        // Assume you have a way to get the current user ID, e.g., from session
+        $currentUserId = session()->get('user_id'); // Replace this with your method of retrieving the current user ID
+        
+        // Fetch the specific user data
+        $user = $userModel->find($currentUserId);
+        return view('status', [
+            'statuses' => $data['statuses'],
+            'user' => $user
+        ]);
 
-        return view('status', $data);
     }
 
     public function updatePhoto()

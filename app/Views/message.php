@@ -22,7 +22,7 @@
                         </div>
                     </div>
 
-                    <h6 class="mb-4 text-center large">Messages</h6>
+                    <h6 class="mb-4 text-center large">Received Messages</h6>
                     <div class="table-responsive">
                         <table class="table">
                             <thead>
@@ -41,7 +41,7 @@
                 <!-- Message Content -->
                 <div>
                     <!-- Message Text -->
-                    <a href="/message/show/<?= $message['phone_number']; ?>" class="message-details text-white" data-phone="<?= $message['phone_number']; ?>" data-message="<?= $message['message']; ?>" data-date="<?= date('Y-m-d', strtotime($message['date'])); ?>" data-time="<?= $message['time']; ?>"><?= $message['message']; ?></a>
+                    <a href="/message/show/<?= $message['phone_number']; ?>" class="message-details text-white" data-phone="<?= $message['phone_number']; ?>" data-message="<?= $message['message']; ?>" data-date="<?= date('Y-m-d', strtotime($message['date'])); ?>" data-time="<?= $message['time']; ?>"><?= $message['phone_number']; ?></a>
                 </div>
             </div>
         </td>
