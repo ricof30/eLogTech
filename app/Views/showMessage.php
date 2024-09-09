@@ -24,6 +24,8 @@
     <link href="../../assets/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
     <link href="../../assets/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdn.datatables.net/2.0.8/css/dataTables.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+
 
     <!-- Customized Bootstrap Stylesheet -->
     <link href="../../assets/css/bootstrap.min.css" rel="stylesheet">
@@ -33,8 +35,39 @@
 </head>
 
 <body>
-    <div class="sidebar pe-4 pb-3">
-        <!-- Sidebar content -->
+<div class="sidebar pe-4 pb-3">
+        <nav class="navbar bg-secondary navbar-dark">
+            <a href="index.html" class="navbar-brand mx-4 mb-3" style="display: flex; align-items: center;">
+                <img src="../../assets/img/eLogTech.png" alt="logo" style="width: 50px; margin-right: 10px;">
+                <h3 class="small gradient-text" style="background: linear-gradient(to right, red, orange); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; text-fill-color: transparent; margin: 0;">eLogTech</h3>
+            </a>
+            <div class="d-flex align-items-center ms-4 mb-4">
+                <div class="position-relative">
+                    <img class="rounded-circle" src="<?= base_url('../assets/img/' . $user['image']); ?>"  alt="" style="width: 40px; height: 40px;">
+                    <div class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1"></div>
+                </div>
+                <div class="ms-3">
+                    <h6 class="mb-0">Rico Fontecilla</h6>
+                    <span>Admin</span>
+                </div>
+            </div>
+            <div class="navbar-nav w-100">
+            <a href="/" class="menu-item nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
+                <a href="contact" class="menu-item nav-item nav-link"><i class="fa fa-phone me-2"></i>Contact Numbers</a>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="menu-item nav-link dropdown-toggle" id="messagesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fa fa-envelope me-2"></i>Messages
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0 ml-1" aria-labelledby="messagesDropdown">
+                            <li><a href="messages" class="dropdown-item nav-link ml-5">Receive SMS</a></li>
+                            <li><a href="sentMessage" class="dropdown-item nav-link ml-5">Sent SMS</a></li>
+                        </ul>
+                    </div>
+                <a href="status" class="menu-item nav-item nav-link"><i class="fas fa-info-circle me-2"></i>Device Status</a>
+                <a href="alertHistory" class="menu-item nav-item nav-link"><i class="fas fa-bell me-2"></i> Alert History</a>
+                </a>
+            </div>
+        </nav>
     </div>
 
     <div class="content">
@@ -42,7 +75,7 @@
             <div class="row g-4">
                 <div class="col-12">
                     <div class="bg-secondary rounded h-100 p-4">
-                        <h6 class="mb-4 text-center large text-primary"> Sent Messages</h6>
+                        <h6 class="mb-4 text-center large text-primary"> Received Messages</h6>
                         
                         <!-- Toast Container -->
                         <div aria-live="polite" aria-atomic="true" class="position-relative">
@@ -83,13 +116,13 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php foreach ($sentSMS as $message): ?>
+                                    <?php foreach ($messages as $message): ?>
                                         <tr>
                                             <td class="text-white"><?= $message['message'] ?></td>
                                             <td class="text-white"><?= date('F j, Y', strtotime($message['date'])) ?></td>
                                             <td class="text-white"><?= date('g:i a', strtotime($message['time'])) ?></td>
                                             <td>
-                                                <a href="<?= base_url('deleteSentMessage/' . $message['id']) ?>" class="btn btn-danger delete-message" onclick="return confirm('Are you sure you want to delete this message?')">Delete</a>
+                                                <a href="delete_message/<?= $message['id']; ?>" class="btn btn-danger delete-message" onclick="return confirm('Are you sure you want to delete this message?')">Delete</a>
                                             </td>
                                         </tr>
                                     <?php endforeach; ?>
@@ -101,7 +134,7 @@
             </div>
         </div>
 
-        <div class="container-fluid pt-4 px-4">
+        <!-- <div class="container-fluid pt-4 px-4">
             <div class="bg-secondary rounded-top p-4">
                 <div class="row">
                     <div class="col-12 col-sm-6 text-center text-sm-start">
@@ -109,7 +142,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
     </div>
 
     <!-- Include Bootstrap JS -->

@@ -6,13 +6,13 @@ use CodeIgniter\Model;
 
 class StatusModel extends Model
 {
-    protected $table            = 'status';
-    protected $primaryKey       = 'id';
+    protected $table            = 'sensors';
+    protected $primaryKey       = 'sensor_id';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['component', 'status', 'value', 'timestamp'];
+    protected $allowedFields    = ['sensor_type', 'status', 'last_update'];
 
     // Dates
     protected $useTimestamps = false;

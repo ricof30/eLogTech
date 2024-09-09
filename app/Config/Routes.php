@@ -13,6 +13,8 @@ $routes->get('/delete/(:num)', 'Home::delete_contact/$1');
 $routes->get('/delete_message/(:num)', 'Home::deleteMessage/$1');
 $routes->get('/deleteByPhone/(:num)', 'Home::deleteByPhoneNumber/$1');
 $routes->get('/deleteSentMessage/(:num)', 'Home::deleteSentMessage/$1');
+$routes->get('/notifications', 'Home::fetchNotifications');
+
 // $routes->get('/signin', 'Home::signin');
 //$routes->post('/adminSignin', 'Home::adminSignin');
 $routes->post('/update', 'Home::update');
@@ -45,7 +47,7 @@ $routes->group('/', function ($routes) {
     $routes->get('messages', 'Home::message');
     
     // Route to display messages for a specific phone number
-    $routes->get('message/show/(:any)', 'Home::show/$1');
+    $routes->get('show', 'Home::show/$1');
     
     // Route to delete a message
     // $routes->get('delete_message/(:num)', 'Home::deleteMessage/$1');

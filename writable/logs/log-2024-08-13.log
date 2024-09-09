@@ -1,0 +1,12 @@
+CRITICAL - 2024-08-13 01:08:49 --> ErrorException: Undefined variable $sentSMS
+in APPPATH\Views\showMessage.php on line 86.
+ 1 APPPATH\Views\showMessage.php(86): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $sentSMS', 'C:\\laragon\\www\\solarflood\\app\\Views\\showMessage.php', 86)
+ 2 SYSTEMPATH\View\View.php(228): include('C:\\laragon\\www\\solarflood\\app\\Views\\showMessage.php')
+ 3 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('showMessage', [], true)
+ 5 APPPATH\Controllers\Home.php(286): view('showMessage', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->show('09952927249')
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(82): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')

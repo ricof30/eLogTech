@@ -6,7 +6,8 @@
 </a>
                 <div class="d-flex align-items-center ms-4 mb-4">
                     <div class="position-relative">
-                        <img class="rounded-circle" src="<?= base_url('../assets/img/' . $user['image']); ?>" alt="Profile photo" style="width: 40px; height: 40px;">
+                    <img class="rounded-circle" src="<?= base_url('../assets/img/' . (!empty($user['image']) ? esc($user['image']) : 'default.jpg')); ?>" alt="Profile photo" style="width: 40px; height: 40px;">
+
                         <div class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1"></div>
                     </div>
                     <div class="ms-3">
@@ -15,20 +16,29 @@
                     </div>
                 </div>
                 <div class="menu navbar-nav w-100">
-                <a href="/" class="menu-item nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
-                <a href="contact" class="menu-item nav-item nav-link"><i class="fa fa-phone me-2"></i>Contact Numbers</a>
+                    <a href="/" class="menu-item nav-item nav-link">
+                        <i class="fa fa-tachometer-alt me-2"></i>Dashboard
+                    </a>
+                    <a href="/contact" class="menu-item nav-item nav-link">
+                        <i class="fa fa-phone me-2"></i>Contact Numbers
+                    </a>
                     <div class="nav-item dropdown">
                         <a href="#" class="menu-item nav-link dropdown-toggle" id="messagesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             <i class="fa fa-envelope me-2"></i>Messages
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0 ml-1" aria-labelledby="messagesDropdown">
-                            <li><a href="messages" class="dropdown-item nav-link ml-5">Receive SMS</a></li>
-                            <li><a href="sentMessage" class="dropdown-item nav-link ml-5">Sent SMS</a></li>
+                            <li style="margin-left:30px">  <a href="/messages" class="dropdown-item nav-link ml-5"><i class="fa fa-comment me-2"></i>Receive SMS</a></li>
+                            <li style="margin-left:30px"><a href="/sentMessage" class="dropdown-item nav-link ml-5"><i class="fa fa-comment me-2"></i>Sent SMS</a></li>
                         </ul>
                     </div>
-                <a href="status" class="menu-item nav-item nav-link"><i class="fas fa-info-circle me-2"></i>Device Status</a>
-                <a href="alertHistory" class="menu-item nav-item nav-link"><i class="fas fa-bell me-2"></i> Alert History</a>
-                </a>
+                    <a href="/status" class="menu-item nav-item nav-link">
+                        <i class="fas fa-info-circle me-2"></i>Device Status
+                    </a>
+                    <a href="/alertHistory" class="menu-item nav-item nav-link">
+                        <i class="fas fa-bell me-2"></i>Alert History
+                    </a>
+
                 </div>
             </nav>
         </div>
+

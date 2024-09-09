@@ -1,0 +1,147 @@
+CRITICAL - 2024-09-08 05:06:54 --> Error: Object of class App\Models\StatusModel could not be converted to string
+in APPPATH\Controllers\Home.php on line 800.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->viewStatus()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(82): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')
+CRITICAL - 2024-09-08 05:07:39 --> Error: Call to undefined method App\Controllers\Home::StatusModel()
+in APPPATH\Controllers\Home.php on line 800.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->viewStatus()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(82): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')
+CRITICAL - 2024-09-08 05:09:51 --> ErrorException: Undefined variable $userModel
+in APPPATH\Controllers\Home.php on line 805.
+ 1 APPPATH\Controllers\Home.php(805): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $userModel', 'C:\\laragon\\www\\solarflood\\app\\Controllers\\Home.php', 805)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->viewStatus()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(82): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')
+CRITICAL - 2024-09-08 05:10:24 --> ErrorException: Undefined array key "component"
+in APPPATH\Views\status.php on line 29.
+ 1 APPPATH\Views\status.php(29): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "component"', 'C:\\laragon\\www\\solarflood\\app\\Views\\status.php', 29)
+ 2 SYSTEMPATH\View\View.php(228): include('C:\\laragon\\www\\solarflood\\app\\Views\\status.php')
+ 3 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('status', [], true)
+ 5 APPPATH\Controllers\Home.php(808): view('status', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->viewStatus()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(82): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')
+CRITICAL - 2024-09-08 05:11:06 --> ErrorException: Undefined array key "last_updated"
+in APPPATH\Views\status.php on line 30.
+ 1 APPPATH\Views\status.php(30): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "last_updated"', 'C:\\laragon\\www\\solarflood\\app\\Views\\status.php', 30)
+ 2 SYSTEMPATH\View\View.php(228): include('C:\\laragon\\www\\solarflood\\app\\Views\\status.php')
+ 3 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('status', [], true)
+ 5 APPPATH\Controllers\Home.php(808): view('status', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->viewStatus()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(82): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')
+ERROR - 2024-09-08 08:58:35 --> mysqli_sql_exception: Unknown column 'id' in 'field list' in C:\laragon\www\solarflood\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\solarflood\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `sensor_...', 0)
+#1 C:\laragon\www\solarflood\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `sensor_...')
+#2 C:\laragon\www\solarflood\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `sensor_...')
+#3 C:\laragon\www\solarflood\system\Database\BaseBuilder.php(1613): CodeIgniter\Database\BaseConnection->query('SELECT `sensor_...', Array, false)
+#4 C:\laragon\www\solarflood\app\Controllers\Home.php(830): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\solarflood\system\CodeIgniter.php(941): App\Controllers\Home->viewStatus()
+#6 C:\laragon\www\solarflood\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#7 C:\laragon\www\solarflood\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\laragon\www\solarflood\public\index.php(82): CodeIgniter\CodeIgniter->run()
+#9 C:\laragon\www\solarflood\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#10 {main}
+CRITICAL - 2024-09-08 08:58:35 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'id' in 'field list'
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1613): CodeIgniter\Database\BaseConnection->query('SELECT `sensor_type`, `status`, `last_update`
+FROM `sensors`
+WHERE `id` IN :id:
+ORDER BY `last_update` DESC', [...], false)
+ 2 APPPATH\Controllers\Home.php(830): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->viewStatus()
+ 4 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 5 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(82): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')
+CRITICAL - 2024-09-08 08:58:35 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'id' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `sensor_type`, `status`, `last_update`
+FROM `sensors`
+WHERE `id` IN (SELECT MAX(id) FROM `sensors` GROUP BY `sensor_type`)
+ORDER BY `last_update` DESC')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `sensor_type`, `status`, `last_update`
+FROM `sensors`
+WHERE `id` IN (SELECT MAX(id) FROM `sensors` GROUP BY `sensor_type`)
+ORDER BY `last_update` DESC')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1613): CodeIgniter\Database\BaseConnection->query('SELECT `sensor_type`, `status`, `last_update`
+FROM `sensors`
+WHERE `id` IN :id:
+ORDER BY `last_update` DESC', [...], false)
+ 4 APPPATH\Controllers\Home.php(830): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->viewStatus()
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(82): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')
+CRITICAL - 2024-09-08 08:58:35 --> [Caused by] mysqli_sql_exception: Unknown column 'id' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `sensor_type`, `status`, `last_update`
+FROM `sensors`
+WHERE `id` IN (SELECT MAX(id) FROM `sensors` GROUP BY `sensor_type`)
+ORDER BY `last_update` DESC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `sensor_type`, `status`, `last_update`
+FROM `sensors`
+WHERE `id` IN (SELECT MAX(id) FROM `sensors` GROUP BY `sensor_type`)
+ORDER BY `last_update` DESC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `sensor_type`, `status`, `last_update`
+FROM `sensors`
+WHERE `id` IN (SELECT MAX(id) FROM `sensors` GROUP BY `sensor_type`)
+ORDER BY `last_update` DESC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1613): CodeIgniter\Database\BaseConnection->query('SELECT `sensor_type`, `status`, `last_update`
+FROM `sensors`
+WHERE `id` IN :id:
+ORDER BY `last_update` DESC', [...], false)
+ 5 APPPATH\Controllers\Home.php(830): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->viewStatus()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(82): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')
+CRITICAL - 2024-09-08 08:59:10 --> ErrorException: Undefined array key "image"
+in APPPATH\Views\sidebar.php on line 9.
+ 1 APPPATH\Views\sidebar.php(9): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "image"', 'C:\\laragon\\www\\solarflood\\app\\Views\\sidebar.php', 9)
+ 2 SYSTEMPATH\View\View.php(228): include('C:\\laragon\\www\\solarflood\\app\\Views\\sidebar.php')
+ 3 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\View\View.php(469): CodeIgniter\View\View->render('sidebar', null, true)
+ 5 APPPATH\Views\status.php(3): CodeIgniter\View\View->include('sidebar')
+ 6 SYSTEMPATH\View\View.php(228): include('C:\\laragon\\www\\solarflood\\app\\Views\\status.php')
+ 7 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 8 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('status', [], true)
+ 9 APPPATH\Controllers\Home.php(838): view('status', [...])
+10 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->viewStatus()
+11 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+12 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+13 FCPATH\index.php(82): CodeIgniter\CodeIgniter->run()
+14 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')
+CRITICAL - 2024-09-08 09:00:29 --> ErrorException: Undefined array key "image"
+in APPPATH\Views\sidebar.php on line 9.
+ 1 APPPATH\Views\sidebar.php(9): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "image"', 'C:\\laragon\\www\\solarflood\\app\\Views\\sidebar.php', 9)
+ 2 SYSTEMPATH\View\View.php(228): include('C:\\laragon\\www\\solarflood\\app\\Views\\sidebar.php')
+ 3 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\View\View.php(469): CodeIgniter\View\View->render('sidebar', null, true)
+ 5 APPPATH\Views\status.php(3): CodeIgniter\View\View->include('sidebar')
+ 6 SYSTEMPATH\View\View.php(228): include('C:\\laragon\\www\\solarflood\\app\\Views\\status.php')
+ 7 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 8 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('status', [], true)
+ 9 APPPATH\Controllers\Home.php(838): view('status', [...])
+10 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->viewStatus()
+11 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+12 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+13 FCPATH\index.php(82): CodeIgniter\CodeIgniter->run()
+14 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')

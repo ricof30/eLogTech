@@ -17,9 +17,9 @@
                 <a href="#" class="sidebar-toggler flex-shrink-0">
                     <i class="fa fa-bars"></i>
                 </a>
-                <form class="d-none d-md-flex ms-4">
+                <!-- <form class="d-none d-md-flex ms-4">
                     <input class="form-control bg-dark border-0" type="search" placeholder="Search">
-                </form>
+                </form> -->
 
                 <!-- div for Message Notification -->
                 <div class="navbar-nav align-items-center ms-auto">
@@ -49,7 +49,7 @@
             <?php 
                 $count = 0;
                 foreach ($unreadMessages as $message): 
-                    if ($count >= 5) {
+                    if ($count >= 4) {
                         break;
                     }
             ?>
@@ -66,15 +66,13 @@
                     $count++;
                 endforeach; 
             ?>
-            <?php if ($unreadCount > 5): ?>
                 <a href="/messages" class="dropdown-item text-center">See all messages</a>
-            <?php endif; ?>
         </div>
     </div>
 
 
 
-    <div class="nav-item dropdown position-relative">
+    <!-- <div class="nav-item dropdown position-relative">
     <?php 
         // Calculate the total number of notifications
         $totalNotifications = count($latestWaterLevel);
@@ -90,16 +88,94 @@
         <span class="d-none d-lg-inline-flex">Recent Alerts</span>
     </a>
     <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
-        <?php foreach ($latestWaterLevel as $level): ?>
+        <?php 
+            // Display only the 3 most recent alerts
+            $counter = 0;
+            foreach ($latestWaterLevel as $level): 
+                if ($counter >= 4) {
+                    break; // Exit the loop after displaying 3 alerts
+                }
+                $counter++;
+                
+                // Determine the alert message based on the water level
+                if ($level['waterlevel'] > 3) {
+                    $alertMessage = "High water level: " . $level['waterlevel'] . " meters"; 
+                    $toastrType = 'error';
+                } elseif ($level['waterlevel'] > 2 && $level['waterlevel'] <= 3) {
+                    $alertMessage = "Moderate water level: " . $level['waterlevel'] . " meters";
+                    $toastrType = 'warning';
+                } elseif ($level['waterlevel'] > 0 && $level['waterlevel'] <= 2) {
+                    $alertMessage = "Low water level: " . $level['waterlevel'] . " meters";
+                    $toastrType = 'info';
+                } else {
+                    $alertMessage = "Normal water level: " . $level['waterlevel'] . " meters";
+                    $toastrType = 'success';
+                }
+        ?>
+        <a href="#" class="dropdown-item">
+            <h6 class="fw-normal mb-0"><?= $alertMessage ?></h6>
+            <small><?= date('F j, Y, g:i a', strtotime($level['date'])) ?></small>
+        </a>
+        <hr class="dropdown-divider">
+        <?php endforeach; ?>
+        <a href="alertHistory" class="dropdown-item text-center">See More</a>
+    </div>
+</div> -->
+
+<div class="nav-item dropdown position-relative">
+    <?php 
+        // Calculate the total number of notifications
+        $totalNotifications = count($latestWaterLevel);
+    ?>
+    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+        <i class="fa fa-bell me-lg-2 position-relative">
+            <?php if ($totalNotifications > 0): ?>
+                <span class="badge bg-danger position-absolute top-0 start-100 translate-middle">
+                    <?= $totalNotifications ?>
+                </span>
+            <?php endif; ?>
+        </i>
+        <span class="d-none d-lg-inline-flex">Recent Alerts</span>
+    </a>
+    <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
+            <?php
+               $counter = 0;
+               foreach ($latestWaterLevel as $level): 
+                   if ($counter >= 4) {
+                       break; // Exit the loop after displaying 3 alerts
+                   }
+                   $counter++;
+                // Determine the alert message based on the water level
+                if ($level['waterlevel'] > 3) {
+                    $alertMessage = "High water level: " . $level['waterlevel'] . " meters"; 
+                    $toastrType = 'error';
+                } elseif ($level['waterlevel'] > 2 && $level['waterlevel'] <= 3) {
+                    $alertMessage = "Moderate water level: " . $level['waterlevel'] . " meters";
+                    $toastrType = 'warning';
+                } elseif ($level['waterlevel'] > 0 && $level['waterlevel'] <= 2) {
+                    $alertMessage = "Low water level: " . $level['waterlevel'] . " meters";
+                    $toastrType = 'info';
+                } else {
+                    $alertMessage = "Normal water level: " . $level['waterlevel'] . " meters";
+                    $toastrType = 'success';
+                }
+            ?>
             <a href="#" class="dropdown-item">
-                <h6 class="fw-normal mb-0">Water level: <?= $level['waterlevel'] ?> meters</h6>
+                <h6 class="fw-normal mb-0"><?= $alertMessage ?></h6>
                 <small><?= date('F j, Y, g:i a', strtotime($level['date'])) ?></small>
             </a>
             <hr class="dropdown-divider">
+            
+            <!-- <script>
+                // Trigger Toastr notification for this alert
+                document.addEventListener('DOMContentLoaded', function() {
+                    toastr.<?= $toastrType ?>('<?= $alertMessage ?>');
+                });
+            </script> -->
         <?php endforeach; ?>
-        <a href="#" class="dropdown-item text-center">See all notifications</a>
+        <a href="/alertHistory" class="dropdown-item text-center">See all notifications</a>
     </div>
-</div>
+</div> 
 
 
 
@@ -145,13 +221,13 @@
                     <!-- Username Field -->
                     <div class="mb-3">
                         <label for="username" class="form-label">Username</label>
-                        <input type="text" class="form-control bg-white" id="username" name="username" value="<?= esc($user['username']); ?>" required>
+                        <input type="text" class="form-control bg-white" id="username" name="username" value="<?= esc($user['username']); ?>" readonly>
                     </div>
 
                     <!-- Email Field -->
                     <div class="mb-3">
                         <label for="email" class="form-label">Email</label>
-                        <input type="email" class="form-control bg-white" id="email" name="email" value="<?= esc($user['email']); ?>" required>
+                        <input type="email" class="form-control bg-white" id="email" name="email" value="<?= esc($user['email']); ?>" readonly>
                     </div>
 
                     <button type="submit" class="btn btn-primary">Save changes</button>
@@ -223,6 +299,32 @@
         </div>
     </div>
 </div>
+
+<!-- <div class="container-fluid pt-4 px-4">
+                <div class="row g-4">
+                    <div class="col-sm-12 col-xl-6">
+                        <div class="bg-secondary text-center rounded p-4">
+                            <div class="d-flex align-items-center justify-content-between mb-4">
+                                <h6 class="mb-0">Water Level Chart</h6>
+                                <button id="filterWaterLevel" class="btn btn-primary">Filter</button>
+                            </div>
+                            <canvas id="waterlevel"></canvas>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-xl-6">
+                        <div class="bg-secondary text-center rounded p-4">
+                            <div class="d-flex align-items-center justify-content-between mb-4">
+                                <h6 class="mb-0">Rainfall Chart</h6>
+                                <button id="filterRainfall" class="btn btn-primary">Filter</button>
+                            </div>
+                            <canvas id="rainfallChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+ -->
+
+            
 
 <!-- Modal for filtering water level -->
 <div class="modal fade" id="filterWater" tabindex="-1" aria-labelledby="filterWaterModalLabel" aria-hidden="true">

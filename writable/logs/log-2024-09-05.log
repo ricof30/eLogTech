@@ -1,0 +1,10 @@
+CRITICAL - 2024-09-05 06:28:13 --> ErrorException: Undefined array key 1
+in VENDORPATH\phpoffice\phpspreadsheet\src\PhpSpreadsheet\Cell\Coordinate.php on line 387.
+ 1 VENDORPATH\phpoffice\phpspreadsheet\src\PhpSpreadsheet\Cell\Coordinate.php(387): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key 1', 'C:\\laragon\\www\\solarflood\\vendor\\phpoffice\\phpspreadsheet\\src\\PhpSpreadsheet\\Cell\\Coordinate.php', 387)
+ 2 VENDORPATH\phpoffice\phpspreadsheet\src\PhpSpreadsheet\Worksheet\Worksheet.php(1354): PhpOffice\PhpSpreadsheet\Cell\Coordinate::columnIndexFromString('J1')
+ 3 APPPATH\Controllers\Home.php(481): PhpOffice\PhpSpreadsheet\Worksheet\Worksheet->getColumnDimension('J1')
+ 4 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->filterWaterlevel()
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(82): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')

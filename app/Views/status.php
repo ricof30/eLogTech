@@ -14,26 +14,37 @@
                    
                 <h4 class="text-primary text-center">Status Indicators</h4><br>
                 <div class="table-responsive">
-        <table id="statusTable" class="table-responsive table-bordered text-center">
-            <thead>
-                <tr>
-                    <th class="text-white">Component</th>
-                    <th class="text-white">Status</th>
-                    <th class="text-white">Value</th>
-                    <th class="text-white">Last Updated</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php foreach ($statuses as $status): ?>
-                    <tr>
-                        <td><?= esc($status['component']) ?></td>
-                        <td><?= esc($status['status']) ?></td>
-                        <td><?= esc($status['value']) ?></td>
-                        <td><?= esc($status['timestamp']) ?></td>
-                    </tr>
-                <?php endforeach; ?>
-            </tbody>
-        </table>
+                <table id="statusTable" class="table-responsive table-bordered text-center">
+    <thead>
+        <tr>
+            <th class="text-white">Component</th>
+            <th class="text-white">Status</th>
+            <th class="text-white">Last Updated</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php foreach ($statuses as $status): ?>
+            <tr>
+                <td><?= esc($status['sensor_type']) ?></td>
+                <td><?= esc($status['status']) ?></td>
+                <td>
+                    <?php
+                    // Convert last_update to a DateTime object
+                    $lastUpdate = new DateTime($status['last_update']);
+                    // Format the date to "Month Day Year"
+                    echo $lastUpdate->format('F d Y');
+                    ?>
+                    <br>
+                    <?php
+                    // Format the time to "h:i a" (12-hour format with am/pm)
+                    echo $lastUpdate->format('g:i a');
+                    ?>
+                </td>
+            </tr>
+        <?php endforeach; ?>
+    </tbody>
+</table>
+
                 </div>
                 </div>
             </div>

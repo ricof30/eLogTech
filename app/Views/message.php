@@ -41,7 +41,7 @@
                 <!-- Message Content -->
                 <div>
                     <!-- Message Text -->
-                    <a href="/message/show/<?= $message['phone_number']; ?>" class="message-details text-white" data-phone="<?= $message['phone_number']; ?>" data-message="<?= $message['message']; ?>" data-date="<?= date('Y-m-d', strtotime($message['date'])); ?>" data-time="<?= $message['time']; ?>"><?= $message['phone_number']; ?></a>
+                    <a href="/show" class="message-details text-white" data-phone="<?= $message['phone_number']; ?>" data-message="<?= $message['message']; ?>" data-date="<?= date('Y-m-d', strtotime($message['date'])); ?>" data-time="<?= $message['time']; ?>"><?= $message['phone_number']; ?></a>
                 </div>
             </div>
         </td>
@@ -124,3 +124,21 @@ function formatTime(timeString) {
 
     });
 </script>
+
+ <script>
+    $(document).ready(function() {
+    $('.message-details').on('click', function(event) {
+        event.preventDefault(); // Prevent the default link behavior
+
+        // Get the value of the data-phone attribute
+        var phoneNumber = $(this).data('phone');
+        
+        // You can now use this phone number as needed
+        console.log(phoneNumber);
+
+        // Example: You can redirect to the showMessage page with the phone number as a query parameter
+        window.location.href = '/show?phone_number=' + phoneNumber;
+    });
+});
+
+ </script>

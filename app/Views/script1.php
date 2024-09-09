@@ -15,7 +15,7 @@
                 datasets: [{
                     label: 'Rainfall Count',
                     data: rainfallData, // Use rainfall data fetched from the controller
-                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                    backgroundColor: "rgba(0, 102, 204, 0.7)",  // Deep Blue
                     borderColor: 'rgba(54, 162, 235, 1)',
                     borderWidth: 1
                 }]
@@ -44,6 +44,77 @@
 </script>
 <script>
 document.addEventListener("DOMContentLoaded", function () {
+    // Fetch the monthly water levels data from the PHP view
+    let monthlyWaterLevels = <?= json_encode($monthlyWaterLevels) ?>;
+    let allMonths = [
+        'January', 'February', 'March', 'April', 'May', 'June', 
+        'July', 'August', 'September', 'October', 'November', 'December'
+    ];
+
+    // Initialize arrays to store counts for each water level category
+    let waterLevelCounts = {
+        'low': [],
+        'moderate': [],
+        'high': []
+    };
+
+    // Populate counts array with water level counts for each month
+    allMonths.forEach(function(month) {
+        if (monthlyWaterLevels.hasOwnProperty(month)) {
+            for (let level in waterLevelCounts) {
+                waterLevelCounts[level].push(monthlyWaterLevels[month][level] ?? 0);
+            }
+        } else {
+            // Add 0 counts for each water level category for months without data 
+            for (let level in waterLevelCounts) {
+                waterLevelCounts[level].push(0);
+            }
+        }
+    });
+
+    // Create a Chart.js chart with dynamic data
+    var ctx = document.getElementById('waterlevel').getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: allMonths,
+            datasets: [
+                {
+                    label: 'Low',
+                    data: waterLevelCounts['low'],
+                    backgroundColor: "rgba(255, 255, 0, 1.0)", // Yellow
+                    borderColor: "rgba(255, 255, 255, 1.0)",
+                    borderWidth: 1
+                },
+                {
+                    label: 'Moderate',
+                    data: waterLevelCounts['moderate'],
+                    backgroundColor: "rgba(255, 165, 0, 1.0)", // Orange
+                    borderColor: "rgba(255, 255, 255, 1.0)",
+                    borderWidth: 1
+                },
+                {
+                    label: 'High',
+                    data: waterLevelCounts['high'],
+                    backgroundColor: "rgba(255, 0, 0, 1.0)", // Red
+                    borderColor: "rgba(255, 255, 255, 1.0)",
+                    borderWidth: 1
+                }
+            ]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+});
+</script>
+
+<!-- <script>
+document.addEventListener("DOMContentLoaded", function () {
     let monthlyWaterLevels = <?= json_encode($monthlyWaterLevels) ?>;
     let allMonths = [
         'January', 'February', 'March', 'April', 'May', 'June', 
@@ -64,7 +135,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 waterLevelCounts[level].push(monthlyWaterLevels[month][level] ?? 0);
             }
         } else {
-            // Adding 0 counts for each water level for months without data
+            // Adding 0 counts for each water level for months without data 
             for (let level in waterLevelCounts) {
                 waterLevelCounts[level].push(0);
             }
@@ -74,29 +145,29 @@ document.addEventListener("DOMContentLoaded", function () {
     // Creating Chart.js chart with dynamic data
     var ctx = document.getElementById('waterlevel').getContext('2d');
     var myChart = new Chart(ctx, {
-        type: 'line',
+        type: 'bar',
         data: {
             labels: allMonths,
             datasets: [
             {
-                label: 'Water Level 1',
+                label: 'Low',
                 data: waterLevelCounts['1.00'],
-                backgroundColor: 'rgba(153, 102, 255, 0.5)',
-                borderColor: 'rgba(255, 99, 132, 1)',
+                backgroundColor: "rgba(255, 255, 0, 1.0)", // Yellow
+                borderColor: "rgba(255, 255, 255, 1.0)" ,
                 borderWidth: 1
             },
             {
-                label: 'Water Level 2',
+                label: 'Moderate',
                 data: waterLevelCounts['2.00'],
-                backgroundColor: 'rgba(75, 192, 192, 0.5)',
-                borderColor: 'rgba(75, 192, 192, 1)',
+                backgroundColor: "rgba(255, 165, 0, 1.0)", // Orange
+                borderColor: "rgba(255, 255, 255, 1.0)" ,
                 borderWidth: 1
             },
             {
-                label: 'Water Level 3',
+                label: 'High',
                 data: waterLevelCounts['3.00'],
-                backgroundColor: 'rgba(255, 99, 132, 0.5)',
-                borderColor: 'rgba(153, 102, 255, 1)',
+                backgroundColor: "rgba(255, 0, 0, 1.0)", // Red
+                borderColor: "rgba(255, 255, 255, 1.0)" ,
                 borderWidth: 1
             }]
         },
@@ -111,7 +182,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 });
-</script>
+</script> -->
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         // Solar Voltage Chart
@@ -151,3 +222,27 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 </script>
+<!-- <script>
+    function fetchNotifications() {
+        fetch('/notifications') // Adjust the URL to match your route
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(notifications => {
+                console.log(notifications); // Log the notifications to the console
+                notifications.forEach(notification => {
+                    toastrnotification.type;
+                });
+            })
+            .catch(error => console.error('Error fetching notifications:', error));
+    }
+
+    // Fetch notifications every 30 seconds
+    setInterval(fetchNotifications, 30000);
+
+    // Initial fetch to display notifications immediately on page load
+    fetchNotifications();
+</script> -->

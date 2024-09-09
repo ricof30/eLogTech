@@ -12,19 +12,30 @@
             <div class="col-12">
                 <div class="bg-secondary rounded h-100 p-4">
                     <div class="table-responsive">
-                        <h4 class="text-center">Water Level History</h4>
+                        <h4 class="text-center">Alert History</h4>
 
                         <table id="page" class="table-responsive table-bordered">
                             <thead>
                                 <tr>
-                                    <th class="text-white text-center">Water Level</th>
+                                    <th class="text-white text-center">Alert Message</th>
                                     <th class="text-white text-center">Date</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php foreach ($latestWaterLevel as $level): ?>
                                     <tr>
-                                        <td class="text-center"><?= $level['waterlevel'] ?></td>
+                                    <?php 
+                                       if ($level['waterlevel'] > 3) {
+                                        $alertMessage = "High water level: " . $level['waterlevel'] . " meters"; 
+                                        } elseif ($level['waterlevel'] > 2 && $level['waterlevel'] <= 3) {
+                                            $alertMessage = "Moderate water level: " . $level['waterlevel'] . " meters";
+                                        } elseif ($level['waterlevel'] > 0 && $level['waterlevel'] <= 2) {
+                                            $alertMessage = "Low water level: " . $level['waterlevel'] . " meter";
+                                        } else {
+                                            $alertMessage = "Normal water level: " . $level['waterlevel'] . " meters";
+                                        }
+                                    ?>
+                                        <td class="text-center"><?= $alertMessage ?></td>
                                         <td class="text-center"><?= date('F j, Y, g:i a', strtotime($level['date'])) ?></td>
                                     </tr>
                                 <?php endforeach; ?>
