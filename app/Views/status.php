@@ -12,7 +12,7 @@
             <div class="col-12">
                 <div class="bg-secondary rounded h-100 p-4">
                    
-                <h4 class="text-primary text-center">Status Indicators</h4><br>
+                <h4 class="text-white text-center">Status Indicators</h4><br>
                 <div class="table-responsive">
                 <table id="statusTable" class="table-responsive table-bordered text-center">
     <thead>

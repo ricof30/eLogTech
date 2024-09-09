@@ -22,15 +22,18 @@
                     <a href="/contact" class="menu-item nav-item nav-link">
                         <i class="fa fa-phone me-2"></i>Contact Numbers
                     </a>
-                    <div class="nav-item dropdown">
-                        <a href="#" class="menu-item nav-link dropdown-toggle" id="messagesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <a href="/sentMessage" class="menu-item nav-item nav-link">
+                        <i class="fa fa-envelope me-2"></i>Sent Message
+                    </a>
+                    <!-- <div class="nav-item dropdown"> -->
+                        <!-- <a href="/sentMessage" class="menu-item nav-item nav-link ">
                             <i class="fa fa-envelope me-2"></i>Messages
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0 ml-1" aria-labelledby="messagesDropdown">
+                        </a> -->
+                        <!-- <ul class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0 ml-1" aria-labelledby="messagesDropdown">
                             <li style="margin-left:30px">  <a href="/messages" class="dropdown-item nav-link ml-5"><i class="fa fa-comment me-2"></i>Receive SMS</a></li>
                             <li style="margin-left:30px"><a href="/sentMessage" class="dropdown-item nav-link ml-5"><i class="fa fa-comment me-2"></i>Sent SMS</a></li>
                         </ul>
-                    </div>
+                    </div> -->
                     <a href="/status" class="menu-item nav-item nav-link">
                         <i class="fas fa-info-circle me-2"></i>Device Status
                     </a>

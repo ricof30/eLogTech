@@ -23,7 +23,7 @@
 
                 <!-- div for Message Notification -->
                 <div class="navbar-nav align-items-center ms-auto">
-    <div class="nav-item dropdown position-relative">
+    <!-- <div class="nav-item dropdown position-relative">
         <?php 
             $unreadCount = 0;
             $unreadMessages = [];
@@ -68,7 +68,7 @@
             ?>
                 <a href="/messages" class="dropdown-item text-center">See all messages</a>
         </div>
-    </div>
+    </div> -->
 
 
 
@@ -137,10 +137,13 @@
         </i>
         <span class="d-none d-lg-inline-flex">Recent Alerts</span>
     </a>
-    <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
+    <div class="alerts_dropdown dropdown-menu dropdown-menu-center bg-secondary border-0 rounded-0 rounded-bottom">
             <?php
                $counter = 0;
                foreach ($latestWaterLevel as $level): 
+
+               
+
                    if ($counter >= 4) {
                        break; // Exit the loop after displaying 3 alerts
                    }
@@ -148,17 +151,28 @@
                 // Determine the alert message based on the water level
                 if ($level['waterlevel'] > 3) {
                     $alertMessage = "High water level: " . $level['waterlevel'] . " meters"; 
-                    $toastrType = 'error';
                 } elseif ($level['waterlevel'] > 2 && $level['waterlevel'] <= 3) {
                     $alertMessage = "Moderate water level: " . $level['waterlevel'] . " meters";
-                    $toastrType = 'warning';
                 } elseif ($level['waterlevel'] > 0 && $level['waterlevel'] <= 2) {
                     $alertMessage = "Low water level: " . $level['waterlevel'] . " meters";
-                    $toastrType = 'info';
                 } else {
                     $alertMessage = "Normal water level: " . $level['waterlevel'] . " meters";
-                    $toastrType = 'success';
                 }
+
+            //     if ($counter >= 1) {
+            //         break; // Exit the loop after displaying 3 alerts
+            //     }
+            //     $counter++;
+            //  // Determine the alert message based on the water level
+            //  if ($level['waterlevel'] > 3) { 
+            //      $toastrType = 'error';
+            //  } elseif ($level['waterlevel'] > 2 && $level['waterlevel'] <= 3) {
+            //      $toastrType = 'warning';
+            //  } elseif ($level['waterlevel'] > 0 && $level['waterlevel'] <= 2) {
+            //      $toastrType = 'info';
+            //  } else {
+            //      $toastrType = 'success';
+            //  }
             ?>
             <a href="#" class="dropdown-item">
                 <h6 class="fw-normal mb-0"><?= $alertMessage ?></h6>
@@ -247,7 +261,7 @@
                         <div class="bg-secondary rounded d-flex align-items-center justify-content-between p-4">
                            <img src="../assets/img/family.png" alt="family icon" style="width:70px">
                             <div class="ms-3">
-                                <p class="mb-2">Number of Family</p>
+                                <p class="numbers mb-2" >Number of Family</p>
                                 <h6 class="mb-0">57</h6>
                             </div>
                         </div>
@@ -256,7 +270,7 @@
                         <div class="bg-secondary rounded d-flex align-items-center justify-content-between p-4">
                              <img src="../assets/img/house.png" alt="family icon" style="width:50px">
                             <div class="ms-3">
-                                <p class="mb-2">Number of Houses</p>
+                                <p class="numbers mb-2">Number of Houses</p>
                                 <h6 class="mb-0">57</h6>
                             </div>
                         </div>
@@ -265,7 +279,7 @@
                         <div class="bg-secondary rounded d-flex align-items-center justify-content-between p-4">
                              <img src="../assets/img/indiv.png" alt="family icon" style="width:65px;height:50px">
                             <div class="ms-3">
-                                <p class="mb-2">Number of Individual</p>
+                                <p class="numbers mb-2">Number of Individual</p>
                                 <h6 class="mb-0">189</h6>
                             </div>
                         </div>

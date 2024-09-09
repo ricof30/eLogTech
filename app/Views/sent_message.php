@@ -31,6 +31,21 @@
 
     <!-- Template Stylesheet -->
     <link href="../../assets/css/style.css" rel="stylesheet">
+    <style>
+         @media only screen and (min-width:320px) and (max-width:450px) {
+  th,td{
+    font-size:12px;
+  }
+  h4{
+    font-size:18px;
+  }
+  .messages{
+    margin-left:100px
+  }
+ 
+
+}
+    </style>
 </head>
 
 <body>
@@ -53,15 +68,15 @@
             <div class="navbar-nav w-100">
                 <a href="/" class="menu-item nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
                 <a href="contact" class="menu-item nav-item nav-link"><i class="fa fa-phone me-2"></i>Contact Numbers</a>
-                <div class="nav-item dropdown">
-                    <a href="#" class="menu-item nav-link dropdown-toggle" id="messagesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <!-- <div class="nav-item dropdown"> -->
+                    <a href="#" class="menu-item nav-link">
                         <i class="fa fa-envelope me-2"></i>Messages
                     </a>
-                    <ul class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0 ml-1" aria-labelledby="messagesDropdown">
+                    <!-- <ul class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0 ml-1" aria-labelledby="messagesDropdown">
                         <li><a href="messages" class="dropdown-item nav-link ml-5">Receive SMS</a></li>
                         <li><a href="sentMessage" class="dropdown-item nav-link ml-5">Sent SMS</a></li>
                     </ul>
-                </div>
+                </div> -->
                 <a href="status" class="menu-item nav-item nav-link"><i class="fas fa-info-circle me-2"></i>Device Status</a>
                 <a href="alertHistory" class="menu-item nav-item nav-link"><i class="fas fa-bell me-2"></i> Alert History</a>
             </div>
