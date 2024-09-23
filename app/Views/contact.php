@@ -44,12 +44,12 @@
                             </div>
                         </div>
                     </div>
-                    <div style="width:120px;height:40px;background-color:white;border-radius:20px">
-                        <a href="#" id="addContactLink"><p class="text-danger text-center pt-2 fw-bold">Add Contact</p></a>
+                    <div class="contact"style="width:120px;height:40px;background-color:white;border-radius:20px">
+                        <a href="#" id="addContactLink"><p class="contact_title text-danger text-center pt-2 fw-bold">Add Contact</p></a>
                     </div>
                     <h6 class="mb-4 text-center large">Contact Numbers</h6>
                     <div class="table-responsive">
-                        <table id="myTable" class="table-responsive table-bordered display">
+                        <table id="myTable" class="table-responsive table-bordered">
                             <thead>
                                 <tr>
                                     <th scope="col" class="text-white text-center">Phone Number</th>

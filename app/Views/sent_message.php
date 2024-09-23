@@ -115,13 +115,13 @@
                         
                         <h6 class="mb-4 text-center large text-primary"> Sent Messages</h6>
                         <div class="table-responsive">
-                            <table id="page" class="table">
+                            <table id="page" class="table-responsive table-bordered text-center">
                                 <thead>
-                                    <tr>
-                                        <th scope="col" class="text-white">Message</th>
-                                        <th scope="col" class="text-white">Date</th>
-                                        <th scope="col" class="text-white">Time</th>
-                                        <th scope="col" class="text-white">Actions</th>
+                                    <tr class="bg-warning">
+                                        <th scope="col" class="text-white text-center">Message</th>
+                                        <th scope="col" class="text-white text-center">Date</th>
+                                        <th scope="col" class="text-white text-center">Time</th>
+                                        <th scope="col" class="text-white text-center">Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -194,6 +194,9 @@
             "iconClass": "toast-error"
         });
     <?php endif; ?>
+</script>
+<script>
+    let table = new DataTable("#page");
 </script>
 
 </html>

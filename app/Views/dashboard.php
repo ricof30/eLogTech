@@ -71,57 +71,6 @@
     </div> -->
 
 
-
-    <!-- <div class="nav-item dropdown position-relative">
-    <?php 
-        // Calculate the total number of notifications
-        $totalNotifications = count($latestWaterLevel);
-    ?>
-    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-        <i class="fa fa-bell me-lg-2 position-relative">
-            <?php if ($totalNotifications > 0): ?>
-                <span class="badge bg-danger position-absolute top-0 start-100 translate-middle">
-                    <?= $totalNotifications ?>
-                </span>
-            <?php endif; ?>
-        </i>
-        <span class="d-none d-lg-inline-flex">Recent Alerts</span>
-    </a>
-    <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
-        <?php 
-            // Display only the 3 most recent alerts
-            $counter = 0;
-            foreach ($latestWaterLevel as $level): 
-                if ($counter >= 4) {
-                    break; // Exit the loop after displaying 3 alerts
-                }
-                $counter++;
-                
-                // Determine the alert message based on the water level
-                if ($level['waterlevel'] > 3) {
-                    $alertMessage = "High water level: " . $level['waterlevel'] . " meters"; 
-                    $toastrType = 'error';
-                } elseif ($level['waterlevel'] > 2 && $level['waterlevel'] <= 3) {
-                    $alertMessage = "Moderate water level: " . $level['waterlevel'] . " meters";
-                    $toastrType = 'warning';
-                } elseif ($level['waterlevel'] > 0 && $level['waterlevel'] <= 2) {
-                    $alertMessage = "Low water level: " . $level['waterlevel'] . " meters";
-                    $toastrType = 'info';
-                } else {
-                    $alertMessage = "Normal water level: " . $level['waterlevel'] . " meters";
-                    $toastrType = 'success';
-                }
-        ?>
-        <a href="#" class="dropdown-item">
-            <h6 class="fw-normal mb-0"><?= $alertMessage ?></h6>
-            <small><?= date('F j, Y, g:i a', strtotime($level['date'])) ?></small>
-        </a>
-        <hr class="dropdown-divider">
-        <?php endforeach; ?>
-        <a href="alertHistory" class="dropdown-item text-center">See More</a>
-    </div>
-</div> -->
-
 <div class="nav-item dropdown position-relative">
     <?php 
         // Calculate the total number of notifications
@@ -151,41 +100,31 @@
                 // Determine the alert message based on the water level
                 if ($level['waterlevel'] > 3) {
                     $alertMessage = "High water level: " . $level['waterlevel'] . " meters"; 
+                    $toastrType = 'error';
                 } elseif ($level['waterlevel'] > 2 && $level['waterlevel'] <= 3) {
                     $alertMessage = "Moderate water level: " . $level['waterlevel'] . " meters";
+                    $toastrType = 'warning';
                 } elseif ($level['waterlevel'] > 0 && $level['waterlevel'] <= 2) {
                     $alertMessage = "Low water level: " . $level['waterlevel'] . " meters";
+                    $toastrType = 'info';
                 } else {
                     $alertMessage = "Normal water level: " . $level['waterlevel'] . " meters";
+                    $toastrType = 'success';
                 }
 
-            //     if ($counter >= 1) {
-            //         break; // Exit the loop after displaying 3 alerts
-            //     }
-            //     $counter++;
-            //  // Determine the alert message based on the water level
-            //  if ($level['waterlevel'] > 3) { 
-            //      $toastrType = 'error';
-            //  } elseif ($level['waterlevel'] > 2 && $level['waterlevel'] <= 3) {
-            //      $toastrType = 'warning';
-            //  } elseif ($level['waterlevel'] > 0 && $level['waterlevel'] <= 2) {
-            //      $toastrType = 'info';
-            //  } else {
-            //      $toastrType = 'success';
-            //  }
             ?>
             <a href="#" class="dropdown-item">
                 <h6 class="fw-normal mb-0"><?= $alertMessage ?></h6>
-                <small><?= date('F j, Y, g:i a', strtotime($level['date'])) ?></small>
+                <small><?= date('F j, Y,', strtotime($level['date'])) . " " . date('g: i a',strtotime($level['time'])) ?></small>
             </a>
             <hr class="dropdown-divider">
             
-            <!-- <script>
+             <!-- <script>
                 // Trigger Toastr notification for this alert
                 document.addEventListener('DOMContentLoaded', function() {
                     toastr.<?= $toastrType ?>('<?= $alertMessage ?>');
                 });
-            </script> -->
+            </script>  -->
         <?php endforeach; ?>
         <a href="/alertHistory" class="dropdown-item text-center">See all notifications</a>
     </div>
@@ -359,7 +298,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary">Download</button>
+                    <button type="submit" class="btn btn-primary">Print</button>
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 </div>
             </form>
@@ -404,7 +343,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary">Download</button>
+                    <button type="submit" class="btn btn-primary">Print</button>
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 </div>
             </form>

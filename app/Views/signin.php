@@ -38,8 +38,8 @@
 
     <!-- Sign In Start -->
     <div class="container-fluid">
-        <div class="row h-100 align-items-center justify-content-center bg-secondary" style="min-height: 100vh;">
-            <div class="col-12 col-sm-8 col-md-6 col-lg-5 col-xl-4">
+        <div class="row h-100 align-items-center justify-content-center bg-white" style="min-height: 100vh;">
+            <div class="col-12 col-sm-8 col-md-6 col-lg-5 col-xl-4 shadow-lg p-3 bg-white rounded border border-2 border-dark">
                 <div class="bg-white rounded p-4 p-sm-5 my-4 mx-3">
                    
                     <?php if(session()->getFlashdata('error')): ?>

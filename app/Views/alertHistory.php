@@ -36,7 +36,7 @@
                                         }
                                     ?>
                                         <td class="text-center"><?= $alertMessage ?></td>
-                                        <td class="text-center"><?= date('F j, Y, g:i a', strtotime($level['date'])) ?></td>
+                                        <td class="text-center"><?= date('F j, Y', strtotime($level['date'])) . " " . date('g:i a', strtotime($level['time'])) ?></td>
                                     </tr>
                                 <?php endforeach; ?>
                             </tbody>

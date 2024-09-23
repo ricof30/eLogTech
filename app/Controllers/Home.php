@@ -38,16 +38,6 @@ class Home extends BaseController
         $solarVoltageModel = new SolarVoltageModel();
         $rainfallModel = new RainfallModel();
         $userModel = new UserModel();
-    
-          // $monthlyWaterLevels = [];
-    // foreach ($waterLevels as $level) {
-    //     $month = date('F', strtotime($level['date']));
-    //     if (!isset($monthlyWaterLevels[$month])) {
-    //         $monthlyWaterLevels[$month] = ['total' => 0, '1.00' => 0, '2.00' => 0, '3.00' => 0]; 
-    //     }
-    //     $monthlyWaterLevels[$month]['total']++;
-    //     $monthlyWaterLevels[$month][$level['waterlevel']]++;
-    // }// Fetch all water levels and process them
 
         $waterLevels = $waterLevelModel->findAll();
         $monthlyWaterLevels = [];
@@ -111,22 +101,28 @@ class Home extends BaseController
    
     public function alertHistory()
     {
-        $model = new WaterLevelModel();
-
-        $data['latestWaterLevel'] = $model->findAll();
-        // $data['pager'] = $model->pager;
-
-        $userModel = new UserModel();
-    
-        // Assume you have a way to get the current user ID, e.g., from session
-        $currentUserId = session()->get('user_id'); // Replace this with your method of retrieving the current user ID
+        {
+            $model = new WaterLevelModel();
         
-        // Fetch the specific user data
-        $user = $userModel->find($currentUserId);
-        return view('alertHistory', [
-            'latestWaterLevel' => $data['latestWaterLevel'],
-         'user' => $user
-     ]);}
+            // Fetch the latest water levels and order by date and time correctly
+            $data['latestWaterLevel'] = $model->findAll();
+            
+            $userModel = new UserModel();
+            
+            // Get the current user ID from the session or other method
+            $currentUserId = session()->get('user_id'); // Make sure the session is initialized
+            
+            // Fetch the specific user data
+            $user = $userModel->find($currentUserId);
+            
+            // Return the view with the latest water level data and user info
+            return view('alertHistory', [
+                'latestWaterLevel' => $data['latestWaterLevel'],
+                'user' => $user
+            ]);
+        }
+        
+        }
 
 
 
@@ -147,64 +143,6 @@ class Home extends BaseController
                           ->findAll();
 
 }
-
-
-
-// public function getNotifications()
-// {
-//     // Fetch the latest water levels
-//     $latestWaterLevels = $this->getLatestWaterLevel();
-//     $notifications = [];
-
-//     foreach ($latestWaterLevels as $level) {
-//         // Add water level to the notifications array
-//         $notifications[] = [
-//             'waterlevel' => $level['waterlevel']
-//         ];
-//     }
-
-//     // Return JSON response
-//     return $notifications;
-// }
-
-// public function fetchNotifications() {
-//     // Fetch latest notifications from the database or compute them
-//     $notifications = $this->getNotifications(); // Your method to get notifications
-
-//     return $this->response->setJSON($notifications);
-// }
-
-
-
-// public function getNotifications()
-// {
-//     if (!$this->request->isAJAX()) {
-//         // Return a 404 or some other error if the request is not AJAX
-//         return $this->response->setStatusCode(404)->setBody('Not Found');
-//     }
-
-//     $latestWaterLevels = $this->getLatestWaterLevel();
-//     $notifications = [];
-
-//     foreach ($latestWaterLevels as $level) {
-//         if ($level['waterlevel'] > 3) {
-//             $notifications[] = ['type' => 'error', 'message' => "High water level: " . $level['waterlevel'] . " meters"];
-//         } elseif ($level['waterlevel'] > 2 && $level['waterlevel'] <= 3) {
-//             $notifications[] = ['type' => 'warning', 'message' => "Moderate water level: " . $level['waterlevel'] . " meters"];
-//         } elseif ($level['waterlevel'] > 0 && $level['waterlevel'] <= 2) {
-//             $notifications[] = ['type' => 'info', 'message' => "Low water level: " . $level['waterlevel'] . " meters"];
-//         } else {
-//             $notifications[] = ['type' => 'success', 'message' => "Normal water level: " . $level['waterlevel'] . " meters"];
-//         }FW
-//     }
-
-//     return $this->response->setJSON($notifications);
-// }
-
-
-
-
-    
 
     private function prepareRainfallData($rainfalls)
     {
@@ -308,7 +246,7 @@ class Home extends BaseController
     
                     return redirect()->to('/'); 
                 } else {
-                    session()->setFlashdata('error', 'Incorrect Password');
+                    session()->setFlashdata('error', 'Incorrect Username and Password');
                     return redirect()->to('/signin');
                 }
             } else {
@@ -372,7 +310,7 @@ class Home extends BaseController
 
 public function sentMessage(){
     $sentSMS = new SentMessageModel();
-    $data['sentSMS'] = $sentSMS->findAll();
+    $data['sentSMS'] = $sentSMS->orderBy('date', "DESC")->findAll();
     $userModel = new UserModel();
     
     // Assume you have a way to get the current user ID, e.g., from session
@@ -426,10 +364,19 @@ public function filterWaterlevel()
     $startDate = $this->request->getPost('water_start_date');
     $endDate = $this->request->getPost('water_end_date');
 
+    $formattedStartDate = date("F d, Y", strtotime($startDate));
+    $formattedEndDate = date("F d, Y", strtotime($endDate));
+
     $data = $model->select('time, date, waterlevel')
                   ->where('date >=', $startDate)
                   ->where('date <=', $endDate)
                   ->findAll();
+
+    // Calculate summary statistics
+    $waterLevels = array_column($data, 'waterlevel');
+    $minWaterLevel = min($waterLevels);
+    $maxWaterLevel = max($waterLevels);
+    $avgWaterLevel = array_sum($waterLevels) / count($waterLevels);
 
     // Create a new PDF instance
     $pdf = new TCPDF();
@@ -441,45 +388,94 @@ public function filterWaterlevel()
     $pdf->SetTitle('Water Level Data');
     $pdf->SetSubject('Water Level Data');
 
-    // Set header and footer
-    $pdf->SetHeaderData('', 0, 'Water Level Data', 'From ' . $startDate . ' to ' . $endDate);
-    $pdf->setFooterData(['L' => 'Generated by Your System']);
+    // Add logo and center it with the title
+    // $logoPath = 'assets/img/eLogTech.png'; // Adjust the logo path as needed
+    // $pdf->Image($logoPath, '', '', 30, '', 'PNG', '', 'T', false, 300, 'C', false, false, 0, false, false, false);
+    // Set the Y position so the image and text align properly
+    $pdf->SetY(10);
 
-    // Set font
-    // $pdf->SetFont('helvetica', '', 12);
+    // Insert logo
+    $logoPath = 'assets/img/eLogTech.png'; // Adjust the logo path as needed
+    $pdf->Image($logoPath, 15, 10, 20, 20, 'PNG'); // Logo positioned with a specific width and height
 
-    // Add logo
-    // $logoPath = 'assets/img/solarflood.png';
-    // $pdf->Image($logoPath, 10, 10, 30, '', 'PNG', '', 'T', false, 300, '', false, false, 0, false, false, false);
+    // Move X position to the right of the logo to place the text
+    $pdf->SetXY(40, 15); // Adjust X and Y to position the text beside the logo
 
-    // Set title
-    $pdf->SetFont('helvetica', 'B', 14);
-    $pdf->Cell(0, 10, 'Barangay Arangin Flood Monitoring System', 0, 1, 'C');
-    // $pdf->Cell(0, 10, 'Flood Monitoring System', 0, 1, 'C');
+    // Add title beside the logo
+    $pdf->SetFont('helvetica', 'B', 16);
+    $pdf->Cell(0, 10, 'eLogTech: Arangin Flood Monitoring System', 0, 1, 'L');
 
-    // Add table header
+    // Add a line break
+    $pdf->Ln(10);
+
+    // Title and Date Range
     $pdf->SetFont('helvetica', 'B', 12);
-    $pdf->Cell(60, 10, 'Time', 1);
-    $pdf->Cell(60, 10, 'Date', 1);
-    $pdf->Cell(60, 10, 'Water Level (in meter)', 1);
-    $pdf->Ln();
+    $pdf->Cell(0, 10, 'Water Level Data Report', 0, 1, 'C');
+    $pdf->Ln(5); // Add some space
 
-    // Add table data
+
+    // Introduction
+    $pdf->SetFont('helvetica', '', 12);
+    $introduction = "This report summarizes water level measurements from " . $formattedStartDate . " to " . $formattedEndDate . " in Barangay Arangin.";
+    $pdf->MultiCell(0, 10, $introduction, 0, 'C');
+    $pdf->Ln(5); // Add some space
+
+    // Center the table
+    $pdf->SetFont('helvetica', 'B', 12);
+    $pdf->Cell(60, 10, 'Time', 1, 0, 'C'); // Center align header
+    $pdf->Cell(60, 10, 'Date', 1, 0, 'C');
+    $pdf->Cell(60, 10, 'Water Level (m)', 1, 1, 'C'); // Last parameter '1' to move to next line
+
+    // Add table data and center the text in each cell
     $pdf->SetFont('helvetica', '', 10);
     foreach ($data as $row) {
         $formattedTime = date('h:i A', strtotime($row['time']));
         $formattedDate = date('F j, Y', strtotime($row['date']));
-        $pdf->Cell(60, 10, $formattedTime, 1);
-        $pdf->Cell(60, 10, $formattedDate, 1);
-        $pdf->Cell(60, 10, $row['waterlevel'], 1);
-        $pdf->Ln();
+        $pdf->Cell(60, 10, $formattedTime, 1, 0, 'C'); // Center align cell
+        $pdf->Cell(60, 10, $formattedDate, 1, 0, 'C');
+        $pdf->Cell(60, 10, $row['waterlevel'], 1, 1, 'C');
     }
+
+    // Summary Statistics
+    // Add some space
+    $pdf->AddPage();
+    // Add a line break for space
+    $pdf->Ln(5);
+    // Set font for headers
+    $pdf->SetFont('helvetica', 'B', 12);
+    // Summary Statistics Header
+    $pdf->Cell(90, 10, 'Summary Statistics:', 0, 0, 'L');
+    // Contact Information Header
+    $pdf->SetX(110); // Move to the right side
+    $pdf->Cell(90, 10, 'Contact Information:', 0, 1, 'L');
+    // Set font for body
+    $pdf->SetFont('helvetica', '', 10);
+    // Minimum Water Level
+    $pdf->Cell(90, 10, 'Minimum Water Level: ' . $minWaterLevel . ' m', 0, 0, 'L');
+    // Contact Name
+    $pdf->SetX(110);
+    $pdf->Cell(90, 10, 'eLogTech', 0, 1, 'L');
+    // Maximum Water Level
+    $pdf->Cell(90, 10, 'Maximum Water Level: ' . $maxWaterLevel . ' m', 0, 0, 'L');
+    // Contact Email
+    $pdf->SetX(110);
+    $pdf->Cell(90, 10, 'Email: ricofontecilla30@gmail.com', 0, 1, 'L');
+    // Average Water Level
+    $pdf->Cell(90, 10, 'Average Water Level: ' . round($avgWaterLevel, 2) . ' m', 0, 0, 'L');
+    // Contact Phone
+    $pdf->SetX(110);
+    $pdf->Cell(90, 10, 'Phone: 09983664558', 0, 1, 'L');
+    
 
     // Output the PDF
     $filename = 'water_level_data_' . date('Y-m-d') . '.pdf';
     $pdf->Output($filename, 'D'); // 'D' for download
     exit;
 }
+
+
+
+
 
 // code for Excel filter waterlevel
     // public function filterWaterlevels()
@@ -575,12 +571,23 @@ public function filterWaterlevel()
         $startDate = $this->request->getPost('rain_start_date');
         $endDate = $this->request->getPost('rain_end_date');
     
+        $formattedStartDate = date("F d, Y", strtotime($startDate));
+        $formattedEndDate = date("F d, Y", strtotime($endDate));
+
         // Fetch data from the database
         $data = $model->select('date, SUM(rainfall) as total_rainfall, SUM(duration) as duration') 
             ->where('date >=', $startDate)
             ->where('date <=', $endDate)
             ->groupBy('date')
             ->findAll();
+    
+        // Calculate summary statistics
+        $totalRainfall = 0;
+        $totalDuration = 0;
+        foreach ($data as $row) {
+            $totalRainfall += $row['total_rainfall'];
+            $totalDuration += $row['duration'];
+        }
     
         // Create a new PDF instance
         $pdf = new TCPDF();
@@ -592,26 +599,43 @@ public function filterWaterlevel()
         $pdf->SetTitle('Rainfall Data');
         $pdf->SetSubject('Rainfall Data Export');
     
-        // Set header and footer
-        $pdf->SetHeaderData('', 0, 'Rainfall Data', 'From ' . $startDate . ' to ' . $endDate);
-    
-        // Set Arial font
-        $pdf->SetFont('helvetica', '', 12);
-    
-        // // Add logo
-        // $logoPath = 'assets/img/eLogTech.jpg'; 
-        // $pdf->Image($logoPath, 10, 10, 50, '', 'JPG', '', 'T', false, 300, '', false, false, 0, false, false, false);
-    
-        // Add title
-        $pdf->SetFont('helvetica', 'B', 14);
-        $pdf->Cell(0, 10, 'Barangay Arangin Flood Monitoring System', 0, 1, 'C');
-        // $pdf->Cell(0, 10, 'Flood Monitoring System', 0, 1, 'C');
-    
+        
+    // Add logo and center it with the title
+    // $logoPath = 'assets/img/eLogTech.png'; // Adjust the logo path as needed
+    // $pdf->Image($logoPath, '', '', 30, '', 'PNG', '', 'T', false, 300, 'C', false, false, 0, false, false, false);
+    // Set the Y position so the image and text align properly
+    $pdf->SetY(10);
+
+    // Insert logo
+    $logoPath = 'assets/img/eLogTech.png'; // Adjust the logo path as needed
+    $pdf->Image($logoPath, 15, 10, 20, 20, 'PNG'); // Logo positioned with a specific width and height
+
+    // Move X position to the right of the logo to place the text
+    $pdf->SetXY(40, 15); // Adjust X and Y to position the text beside the logo
+
+    // Add title beside the logo
+    $pdf->SetFont('helvetica', 'B', 16);
+    $pdf->Cell(0, 10, 'eLogTech: Arangin Flood Monitoring System', 0, 1, 'L');
+
+    // Add a line break
+    $pdf->Ln(10);
+
+    // Title and Date Range
+    $pdf->SetFont('helvetica', 'B', 12);
+    $pdf->Cell(0, 10, 'Rainfall Data Report', 0, 1, 'C');
+    $pdf->Ln(5); // Add some space
+
+
+    // Introduction
+    $pdf->SetFont('helvetica', '', 12);
+    $introduction = "This report summarizes rainfall measurements from " . $formattedStartDate . " to " . $formattedEndDate . " in Barangay Arangin.";
+    $pdf->MultiCell(0, 10, $introduction, 0, 'C');
+    $pdf->Ln(5); // Add some space
         // Add table header
         $pdf->SetFont('helvetica', 'B', 12);
-        $pdf->Cell(60, 10, 'Date', 1);
-        $pdf->Cell(60, 10, 'Rainfall', 1);
-        $pdf->Cell(60, 10, 'Duration', 1);
+        $pdf->Cell(60, 10, 'Date', 1, 0, 'C');
+        $pdf->Cell(60, 10, 'Rainfall', 1, 0, 'C');
+        $pdf->Cell(60, 10, 'Duration', 1, 0, 'C');
         $pdf->Ln();
     
         // Add table data
@@ -634,17 +658,71 @@ public function filterWaterlevel()
                 $duration = "{$durationInSeconds} seconds";
             }
     
-            $pdf->Cell(60, 10, $formattedDate, 1);
-            $pdf->Cell(60, 10, $row['total_rainfall'], 1);
-            $pdf->Cell(60, 10, $duration, 1);
+            $pdf->Cell(60, 10, $formattedDate, 1, 0, 'C');
+            $pdf->Cell(60, 10, $row['total_rainfall'], 1, 0, 'C');
+            $pdf->Cell(60, 10, $duration, 1, 0, 'C');
             $pdf->Ln();
         }
     
+      // Add summary statistics under the table
+        $pdf->Ln(10); // Add some space
+
+        // Add a line break for space
+        $pdf->Ln(5);
+
+        // Set font for headers
+        $pdf->SetFont('helvetica', 'B', 12);
+
+        // Summary Statistics Header
+        $pdf->Cell(90, 10, 'Summary Statistics:', 0, 0, 'L');
+
+        // Contact Information Header
+        $pdf->SetX(110); // Move to the right side
+        $pdf->Cell(90, 10, 'Contact Information:', 0, 1, 'L');
+
+        // Set font for body
+        $pdf->SetFont('helvetica', '', 10);
+
+        // Total Rainfall
+        $pdf->Cell(90, 10, 'Total Rainfall: ' . $totalRainfall , 0, 0, 'L');
+
+        // Contact Name
+        $pdf->SetX(110);
+        $pdf->Cell(90, 10, 'eLogTech', 0, 1, 'L');
+
+        // Total Duration (convert to readable format first)
+        $totalDurationSeconds = $totalDuration / 1000;
+        $summaryDuration = '';
+        if ($totalDurationSeconds >= 3600) {
+            $hours = floor($totalDurationSeconds / 3600);
+            $minutes = floor(($totalDurationSeconds % 3600) / 60);
+            $summaryDuration = "{$hours} hours {$minutes} minutes";
+        } elseif ($totalDurationSeconds >= 60) {
+            $minutes = floor($totalDurationSeconds / 60);
+            $seconds = $totalDurationSeconds % 60;
+            $summaryDuration = "{$minutes} minutes {$seconds} seconds";
+        } else {
+            $summaryDuration = "{$totalDurationSeconds} seconds";
+        }
+
+        // Total Duration
+        $pdf->Cell(90, 10, 'Total Duration: ' . $summaryDuration, 0, 0, 'L');
+
+        // Contact Email
+        $pdf->SetX(110);
+        $pdf->Cell(90, 10, 'Email: ricofontecilla30@gmail.com', 0, 1, 'L');
+
+        // Additional contact information
+        $pdf->Cell(90, 10, '', 0, 0, 'L');  // Empty cell for alignment
+        $pdf->SetX(110);
+        $pdf->Cell(90, 10, 'Phone: 09983664558', 0, 1, 'L');
+
         // Output the PDF
         $filename = 'rainfall_data_' . date('Y-m-d') . '.pdf';
         $pdf->Output($filename, 'D'); // 'D' for download
         exit;
     }
+    
     
 
     // public function filterRainfalls()

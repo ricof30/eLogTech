@@ -53,6 +53,22 @@
     left: 35% !important; /* Move the menu to the center horizontally */
     transform: translateX(-53%); /* Adjust the positioning to center the menu */
 }
+.contact{
+  margin-left:65%;
+  margin-top:0;
+  height:10px;
+  width:12px;
+
+}
+.contact_title{
+  font-size:15px;
+  font-family:"Kanit";
+
+}
+.signin{
+  padding-left: 10px;
+  padding-right: 10px;
+}
 }
 @media only screen and (min-width:500px){
     th,td{

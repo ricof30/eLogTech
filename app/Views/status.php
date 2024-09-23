@@ -11,7 +11,6 @@
         <div class="row g-4">
             <div class="col-12">
                 <div class="bg-secondary rounded h-100 p-4">
-                   
                 <h4 class="text-white text-center">Status Indicators</h4><br>
                 <div class="table-responsive">
                 <table id="statusTable" class="table-responsive table-bordered text-center">
@@ -26,17 +25,21 @@
         <?php foreach ($statuses as $status): ?>
             <tr>
                 <td><?= esc($status['sensor_type']) ?></td>
-                <td><?= esc($status['status']) ?></td>
+                <td>
+                    <?php if ($status['status'] == "active"):?>
+                        <span class="bg-success text-white rounded p-2">Active</span>
+                    <?php endif; ?>
+                    <?php if ($status['status'] == "inactive"):?>
+                        <span class="bg-primary text-white rounded p-2">Inactive</span>
+                    <?php endif; ?> 
+                </td>
                 <td>
                     <?php
-                    // Convert last_update to a DateTime object
                     $lastUpdate = new DateTime($status['last_update']);
-                    // Format the date to "Month Day Year"
                     echo $lastUpdate->format('F d Y');
                     ?>
                     <br>
                     <?php
-                    // Format the time to "h:i a" (12-hour format with am/pm)
                     echo $lastUpdate->format('g:i a');
                     ?>
                 </td>
