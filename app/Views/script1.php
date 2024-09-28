@@ -222,27 +222,3 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 </script>
-<!-- <script>
-    function fetchNotifications() {
-        fetch('/notifications') // Adjust the URL to match your route
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return response.json();
-            })
-            .then(notifications => {
-                console.log(notifications); // Log the notifications to the console
-                notifications.forEach(notification => {
-                    toastrnotification.type;
-                });
-            })
-            .catch(error => console.error('Error fetching notifications:', error));
-    }
-
-    // Fetch notifications every 30 seconds
-    setInterval(fetchNotifications, 30000);
-
-    // Initial fetch to display notifications immediately on page load
-    fetchNotifications();
-</script> -->

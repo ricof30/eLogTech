@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Controllers;
+use Config\Database;
+use CodeIgniter\RESTful\ResourceController;
 use Phpml\Dataset\ArrayDataset;
 use Phpml\Classification\KNearestNeighbors;
 use Phpml\Metric\Accuracy;
@@ -111,6 +113,8 @@ class Home extends BaseController
             
             // Get the current user ID from the session or other method
             $currentUserId = session()->get('user_id'); // Make sure the session is initialized
+            $messages = $this->getLastThreeMessages();
+            $latestWaterLevel = $this->getLatestWaterLevel();
             
             // Fetch the specific user data
             $user = $userModel->find($currentUserId);
@@ -118,6 +122,8 @@ class Home extends BaseController
             // Return the view with the latest water level data and user info
             return view('alertHistory', [
                 'latestWaterLevel' => $data['latestWaterLevel'],
+                'messages' => $messages,
+                'latestWaterLevel' => $latestWaterLevel,
                 'user' => $user
             ]);
         }
@@ -169,11 +175,15 @@ class Home extends BaseController
     
         // Assume you have a way to get the current user ID, e.g., from session
         $currentUserId = session()->get('user_id'); // Replace this with your method of retrieving the current user ID
+        $messages = $this->getLastThreeMessages();
+        $latestWaterLevel = $this->getLatestWaterLevel();
         
         // Fetch the specific user data
         $user = $userModel->find($currentUserId);
         return view('contact', [
             'contact' => $data['contact'],
+            'messages' => $messages,
+            'latestWaterLevel' => $latestWaterLevel,
             'user' => $user
         ]);
     }
@@ -315,11 +325,15 @@ public function sentMessage(){
     
     // Assume you have a way to get the current user ID, e.g., from session
     $currentUserId = session()->get('user_id'); // Replace this with your method of retrieving the current user ID
+    $messages = $this->getLastThreeMessages();
+    $latestWaterLevel = $this->getLatestWaterLevel();
     
     // Fetch the specific user data
     $user = $userModel->find($currentUserId);
     return view('sent_message', [
         'sentSMS' => $data['sentSMS'],
+        'messages' => $messages,
+        'latestWaterLevel' => $latestWaterLevel,
         'user' => $user
     ]);
 }
@@ -473,97 +487,6 @@ public function filterWaterlevel()
     exit;
 }
 
-
-
-
-
-// code for Excel filter waterlevel
-    // public function filterWaterlevels()
-    // {
-    
-    // $model = new WaterLevelModel();
-
-    
-    // $startDate = $this->request->getPost('water_start_date');
-    // $endDate = $this->request->getPost('water_end_date');
-
-    // $data = $model->select('time, date, waterlevel')
-    //               ->where('date >=', $startDate)
-    //               ->where('date <=', $endDate)
-    //               ->findAll();
-
-    
-    // $excelData = [
-    //     ['Time', 'Date', 'Water Level(in meter)']
-    // ];
-
-    // foreach ($data as $row) {
-    //     $formattedTime = date('h:i A', strtotime($row['time'])); 
-    //     $formattedDate = date('F j, Y', strtotime($row['date'])); 
-    //     $excelData[] = [$formattedTime, $formattedDate, $row['waterlevel']];
-    // }
-
-    
-    // $spreadsheet = new Spreadsheet();
-    // $sheet = $spreadsheet->getActiveSheet();
-
-    // $logoPath = 'assets/img/solarflood.png'; 
-    // $drawing = new Drawing();
-    // $drawing->setPath($logoPath);
-    // $drawing->setHeight(50);
-    // $drawing->setCoordinates('J1');
-    // $drawing->setWorksheet($sheet);
-    // $sheet->setCellValue('K1', 'Barangay Arangin');
-    // $sheet->setCellValue('K2', 'Flood Monitoring System');
-
-    
-    // $sheet->mergeCells('B1:C1');
-
-    
-    // $sheet->fromArray($excelData, null, 'J5');
-
-    
-    // $sheet->getStyle('H5:L5')->applyFromArray([
-    //     'font' => ['bold' => true],
-    //     'alignment' => ['horizontal' => Alignment::HORIZONTAL_CENTER],
-    //     'fill' => ['fillType' => Fill::FILL_SOLID, 'startColor' => ['rgb' => 'CCCCCC']],
-    // ]);
-
-    
-    // $lastRow = count($excelData) + 4; 
-    // $range = 'H5:L' . $lastRow; 
-    // $sheet->getStyle($range)->applyFromArray([
-    //     'alignment' => ['horizontal' => Alignment::HORIZONTAL_CENTER],
-    //     'borders' => ['allBorders' => ['borderStyle' => Border::BORDER_THIN]],
-    // ]);
-
-    
-    // $sheet->getColumnDimension('J')->setWidth(20);
-    // $sheet->getColumnDimension('K')->setWidth(20);
-    // $sheet->getColumnDimension('L')->setWidth(20);
-
-    
-
-    
-    // $filename = 'water_level_data_' . date('Y-m-d') . '.xlsx';
-    // $tempFilePath = WRITEPATH . 'uploads/' . $filename;
-    // $writer = new Xlsx($spreadsheet);
-    // $writer->save($tempFilePath);
-
-    
-    // header('Content-Type: application/octet-stream');
-    // header('Content-Disposition: attachment; filename="' . $filename . '"');
-    // header('Content-Length: ' . filesize($tempFilePath));
-    // header('Content-Transfer-Encoding: binary');
-    // header('Cache-Control: must-revalidate');
-    // header('Pragma: public');
-    // header('Expires: 0');
-
-    
-    // readfile($tempFilePath);
-    // exit;
-    // }
-
     public function filterRainfall()
     {
         $model = new RainfallModel();
@@ -622,7 +545,7 @@ public function filterWaterlevel()
 
     // Title and Date Range
     $pdf->SetFont('helvetica', 'B', 12);
-    $pdf->Cell(0, 10, 'Rainfall Data Report', 0, 1, 'C');
+    $pdf->Cell(0, 10, 'RAINFALL DATA REPORT', 0, 1, 'C');
     $pdf->Ln(5); // Add some space
 
 
@@ -633,16 +556,18 @@ public function filterWaterlevel()
     $pdf->Ln(5); // Add some space
         // Add table header
         $pdf->SetFont('helvetica', 'B', 12);
-        $pdf->Cell(60, 10, 'Date', 1, 0, 'C');
-        $pdf->Cell(60, 10, 'Rainfall', 1, 0, 'C');
-        $pdf->Cell(60, 10, 'Duration', 1, 0, 'C');
+        $pdf->Cell(47, 10, 'Date', 1, 0, 'C'); // Changed 'Time' to 'Date'
+        $pdf->Cell(47, 10, 'Time', 1, 0, 'C');
+        $pdf->Cell(47, 10, 'Rainfall', 1, 0, 'C');
+        $pdf->Cell(47, 10, 'Duration', 1, 0, 'C');
         $pdf->Ln();
-    
+        
         // Add table data
         $pdf->SetFont('helvetica', '', 11);
         foreach ($data as $row) {
             $formattedDate = date('F j, Y', strtotime($row['date']));
-    
+            $formattedTime = date('g:i a', strtotime($row['date'])); // Format: 7:42.05 pm
+        
             // Convert duration from milliseconds to a readable format
             $durationInSeconds = $row['duration'] / 1000;
             $duration = '';
@@ -657,10 +582,11 @@ public function filterWaterlevel()
             } else {
                 $duration = "{$durationInSeconds} seconds";
             }
-    
-            $pdf->Cell(60, 10, $formattedDate, 1, 0, 'C');
-            $pdf->Cell(60, 10, $row['total_rainfall'], 1, 0, 'C');
-            $pdf->Cell(60, 10, $duration, 1, 0, 'C');
+        
+            $pdf->Cell(47, 10, $formattedDate, 1, 0, 'C');
+            $pdf->Cell(47, 10, $formattedTime, 1, 0, 'C');
+            $pdf->Cell(47, 10, $row['total_rainfall'], 1, 0, 'C');
+            $pdf->Cell(47, 10, $duration, 1, 0, 'C');
             $pdf->Ln();
         }
     
@@ -722,123 +648,7 @@ public function filterWaterlevel()
         $pdf->Output($filename, 'D'); // 'D' for download
         exit;
     }
-    
-    
-
-    // public function filterRainfalls()
-    // {
-          
-    //     $model = new RainfallModel();
-        
-    //     $startDate = $this->request->getPost('rain_start_date');
-    //     $endDate = $this->request->getPost('rain_end_date');
-    //         $data = $model->select('date, SUM(rainfall) as total_rainfall, SUM(duration) as duration') 
-    //         ->where('date >=', $startDate)
-    //         ->where('date <=', $endDate)
-    //         ->groupBy('date')
-    //         ->findAll();
-
-        
-    //     $excelData = [
-    //         ['Date', 'Rainfall', 'Duration'] 
-    //     ];
-        
-    //     foreach ($data as $row) {
-            
-    //         $durationInSeconds = $row['duration'] / 1000;
-    
-            
-    //         $duration = '';
-    //         if ($durationInSeconds >= 3600) {
-    //             $hours = floor($durationInSeconds / 3600);
-    //             $minutes = floor(($durationInSeconds % 3600) / 60);
-    //             $duration = "{$hours} hours {$minutes} minutes";
-    //         } elseif ($durationInSeconds >= 60) {
-    //             $minutes = floor($durationInSeconds / 60);
-    //             $seconds = $durationInSeconds % 60;
-    //             $duration = "{$minutes} minutes {$seconds} seconds";
-    //         } else {
-    //             $duration = "{$durationInSeconds} seconds";
-    //         }
-    
-    //         $excelData[] = [date('F j, Y', strtotime($row['date'])), $row['total_rainfall'], $duration];
-    //     }
-
-        
-    //     $consolidatedData = [];
-    //     foreach ($data as $row) {
-    //         $date = date('F j, Y', strtotime($row['date']));
-    //         if (isset($consolidatedData[$date])) {
-    //             $consolidatedData[$date] += $row['total_rainfall'];
-    //         } else {
-    //             $consolidatedData[$date] = $row['total_rainfall'];
-    //         }
-    //     }
-
-        
-    //     foreach ($consolidatedData as $date => $totalRainfall) {
-    //         $excelData[] = [$date, $totalRainfall];
-    //     }
-
-        
-    //     $spreadsheet = new Spreadsheet();
-    //     $sheet = $spreadsheet->getActiveSheet();
-
-        
-    //     $logoPath = 'assets/img/eLogTech.jpg'; 
-    //     $drawing = new Drawing();
-    //     $drawing->setPath($logoPath);
-    //     $drawing->setHeight(50);
-    //     $drawing->setCoordinates('I1');
-    //     $drawing->setWorksheet($sheet);
-    //     $sheet->setCellValue('J1', 'Barangay Arangin');
-    //     $sheet->setCellValue('J2', 'Flood Monitoring System');
-
-        
-    //     $sheet->mergeCells('B1:C1');
-
-        
-    //     $sheet->fromArray($excelData, null, 'J5');
-
-        
-    //     $sheet->getStyle('H5:L5')->applyFromArray([
-    //         'font' => ['bold' => true],
-    //         'alignment' => ['horizontal' => Alignment::HORIZONTAL_CENTER],
-    //         'fill' => ['fillType' => Fill::FILL_SOLID, 'startColor' => ['rgb' => 'CCCCCC']],
-    //     ]);
-
-        
-    //     $lastRow = count($excelData) + 4; 
-    //     $range = 'H5:L' . $lastRow; 
-    //     $sheet->getStyle($range)->applyFromArray([
-    //         'alignment' => ['horizontal' => Alignment::HORIZONTAL_CENTER],
-    //         'borders' => ['allBorders' => ['borderStyle' => Border::BORDER_THIN]],
-    //     ]);
-
-        
-    //     $sheet->getColumnDimension('I')->setWidth(10);
-    //     $sheet->getColumnDimension('J')->setWidth(20);
-    //     $sheet->getColumnDimension('L')->setWidth(20);
-
-    //     $filename = 'rainfall_data_' . date('Y-m-d') . '.xlsx';
-    //     $tempFilePath = WRITEPATH . 'uploads/' . $filename;
-    //     $writer = new Xlsx($spreadsheet);
-    //     $writer->save($tempFilePath);
-
-        
-    //     header('Content-Type: application/octet-stream');
-    //     header('Content-Disposition: attachment; filename="' . $filename . '"');
-    //     header('Content-Length: ' . filesize($tempFilePath));
-    //     header('Content-Transfer-Encoding: binary');
-    //     header('Cache-Control: must-revalidate');
-    //     header('Pragma: public');
-    //     header('Expires: 0');
-
-        
-    //     readfile($tempFilePath);
-    //     exit;
-    // }
-
+  
     public function auth()
     {   
         if (!session()->get('is_logged_in')) {
@@ -853,41 +663,6 @@ public function filterWaterlevel()
         return redirect()->to('/signin');
     }
     
-    // public function getLatestStatus()
-    // {
-    //     $model = new StatusModel();
-
-    //     $sql = "SELECT s.sensor_type, s.status, s.last_update
-    //             FROM status s
-    //             INNER JOIN (
-    //                 SELECT sensor_type, MAX(last_update) as max_timestamp
-    //                 FROM status
-    //                 GROUP BY component
-    //             ) latest ON s.sensor_type = latest.sensor_type AND s.last_update = latest.max_timestamp";
-
-    //     $query = $model->query($sql);
-
-    //     return $query->getResultArray();
-    // }
-
-   
-    // public function viewStatus()
-    // {
-    //     $userModel = new UserModel();
-    //     $statusModel = new StatusModel();
-    //     $getStatus['statuses'] = $statusModel->findAll();
-    //     // Assume you have a way to get the current user ID, e.g., from session
-    //     $currentUserId = session()->get('user_id'); // Replace this with your method of retrieving the current user ID
-        
-    //     // Fetch the specific user data
-    //     $user = $userModel->find($currentUserId);
-    //     return view('status', [
-    //         'statuses' => $getStatus['statuses'],
-    //         'user' => $user
-    //     ]);
-
-    // }
-
     public function viewStatus()
 {
     $userModel = new UserModel();
@@ -903,6 +678,8 @@ public function filterWaterlevel()
                          ->groupBy('sensor_type');
             })
             ->orderBy('last_update', 'DESC'); // Optional: Order by latest updates
+            $messages = $this->getLastThreeMessages();
+            $latestWaterLevel = $this->getLatestWaterLevel();
 
     // Fetch the latest statuses
     $getStatus['statuses'] = $builder->get()->getResultArray();
@@ -913,6 +690,8 @@ public function filterWaterlevel()
 
     return view('status', [
         'statuses' => $getStatus['statuses'],
+        'messages' => $messages,
+        'latestWaterLevel' => $latestWaterLevel,
         'user' => $user
     ]);
 }
@@ -952,6 +731,152 @@ public function filterWaterlevel()
     
         return redirect()->to('/')->with('success', 'Profile photo updated successfully');
     }
+
+    public function receiveData()
+    {
+
+        $data = $this->request->getPost();
+        
+        $water_level = $data['water_level'] ?? null;
+    
+        if ($water_level !== null) {
+            $waterModel = new WaterLevelModel();
+            $data = [
+                'time' => date('H:i:s'), // Current time
+                'date' => date('Y-m-d'), // Current date
+                'waterlevel' => $water_level,
+            ];
+            $waterModel->insert($data);
+    
+            // Log water level insertion
+            log_message('info', 'Water level data inserted: ' . json_encode($data));
+        }
+
+        receiveDuration();
+        receiveMessage();
+        receiveRainStatus();
+        receiveUltraSonic();
+        return $this->respond(['status' => 'success', 'message' => 'Data received and inserted into the database.']);
+    }
+
+    
+    public function receiveDuration(){
+        $data = $this->request->getPost();
+
+        $rain_duration = $data['duration'] ?? null;
+
+        if ($rain_duration !== null) {
+            $rainfallModel = new RainFallModel();
+            $data = [
+                'date' => date('Y-m-d'),
+                'rainfall' => 1, // Use appropriate field for rainfall
+                'duration' => $rain_duration, // Set duration as needed
+            ];
+            $rainfallModel->insert($data);
+            
+            // Log rainfall insertion
+            log_message('info', 'Rainfall data inserted: ' . json_encode($data));
+        }
+    }
+
+        public function receiveUltraSonic(){
+            $data = $this->request->getPost();
+
+            $ultrasonic_status = $data['ultrasonic_status'] ?? null;
+
+            if ($ultrasonic_status !== null) {
+                $model = new StatusModel();
+                $data = [
+                    'sensor_type' => $sensor_type,
+                    'status' => $trimmed_status,
+                    'last_update' => date('Y-m-d H:i:s'),
+                ];
+                $model->insert($data);
+          
+            }
+        }
+
+            public function receiveRainStatus(){
+                $data = $this->request->getPost();
+
+                $rain_status = $data['rain_status'] ?? null;
+    
+                if ($rain_status !== null) {
+                    $model = new StatusModel();
+                    $data = [
+                        'sensor_type' => $sensor_type,
+                        'status' => $trimmed_status,
+                        'last_update' => date('Y-m-d H:i:s'),
+                    ];
+                    $model->insert($data);
+              
+                }
+            }
+
+            public function receiveMessage(){
+                $data = $this->request->getPost();
+    
+                $message = $data['message'] ?? null;
+    
+                if ($message !== null) {
+                    $model = new SenMessageModel();
+                    $data = [
+                        'message' => $message,
+                        'time' => date('H:i:s'), // Current time
+                        'date' => date('Y-m-d'), // Current date
+                    ];
+                    $model->insert($data);
+              
+                }
+            }
+    
+
+
+    private function updateSensorStatus($sensor_type, $status, $db)
+    {
+        // Check the current status of the sensor
+        $builder = $db->table('sensors');
+        $builder->where('sensor_type', $sensor_type);
+        $builder->orderBy('last_update', 'DESC');
+        $sensor = $builder->get()->getRow();
+
+        $trimmed_status = substr($status, 0, 50); // Trim the status to 50 characters
+
+        if ($sensor) {
+            $current_status = $sensor->status;
+
+            if ($current_status !== $trimmed_status) {
+                $statusModel = new StatusModel();
+                $data = [
+                     'sensor_type' => $sensor_type,
+                    'status' => $trimmed_status,
+                    'last_update' => date('Y-m-d H:i:s'),
+                ];
+               $model->insert($data);
+
+                // Log status change
+                log_message('info', "Sensor {$sensor_type} status changed to {$trimmed_status} and inserted into database.");
+
+                if ($current_status === 'inactive' && $trimmed_status === 'active') {
+                    log_message('info', "Sensor {$sensor_type} is now active.");
+                } elseif ($current_status === 'active' && $trimmed_status === 'inactive') {
+                    log_message('info', "Sensor {$sensor_type} is now inactive.");
+                }
+            } else {
+                log_message('info', "Sensor status remains unchanged: {$sensor_type} - {$trimmed_status}");
+            }
+        } else {
+            // If sensor not found, insert a new record
+            $statusModel = new StatusModel();
+                $data = [
+                     'sensor_type' => $sensor_type,
+                    'status' => $trimmed_status,
+                    'last_update' => date('Y-m-d H:i:s'),
+                ];
+               $model->insert($data);
+            log_message('info', "Sensor {$sensor_type} not found in the database. Inserted new record with status {$trimmed_status}.");
+        }
+    }
     
 
 
@@ -959,4 +884,3 @@ public function filterWaterlevel()
    
     
 }
-

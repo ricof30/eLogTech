@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>eLogTech</title>
+    <title>e-LogTech</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -69,6 +69,9 @@
   padding-left: 10px;
   padding-right: 10px;
 }
+#waterlevel{
+  font-size:7px;
+}
 }
 @media only screen and (min-width:500px){
     th,td{
@@ -90,6 +93,7 @@
   h4{
     font-size:18px;
   }
+
  
 }
   </style>

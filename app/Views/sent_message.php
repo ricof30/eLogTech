@@ -42,6 +42,65 @@
   .messages{
     margin-left:100px
   }
+  @media only screen and (min-width:320px) and (max-width:450px) {
+  th,td{
+    font-size:12px;
+  }
+  h4{
+    font-size:18px;
+  }
+  .numbers{
+        font-family:"Kanit";
+        font-size:15px;
+        font-style:normal;
+    }
+        .dropdown-menu {
+    left: 35% !important; /* Move the menu to the center horizontally */
+    transform: translateX(-53%); /* Adjust the positioning to center the menu */
+}
+.contact{
+  margin-left:65%;
+  margin-top:0;
+  height:10px;
+  width:12px;
+
+}
+.contact_title{
+  font-size:15px;
+  font-family:"Kanit";
+
+}
+.signin{
+  padding-left: 10px;
+  padding-right: 10px;
+}
+#waterlevel{
+  font-size:7px;
+}
+}
+@media only screen and (min-width:500px){
+    th,td{
+        font-family:"Kanit";
+        font-size:100;
+        font-style:normal;
+    }
+    .numbers{
+        font-family:"Kanit";
+        font-size:20px;
+        font-style:normal;
+    }
+}
+@media only screen and (min-width:500px) and (max-width:1280px) {
+  th,td{
+    font-size:15px;
+
+  }
+  h4{
+    font-size:18px;
+  }
+
+ 
+}
  
 
 }
@@ -49,7 +108,12 @@
 </head>
 
 <body>
+   
+
+
+
     <div class="sidebar pe-4 pb-3">
+        
         <nav class="navbar bg-secondary navbar-dark">
             <a href="index.html" class="navbar-brand mx-4 mb-3" style="display: flex; align-items: center;">
                 <img src="../../assets/img/eLogTech.png" alt="logo" style="width: 50px; margin-right: 10px;">
@@ -61,7 +125,7 @@
                     <div class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1"></div>
                 </div>
                 <div class="ms-3">
-                    <h6 class="mb-0">Rico Fontecilla</h6>
+                    <h6 class="mb-0"><?= $user['username']; ?></h6>
                     <span>Admin</span>
                 </div>
             </div>
@@ -84,6 +148,7 @@
     </div>
 
     <div class="content">
+    <?= $this->include('navbar');?>
         <div class="container-fluid pt-4 px-4">
             <div class="row g-4">
                 <div class="col-12">
@@ -113,7 +178,7 @@
                             </div>
                         </div>
                         
-                        <h6 class="mb-4 text-center large text-primary"> Sent Messages</h6>
+                        <h4 class="mb-4 text-center large text-white"> Sent Messages</h4>
                         <div class="table-responsive">
                             <table id="page" class="table-responsive table-bordered text-center">
                                 <thead>
@@ -158,6 +223,7 @@
 <!-- Script Includes -->
 <?= $this->include('script');?>
 
+
 <!-- Toastr Notifications -->
 <script>
     <?php if (session()->getFlashdata('success')): ?>
@@ -198,5 +264,6 @@
 <script>
     let table = new DataTable("#page");
 </script>
+
 
 </html>

@@ -32,6 +32,17 @@ class Filters extends BaseConfig
     public $methods = [];
 
     public $filters = [
-        'auth' => ['before' => ['/']], // Apply the filter to the dashboard route
+        'auth' => [
+            'before' => [
+                '/',            // Home page
+                '/contact',     // Contact page
+                '/messages', // Sent message page
+                '/status',      // Status page
+                '/alertHistory', // Alert history page
+                '/sentMessage',
+                '/logout'
+            ]
+        ],
     ];
+    
 }

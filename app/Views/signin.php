@@ -42,15 +42,16 @@
             <div class="col-12 col-sm-8 col-md-6 col-lg-5 col-xl-4 shadow-lg p-3 bg-white rounded border border-2 border-dark">
                 <div class="bg-white rounded p-4 p-sm-5 my-4 mx-3">
                    
+                 
+
+                    <img src="../assets/img/floodlogin.jpg" alt="Flood Monitoring" class="login-image" >
+                    <h1 class="text-center">Welcome Back!</h1>
+                    <p class="text-center">Please log in to continue</p>
                     <?php if(session()->getFlashdata('error')): ?>
                         <div class="alert alert-danger text-center" role="alert" id="errorAlert">
                             <?= session()->getFlashdata('error') ?>
                         </div>
                     <?php endif; ?>
-
-                    <img src="../assets/img/floodlogin.jpg" alt="Flood Monitoring" class="login-image" >
-                    <h1 class="text-center">Welcome Back!</h1>
-                    <p class="text-center">Please log in to continue</p>
                     <form action="<?= base_url('adminSignin');?>" method="post" id="loginForm" class="">
                         <div class="input-group">
                             <input type="email" id="email" name="email" required placeholder=" " class="rounded">

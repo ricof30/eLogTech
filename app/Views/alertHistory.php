@@ -2,11 +2,7 @@
 <?= $this->include('sidebar'); ?>
 
 <div class="content">
-<div class="menu-bar">
-        <a href="#" class="sidebar-toggler flex-shrink-0">
-                        <i class="fa fa-bars"></i>
-        </a>
-    </div>
+<?= $this->include('navbar');?>
     <div class="container-fluid pt-4 px-4">
         <div class="row g-4">
             <div class="col-12">
