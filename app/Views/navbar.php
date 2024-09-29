@@ -1,7 +1,7 @@
       <!-- Navbar Start -->
-      <nav class="navbar navbar-expand bg-secondary navbar-dark sticky-top px-4 py-0">
+      <nav class="navbar navbar-expand  navbar-dark sticky-top px-4 py-0" style="background-color:#7AB2B2">
               
-              <a href="#" class="sidebar-toggler flex-shrink-0">
+              <a href="#" class="sidebar-toggler flex-shrink-0 bg-white">
                   <i class="fa fa-bars"></i>
               </a>
               <!-- <form class="d-none d-md-flex ms-4">
@@ -64,16 +64,17 @@
       $totalNotifications = count($latestWaterLevel);
   ?>
   <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-      <i class="fa fa-bell me-lg-2 position-relative">
+      <i class="fa fa-bell me-lg-2 position-relative bg-white">
           <?php if ($totalNotifications > 0): ?>
               <span class="badge bg-danger position-absolute top-0 start-100 translate-middle">
                   <?= $totalNotifications ?>
               </span>
           <?php endif; ?>
       </i>
-      <span class="d-none d-lg-inline-flex">Recent Alerts</span>
+      <span class="d-none d-lg-inline-flex text-white">Recent Alerts</span>
   </a>
-  <div class="alerts_dropdown dropdown-menu dropdown-menu-center bg-secondary border-0 rounded-0 rounded-bottom">
+  <div class="alerts_dropdown dropdown-menu dropdown-menu-center border border-0 border-dark rounded-0 rounded-bottom" style="background-color:#ADD8E6"> 
+
           <?php
              $counter = 0;
              foreach ($latestWaterLevel as $level): 
@@ -101,7 +102,7 @@
 
           ?>
           <a href="#" class="dropdown-item">
-              <h6 class="fw-normal mb-0"><?= $alertMessage ?></h6>
+              <h6 class="fw-normal mb-0 text-dark"><?= $alertMessage ?></h6>
               <small><?= date('F j, Y,', strtotime($level['date'])) . " " . date('g: i a',strtotime($level['time'])) ?></small>
           </a>
           <hr class="dropdown-divider">
@@ -122,13 +123,14 @@
                   <div class="nav-item dropdown">
                       <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
                           <img class="rounded-circle me-lg-2" src="<?= base_url('../assets/img/' . $user['image']); ?>"  alt="" style="width: 40px; height: 40px;">
-                          <span class="d-none d-lg-inline-flex"><?= $user['username']; ?></span>
+                          <span class="d-none d-lg-inline-flex text-white"><?= $user['username']; ?></span>
                       </a>
-                      <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
-                        <a href="#" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#profileModal">My Profile</a>
+                      <div class="profile_dropdown dropdown-menu dropdown-menu-end  border-0 rounded-0 rounded-bottom m-0" style="background-color:#E0FFFF"> <!-- Change background color here -->
+
+                        <a href="#" class="dropdown-item text-dark" data-bs-toggle="modal" data-bs-target="#profileModal">My Profile</a>
 
                           <!-- <a href="#" class="dropdown-item">Settings</a> -->
-                          <a href="logout" class="dropdown-item">Log Out</a>
+                          <a href="logout" class="dropdown-item text-dark">Log Out</a>
                       </div>
                   </div>
               </div>

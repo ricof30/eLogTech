@@ -107,7 +107,10 @@ class Home extends BaseController
             $model = new WaterLevelModel();
         
             // Fetch the latest water levels and order by date and time correctly
-            $data['latestWaterLevel'] = $model->findAll();
+            $data['latestWaterLevel'] = $model->orderBy('date', 'desc') 
+                                        ->orderBy('time', 'desc') 
+                                        ->limit(5)
+                                        ->findAll();
             
             $userModel = new UserModel();
             
@@ -121,7 +124,7 @@ class Home extends BaseController
             
             // Return the view with the latest water level data and user info
             return view('alertHistory', [
-                'latestWaterLevel' => $data['latestWaterLevel'],
+                'latestWaterLevels' => $data['latestWaterLevel'],
                 'messages' => $messages,
                 'latestWaterLevel' => $latestWaterLevel,
                 'user' => $user
@@ -145,6 +148,7 @@ class Home extends BaseController
 {
     $waterLevelModel = new WaterLevelModel();
     return $waterLevelModel->orderBy('date', 'desc')
+                            ->orderBy('time', 'desc')
                           ->limit(5)
                           ->findAll();
 
@@ -320,7 +324,10 @@ class Home extends BaseController
 
 public function sentMessage(){
     $sentSMS = new SentMessageModel();
-    $data['sentSMS'] = $sentSMS->orderBy('date', "DESC")->findAll();
+    $data['sentSMS'] = $sentSMS->orderBy('date', 'desc') 
+                                ->orderBy('time', 'desc') 
+                                ->limit(5)
+                                ->findAll();
     $userModel = new UserModel();
     
     // Assume you have a way to get the current user ID, e.g., from session
@@ -331,7 +338,7 @@ public function sentMessage(){
     // Fetch the specific user data
     $user = $userModel->find($currentUserId);
     return view('sent_message', [
-        'sentSMS' => $data['sentSMS'],
+        'sent' => $data['sentSMS'],
         'messages' => $messages,
         'latestWaterLevel' => $latestWaterLevel,
         'user' => $user

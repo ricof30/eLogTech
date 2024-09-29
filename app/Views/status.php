@@ -1,15 +1,15 @@
 
 <?= $this->include('header'); ?>
 <?= $this->include('sidebar'); ?>
-<div class="content">
+<div class="content" style="background-color:#CDE8E5">
     <?= $this->include('navbar');?>
 
 
     <div class="container-fluid pt-4 px-4">
         <div class="row g-4">
             <div class="col-12">
-                <div class="bg-secondary rounded h-100 p-4">
-                <h4 class="text-white text-center">Status Indicators</h4><br>
+                <div class="rounded h-100 p-4" style="background-color: #EEF7FF">
+                <h4 class="text-dark text-center">Status Indicators</h4><br>
                 <div class="table-responsive">
                 <table id="statusTable" class="table-responsive table-bordered text-center">
     <thead>
@@ -22,7 +22,7 @@
     <tbody>
         <?php foreach ($statuses as $status): ?>
             <tr>
-                <td><?= esc($status['sensor_type']) ?></td>
+                <td class="text-dark"><?= esc($status['sensor_type']) ?></td>
                 <td>
                     <?php if ($status['status'] == "active"):?>
                         <span class="bg-success text-white rounded p-2">Active</span>
@@ -31,7 +31,7 @@
                         <span class="bg-primary text-white rounded p-2">Inactive</span>
                     <?php endif; ?> 
                 </td>
-                <td>
+                <td class="text-dark">
                     <?php
                     $lastUpdate = new DateTime($status['last_update']);
                     echo $lastUpdate->format('F d Y');
@@ -120,7 +120,7 @@
     for(let i=0;i < th.length; i++)
     { 
         th[i].style.textAlign  = "center";
-        th[i].style.backgroundColor  = "orange";
+        th[i].style.backgroundColor  = "green";
     }
 
     for(let i=0;i < td.length; i++)

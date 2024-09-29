@@ -1,6 +1,6 @@
 /********** Template CSS **********/
 :root {
-    --primary: #EB1616;
+    --primary: #FF6600;
     --secondary: #191C24;
     --light: #6C7293;
     --dark: #000000;
@@ -308,4 +308,31 @@ height: 50px;
     .menu-bar {
         display: block;
     }
+}/* General styling for sidebar menu items */
+.sidebar .navbar .navbar-nav .nav-link {
+    padding: 7px 20px;
+    color: var(--light);
+    font-weight: 500;
+    border-left: 3px solid var(--secondary);
+    border-radius: 0 30px 30px 0;
+    outline: none;
+    background-color: transparent; /* Default background for non-active items */
+}
+
+/* Hover effect - Make it blue when hovering over any item */
+.sidebar .navbar .navbar-nav .nav-link:hover {
+    background-color: #4D869C; /* Background color on hover */
+    border-color: #4D869C; /* Left border on hover */
+}
+
+/* Active state - Keep the selected item highlighted */
+.sidebar .navbar .navbar-nav .nav-link.active {
+    background-color: #4D869C; /* Active background color */
+    border-color: #4D869C; /* Active border color */
+}
+
+/* Change icon background color on hover */
+.sidebar .navbar .navbar-nav .nav-link:hover i,
+.sidebar .navbar .navbar-nav .nav-link.active i {
+    background-color: #4D869C; /* Icon background on hover or active state */
 }

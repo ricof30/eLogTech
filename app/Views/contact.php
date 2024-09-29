@@ -3,10 +3,10 @@
 <div class="content">
 <?= $this->include('navbar');?>
 
-    <div class="container-fluid pt-4 px-4">
+    <div class="container-fluid pt-4 px-4" style="background-color:#CDE8E5">
         <div class="row g-4">
             <div class="col-12">
-                <div class="bg-secondary rounded h-100 p-4">
+                <div class="rounded h-100 p-4" style="background-color: #EEF7FF">
                     <div class="container">
                         <div class="row justify-content-center">
                             <div class="col-md-8">
@@ -40,23 +40,23 @@
                             </div>
                         </div>
                     </div>
-                    <div class="contact"style="width:120px;height:40px;background-color:white;border-radius:20px">
-                        <a href="#" id="addContactLink"><p class="contact_title text-danger text-center pt-2 fw-bold">Add Contact</p></a>
+                    <div class="contact"style="width:120px;height:40px;background-color:#7AB2B2;border-radius:20px">
+                        <a href="#" id="addContactLink"><p class="contact_title text-dark text-center pt-2 fw-bold">Add Contact</p></a>
                     </div>
-                    <h4 class="mb-4 text-center large">Contact Numbers</h4>
+                    <h4 class="mb-4 text-center large text-dark">Contact Numbers</h4>
                     <div class="table-responsive">
                         <table id="myTable" class="table-responsive table-bordered">
                             <thead>
                                 <tr>
-                                    <th scope="col" class="text-white text-center">Phone Number</th>
-                                    <th scope="col" class="text-white text-center">Action</th>
-                                    <th scope="col" class="text-white text-center">Status</th>
+                                    <th scope="col" class="text-dark text-center">Phone Number</th>
+                                    <th scope="col" class="text-dark text-center">Action</th>
+                                    <th scope="col" class="text-dark text-center">Status</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php foreach ($contact as $con): ?>
                                     <tr>
-                                        <td class="text-center"><?= $con['phone_number']; ?></td>
+                                        <td class="text-center text-dark"><?= $con['phone_number']; ?></td>
                                         <td class="text-center"><a data-bs-toggle="modal" data-bs-target="#edit" class="text-info edit" href="#" data-id="<?= $con['id'] ?>" data-phone_number="<?= $con['phone_number'] ?>" data-status="<?= $con['status'] ?>">Edit</a></td>
                                         <td>
                                             <?php if ($con['status'] == 1): ?>
@@ -137,7 +137,7 @@
     const th = document.getElementsByTagName('th');
     const td = document.getElementsByTagName('td');
     for (let i = 0; i < th.length; i++) {
-        th[i].style.backgroundColor = "orange";
+        th[i].style.backgroundColor = "green";
     }
     for (let j = 0; j < td.length; j++) {
         td[j].style.textAlign = "center";

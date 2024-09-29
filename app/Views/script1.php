@@ -113,76 +113,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 </script>
 
-<!-- <script>
-document.addEventListener("DOMContentLoaded", function () {
-    let monthlyWaterLevels = <?= json_encode($monthlyWaterLevels) ?>;
-    let allMonths = [
-        'January', 'February', 'March', 'April', 'May', 'June', 
-        'July', 'August', 'September', 'October', 'November', 'December'
-    ];
 
-    // Initializing arrays to store counts for each water level
-    let waterLevelCounts = {
-        '1.00': [],
-        '2.00': [],
-        '3.00': []
-    };
-
-    // Populating counts array with water level counts for each month
-    allMonths.forEach(function(month) {
-        if (monthlyWaterLevels.hasOwnProperty(month)) {
-            for (let level in waterLevelCounts) {
-                waterLevelCounts[level].push(monthlyWaterLevels[month][level] ?? 0);
-            }
-        } else {
-            // Adding 0 counts for each water level for months without data 
-            for (let level in waterLevelCounts) {
-                waterLevelCounts[level].push(0);
-            }
-        }
-    });
-
-    // Creating Chart.js chart with dynamic data
-    var ctx = document.getElementById('waterlevel').getContext('2d');
-    var myChart = new Chart(ctx, {
-        type: 'bar',
-        data: {
-            labels: allMonths,
-            datasets: [
-            {
-                label: 'Low',
-                data: waterLevelCounts['1.00'],
-                backgroundColor: "rgba(255, 255, 0, 1.0)", // Yellow
-                borderColor: "rgba(255, 255, 255, 1.0)" ,
-                borderWidth: 1
-            },
-            {
-                label: 'Moderate',
-                data: waterLevelCounts['2.00'],
-                backgroundColor: "rgba(255, 165, 0, 1.0)", // Orange
-                borderColor: "rgba(255, 255, 255, 1.0)" ,
-                borderWidth: 1
-            },
-            {
-                label: 'High',
-                data: waterLevelCounts['3.00'],
-                backgroundColor: "rgba(255, 0, 0, 1.0)", // Red
-                borderColor: "rgba(255, 255, 255, 1.0)" ,
-                borderWidth: 1
-            }]
-        },
-        options: {
-            scales: {
-                yAxes: [{
-                    ticks: {
-                        beginAtZero: true
-                    }
-                }]
-            }
-        }
-    });
-});
-</script> -->
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         // Solar Voltage Chart
@@ -222,3 +153,260 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 </script>
+
+
+<!-- Highchart js code -->
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    // Retrieve rainfall data from PHP variable
+    let rainfallData = <?= json_encode($rainfallData) ?>;
+
+    // Define labels for the months
+    const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+    // Highcharts for Rainfall
+    Highcharts.chart('rainfallChart', {
+        chart: {
+            type: 'column', // Bar chart in Highcharts is called 'column'
+            backgroundColor: '#EEF7FF' // Set background color to bg-secondary color
+        },
+        title: {
+            text: 'Rainfall Chart',
+            style: {
+                color: '#000000' // Set title color to white
+            }
+        },
+        xAxis: {
+            categories: months, // Use months as categories
+            title: {
+                text: 'Month',
+                style: {
+                    color: '#000000' // Set axis title color to white
+                }
+            },
+            labels: {
+                style: {
+                    color: '#000000' // Set axis labels color to white
+                }
+            }
+        },
+        yAxis: {
+            min: 0,
+            labels: {
+                style: {
+                    color: '#000000' // Set y-axis labels color to white
+                }
+            }
+        },
+        series: [{
+            name: 'Rainfall Count',
+            data: rainfallData, // Use the fetched rainfall data
+            color: 'rgba(0, 102, 204, 0.7)' // Set color for bars
+        }],
+        tooltip: {
+            valueSuffix: ' mm' // Adjust based on the unit of your rainfall data
+        },
+        plotOptions: {
+            column: {
+                borderRadius: 5,
+                pointPadding: 0.2,
+                borderWidth: 1
+            }
+        },
+        exporting: {
+            enabled: false // Disable the export options (PDF, Excel, etc.)
+        },
+        credits: {
+            enabled: false // Disable the "highcharts.com" credits text
+        },
+        legend: {
+            itemStyle: {
+                color: '#000000' // Set legend series names to white
+            }
+        }
+    });
+
+    // Fetch the monthly water levels data from the PHP view
+    let monthlyWaterLevels = <?= json_encode($monthlyWaterLevels) ?>;
+
+    // Initialize arrays to store counts for each water level category
+    let waterLevelCounts = {
+        'low': [],
+        'moderate': [],
+        'high': []
+    };
+
+    // Populate counts array with water level counts for each month
+    months.forEach(function(month) {
+        if (monthlyWaterLevels.hasOwnProperty(month)) {
+            for (let level in waterLevelCounts) {
+                waterLevelCounts[level].push(monthlyWaterLevels[month][level] ?? 0);
+            }
+        } else {
+            // Add 0 counts for each water level category for months without data 
+            for (let level in waterLevelCounts) {
+                waterLevelCounts[level].push(0);
+            }
+        }
+    });
+
+    // Highcharts for Water Level
+    Highcharts.chart('waterlevel', {
+        chart: {
+            type: 'column', // Bar chart in Highcharts is called 'column'
+            backgroundColor: '#EEF7FF' // Set background color to bg-secondary color
+        },
+        title: {
+            text: 'Water Level Chart',
+            style: {
+                color: '#000000' // Set title color to white
+            }
+        },
+        xAxis: {
+            categories: months, // Use months as categories
+            title: {
+                text: 'Month',
+                style: {
+                    color: '#000000' // Set x-axis title color to white
+                }
+            },
+            labels: {
+                style: {
+                    color: '#000000' // Set x-axis labels color to white
+                }
+            }
+        },
+        yAxis: {
+            min: 0,
+            labels: {
+                style: {
+                    color: '#000000' // Set y-axis labels color to white
+                }
+            }
+        },
+        series: [
+            {
+                name: 'Low',
+                data: waterLevelCounts['low'],
+                color: 'rgba(255, 255, 0, 1.0)' // Yellow
+            },
+            {
+                name: 'Moderate',
+                data: waterLevelCounts['moderate'],
+                color: 'rgba(255, 165, 0, 1.0)' // Orange
+            },
+            {
+                name: 'High',
+                data: waterLevelCounts['high'],
+                color: 'rgba(255, 0, 0, 1.0)' // Red
+            }
+        ],
+        tooltip: {
+            shared: true,
+            valueSuffix: ' readings' // Adjust this based on the unit of water level data
+        },
+        plotOptions: {
+            column: {
+                stacking: 'normal', // Enable stacking
+                borderRadius: 5,
+                pointPadding: 0.2,
+                borderWidth: 1
+            }
+        },
+        exporting: {
+            enabled: false // Disable the export options (PDF, Excel, etc.)
+        },
+        credits: {
+            enabled: false // Disable the "highcharts.com" credits text
+        },
+        legend: {
+            itemStyle: {
+                color: '#000000' // Set legend series names to white
+            }
+        }
+    });
+});
+</script>
+
+<!-- Pie Chart js -->
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    // Data for the pie chart
+    const data = [
+        {
+            name: 'Number of Family',
+            y: 57,
+            sliced: true,
+            selected: true,
+            color: 'rgba(0, 123, 255, 0.8)' // Bootstrap primary color
+        },
+        {
+            name: 'Number of Houses',
+            y: 57,
+            color: 'rgba(40, 167, 69, 0.8)' // Bootstrap success color
+        },
+        {
+            name: 'Number of Individuals',
+            y: 189,
+            color: 'rgba(255, 193, 7, 0.8)' // Bootstrap warning color
+        }
+    ];
+
+    // Highcharts for Pie Chart
+    Highcharts.chart('pieChart', {
+        chart: {
+            plotBackgroundColor: null,
+            plotBorderWidth: null,
+            plotShadow: false,
+            type: 'pie',
+            backgroundColor: '#EEF7FF' // Set background color to bg-secondary color
+        },
+        title: {
+            text: 'Population Distribution',
+            style: {
+                color: '#000000' // Set title color to white
+            },
+            align: 'center'
+        },
+        tooltip: {
+            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+        },
+        accessibility: {
+            point: {
+                valueSuffix: '%'
+            }
+        },
+        plotOptions: {
+            pie: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                dataLabels: {
+                    enabled: false // Disable data labels
+                },
+                showInLegend: true // Show legend
+            }
+        },
+        series: [{
+            name: 'Population',
+            colorByPoint: true,
+            data: data
+        }],
+        credits: {
+            enabled: false // Disable the "highcharts.com" credits text
+        },
+        exporting: {
+            enabled: false // Disable the export options (PDF, Excel, etc.)
+        },
+        legend: {
+            itemStyle: {
+                color: '#000000' // Set legend series names to white
+            }
+        }
+    });
+});
+</script>
+
+
+
+
+ 

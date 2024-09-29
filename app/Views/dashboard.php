@@ -12,46 +12,38 @@
       
             <?= $this->include('navbar');?>
             <!-- Sale & Revenue Start -->
-            <div class="container-fluid pt-4 px-4">
-                <div class="row g-4 flex-content justify-content-around">
-                    <div class="col-sm-6 col-xl-3">
-                        <div class="bg-secondary rounded d-flex align-items-center justify-content-between p-4">
-                           <img src="../assets/img/family.png" alt="family icon" style="width:70px">
-                            <div class="ms-3">
-                                <p class="numbers mb-2" >Number of Family</p>
-                                <h6 class="mb-0">57</h6>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 col-xl-3">
-                        <div class="bg-secondary rounded d-flex align-items-center justify-content-between p-4">
-                             <img src="../assets/img/house.png" alt="family icon" style="width:50px">
-                            <div class="ms-3">
-                                <p class="numbers mb-2">Number of Houses</p>
-                                <h6 class="mb-0">57</h6>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 col-xl-3">
-                        <div class="bg-secondary rounded d-flex align-items-center justify-content-between p-4">
-                             <img src="../assets/img/indiv.png" alt="family icon" style="width:65px;height:50px">
-                            <div class="ms-3">
-                                <p class="numbers mb-2">Number of Individual</p>
-                                <h6 class="mb-0">189</h6>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- <div class="col-sm-6 col-xl-3">
-                        <div class="bg-secondary rounded d-flex align-items-center justify-content-between p-4">
-                            <i class="fa fa-chart-pie fa-3x text-primary"></i>
-                            <div class="ms-3">
-                                <p class="mb-2"></p>
-                                <h6 class="mb-0">$1234</h6>
-                            </div>
-                        </div>
-                    </div> -->
+    <div class="container-fluid pt-4 px-4" style="background-color:#CDE8E5">
+    <div class="row g-4 flex-content justify-content-between">
+        <!-- First Row: Pie Chart and Water Level Chart -->
+        <div class="col-sm-12 col-xl-4">
+            <div id="pieChart" class="rounded" style="width: 100%; height: 495px;"></div>
+        </div>
+
+        <div class="col-sm-12 col-xl-8">
+            <div class="text-center rounded p-3" style="background-color: #EEF7FF">
+                <div class="d-flex align-items-center justify-content-end mb-4">
+                    <button id="filterWaterLevel" class="btn btn-primary">Filter</button>
                 </div>
+                <div id="waterlevel" class="bg-secondary" style="width: 100%; height: 400px;"></div>
             </div>
+        </div>
+
+        <!-- Second Row: Rainfall Chart -->
+        <div class="col-12">
+            <div class="text-center rounded p-3" style="background-color: #EEF7FF">
+                <div class="d-flex align-items-center justify-content-end mb-4">
+                    <button id="filterRainfall" class="btn btn-primary">Filter</button>
+                </div>
+                <div id="rainfallChart" style="width: 100%; height: 350px;"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+      </div>
+  </div>
+       
+
             <!-- Sale & Revenue End -->
 
 <!-- Water Level Monitoring View -->
@@ -71,7 +63,7 @@
     </div>
 </div> -->
 
-<div class="container-fluid pt-4 px-4">
+<!-- <div class="container-fluid pt-4 px-4">
     <div class="row g-4">
         <div class="col-sm-12 col-xl-6 ">
             <div class="waterlevelchart bg-secondary text-center rounded p-3">
@@ -92,7 +84,8 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
+
 
 
 <!-- Modal for filtering water level -->

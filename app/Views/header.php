@@ -72,6 +72,9 @@
 #waterlevel{
   font-size:7px;
 }
+.piechart{
+  height:200px;
+}
 }
 @media only screen and (min-width:500px){
     th,td{
@@ -96,6 +99,16 @@
 
  
 }
+.alerts_dropdown .dropdown-item:hover {
+    background-color: #ADD8E6 !important; /* Keep the same background color on hover */
+    color: #000 !important; /* Optional: Change the text color on hover */
+}
+
+.profile_dropdown .dropdown-item:hover {
+    background-color: #E0FFFF !important; /* Keep the same background color on hover */
+    color: #000 !important;
+}
+
   </style>
 
 

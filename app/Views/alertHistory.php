@@ -1,14 +1,14 @@
 <?= $this->include('header'); ?>
 <?= $this->include('sidebar'); ?>
 
-<div class="content">
+<div class="content" style="background-color:#CDE8E5">
 <?= $this->include('navbar');?>
     <div class="container-fluid pt-4 px-4">
         <div class="row g-4">
             <div class="col-12">
-                <div class="bg-secondary rounded h-100 p-4">
+                <div class="rounded h-100 p-4" style="background-color: #EEF7FF">
                     <div class="table-responsive">
-                        <h4 class="text-center">Alert History</h4>
+                        <h4 class="text-center text-dark">Alert History</h4>
 
                         <table id="page" class="table-responsive table-bordered">
                             <thead>
@@ -18,8 +18,8 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php foreach ($latestWaterLevel as $level): ?>
-                                    <tr>
+                                <?php foreach ($latestWaterLevels as $level): ?>
+                                    <tr class="text-dark">
                                     <?php 
                                        if ($level['waterlevel'] > 3) {
                                         $alertMessage = "High water level: " . $level['waterlevel'] . " meters"; 
@@ -54,7 +54,7 @@
     const td = document.getElementsByTagName('td');
     for(let i=0; i<th.length;i++){
         th[i].style.textAlign = 'center';
-        th[i].style.backgroundColor = 'orange';
+        th[i].style.backgroundColor = 'green';
     }
     for(let i=0;i<td.length;i++){
         td[i].style.textAlign = 'center';
