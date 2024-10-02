@@ -14,8 +14,10 @@
         "ext-intl": "*",
         "ext-json": "*",
         "ext-mbstring": "*",
+        "google/apiclient": "^2.17",
         "laminas/laminas-escaper": "^2.9",
         "php-ai/php-ml": "^0.10.0",
+        "phpmailer/phpmailer": "^6.9",
         "phpoffice/phpspreadsheet": "^2.0",
         "psr/log": "^1.1",
         "tecnickcom/tcpdf": "^6.7"
@@ -25,7 +27,7 @@
         "fakerphp/faker": "^1.9",
         "friendsofphp/php-cs-fixer": "~3.41.0",
         "kint-php/kint": "^5.0.4",
-        "mikey179/vfsstream": "^1.6",
+        "mikey179/vfsstream": "^1.6",   
         "nexusphp/cs-config": "^3.6",
         "phpunit/phpunit": "^9.1",
         "predis/predis": "^1.1 || ^2.0"

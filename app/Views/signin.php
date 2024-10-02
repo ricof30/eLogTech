@@ -267,6 +267,74 @@ body {
     display: none;
   }
 }
+
+.error-box {
+    margin-top: 5px;
+}
+.google-signin-btn {
+    background-color: #4285F4;           /* Google blue background */
+    display: flex;                        /* Flexbox for layout */
+    align-items: center;                  /* Center vertically */
+    justify-content: flex-start;          /* Align items to the start (left) */
+    width: 100%;                          /* Full width */
+    padding: 10px;                        /* Padding for the button */
+    border: none;                         /* Remove border */
+    border-radius: 5px;                  /* Rounded corners */
+    cursor: pointer;                      /* Pointer cursor */
+    gap: 20px;                            /* Space between image and text */
+}
+
+.google-signin-btn img {
+    width: 40px;   
+    height: 30px;                        /* Google logo size */
+    border-radius: 6px;                  /* Rounded corners for the image */
+    padding: 2px;                        /* Padding inside the image border */
+    background-color: #4285F4;           /* Background color to match button */
+}
+
+.google-signin-btn span {
+    margin-left: 50px;                   /* Space between the image and text */
+    color: white; 
+}
+
+@media (max-width: 768px) {
+    .google-signin-btn {
+        gap: 10px;                       /* Reduce gap on smaller screens */
+    }
+
+    .google-signin-btn img {
+        width: 35px;                     /* Adjust image size */
+        height: 25px;                    /* Adjust image size */
+    }
+
+    .google-signin-btn span {
+        margin-left: 20px;               /* Adjust margin for text */
+    }
+
+    .forms {
+        padding: 10px;                   /* Reduce padding on smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .google-signin-btn {
+        padding: 8px;                    /* Adjust padding for smaller devices */
+    }
+
+    .google-signin-btn img {
+        width: 30px;                     /* Further adjust image size */
+        height: 20px;                    /* Further adjust image size */
+    }
+
+    .google-signin-btn span {
+        font-size: 14px;                 /* Adjust font size for smaller devices */
+    }
+
+    .forms {
+        padding: 5px;                    /* Further reduce padding on smallest screens */
+    }
+}
+
   </style>
 </head>
 <body>
@@ -308,33 +376,55 @@ body {
                 <input type="submit" value="Submit">
               </div>
               <div class="text sign-up-text">Don't have an account? <label for="flip">Signup now</label></div>
+              <div class="text-center" style="margin-top: 20px;">
+            <button type="button" class="google-signin-btn  text-center">
+              <img src="../assets/img/google.png" alt="Google Logo">
+              <span class="text-center">Sign in with Google</span>
+            </button>
+          </div>
             </div>
-          </form>
+          </form>  
         </div>
         
         <div class="signup-form">
-          <div class="title">Signup</div>
-          <form action="#">
-            <div class="input-boxes">
-              <div class="input-box">
-                <i class="fas fa-user"></i>
-                <input type="text" placeholder="Enter your name" required>
-              </div>
-              <div class="input-box">
-                <i class="fas fa-envelope"></i>
-                <input type="text" placeholder="Enter your email" required>
-              </div>
-              <div class="input-box">
-                <i class="fas fa-lock"></i>
-                <input type="password" placeholder="Enter your password" required>
-              </div>
-              <div class="button input-box">
-                <input type="submit" value="Submit">
-              </div>
-              <div class="text sign-up-text">Already have an account? <label for="flip">Login now</label></div>
-            </div>
-          </form>
-        </div>
+  <div class="title">Signup</div>
+  <form id="signupForm" action="<?= base_url('signUp');?>" method="post">
+    <div class="input-boxes">
+      <div class="input-box">
+        <i class="fas fa-user"></i>
+        <input type="text" placeholder="Enter your name" name="name" required>
+      </div>
+      <div class="input-box">
+        <i class="fas fa-envelope"></i>
+        <input type="text" placeholder="Enter your email" name="email" required>
+      </div>
+      <div class="input-box">
+        <i class="fas fa-lock"></i>
+        <input id="password" type="password" placeholder="Enter your password" name="password" required>
+      </div>
+      <!-- Password validation error message -->
+      <div class="error-box">
+        <span id="password-error" style="color: red; display: none;">Password must have at least one uppercase letter, one lowercase letter, one number, and one special character!</span>
+      </div>
+      <div class="input-box">
+        <i class="fas fa-lock"></i>
+        <input id="confirm_password" type="password" placeholder="Confirm password" name="confirm_pass" required>
+      </div>
+      <!-- Password mismatch error message -->
+      <div class="error-box">
+        <span id="error-message" style="color: red; display: none;">Passwords do not match!</span>
+      </div>
+      <div class="button input-box">
+        <input type="submit" value="Submit">
+      </div>
+      <div class="text sign-up-text">Already have an account? <label for="flip">Login now</label></div>
+    </div>
+  </form>
+</div>
+
+
+
+
       </div>
     </div>
   </div>
@@ -342,7 +432,9 @@ body {
   <!-- Toastr JS -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-  
+
+
+
   <script>
     // Toastr options
     toastr.options = {
@@ -354,7 +446,7 @@ body {
       "preventDuplicates": false,
       "onclick": null,
       "showDuration": "300",
-      "hideDuration": "1000",
+      "hideDuration": "100",
       "timeOut": "5000",
       "extendedTimeOut": "1000",
       "showEasing": "swing",
@@ -367,6 +459,85 @@ body {
     <?php if (session()->getFlashdata('error')): ?>
       toastr.error("<?= session()->getFlashdata('error'); ?>");
     <?php endif; ?>
+    <?php if (session()->getFlashdata('success')): ?>
+      toastr.success("<?= session()->getFlashdata('success'); ?>");
+    <?php endif; ?>
   </script>
+
+  <script>
+
+  // Real-time validation for password input
+document.getElementById('password').addEventListener('input', function () {
+    var password = this.value;
+    var passwordError = document.getElementById('password-error');
+
+    // Regular expression for password validation (must contain upper, lower, number, and special characters)
+    var passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*(),.?":{}|<>]).{8,}$/;
+
+    // Reset password error state
+    passwordError.style.display = 'none';
+
+    // Check if password matches the validation criteria
+    if (password !== '' && !passwordPattern.test(password)) {
+        passwordError.style.display = 'inline';
+        passwordError.textContent = "Password must have at least one uppercase letter, one lowercase letter, one number, and one special character!";
+    }
+});
+
+// Real-time validation for confirm password input
+document.getElementById('confirm_password').addEventListener('input', function () {
+    var password = document.getElementById('password').value;
+    var confirmPassword = this.value;
+    var confirmError = document.getElementById('error-message');
+
+    // Reset confirm password error state
+    confirmError.style.display = 'none';
+
+    // Check if confirm password matches the password
+    if (confirmPassword !== '' && password !== confirmPassword) {
+        confirmError.style.display = 'inline';
+        confirmError.textContent = "Passwords do not match!";
+    }
+});
+
+// Form submission event to check validation on submit
+document.getElementById('signupForm').addEventListener('submit', function(event) {
+    var password = document.getElementById('password').value;
+    var confirmPassword = document.getElementById('confirm_password').value;
+    var passwordError = document.getElementById('password-error');
+    var confirmError = document.getElementById('error-message');
+
+    // Regular expression for password validation (must contain upper, lower, number, and special characters)
+    var passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*(),.?":{}|<>]).{8,}$/;
+
+    // Reset error states
+    passwordError.style.display = 'none';
+    confirmError.style.display = 'none';
+
+    var hasError = false; // Variable to track if there's any error
+
+    // Check if password meets the validation criteria
+    if (!passwordPattern.test(password)) {
+        passwordError.style.display = 'inline';
+        passwordError.textContent = "Password must have at least one uppercase letter, one lowercase letter, one number, and one special character!";
+        hasError = true;
+    }
+
+    // Check if confirm password matches the password
+    if (password !== confirmPassword) {
+        confirmError.style.display = 'inline';
+        confirmError.textContent = "Passwords do not match!";
+        hasError = true;
+    }
+
+    // Prevent form submission if there's any error
+    if (hasError) {
+        event.preventDefault();
+    }
+});
+
+  </script>
+
+  
 </body>
 </html>

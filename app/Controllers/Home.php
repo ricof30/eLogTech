@@ -28,11 +28,19 @@ use PhpOffice\PhpSpreadsheet\Style\Font;
 use PhpOffice\PhpSpreadsheet\Worksheet\Drawing;
 use PhpOffice\PhpSpreadsheet\IOFactory;
 use TCPDF;
+use Google\Client as GoogleClient;
+use Google\Service\Oauth2;
+
 
 
 
 class Home extends BaseController
 {
+
+    public $clientID = '416774517161-ve653inuu3v308tbt8nl1blld4hnf4o9.apps.googleusercontent.com'; 
+    public $clientSecret = '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'; 
+    public $redirectURI = 'https://elogtech.elementfx.com/google-callback'; 
+
     public function index(): string
     {
         // Initialize the models
@@ -99,6 +107,87 @@ class Home extends BaseController
             // 'notifications' => $notifications // Uncomment if notifications are needed
         ]);
     }
+
+
+
+
+    public function googleAuth()
+    {
+        $client = new GoogleClient();
+        $client->setClientId($this->clientID);
+        $client->setClientSecret($this->clientSecret);
+        $client->setRedirectUri($this->redirectURI);
+        $client->addScope('email');
+        $client->addScope('profile');
+
+        $authUrl = $client->createAuthUrl();
+
+        return redirect()->to($authUrl); // Redirect to Google's authorization URL
+    }
+
+   public function callback()
+{
+    $client = new GoogleClient();
+    $client->setClientId($this->clientID);
+    $client->setClientSecret($this->clientSecret);
+    $client->setRedirectUri($this->redirectURI);
+
+    $code = $this->request->getVar('code');
+    $token = $client->fetchAccessTokenWithAuthCode($code);
+
+    if (!isset($token['error'])) {
+        $client->setAccessToken($token['access_token']);
+        $oauth2 = new Oauth2($client);
+        $userInfo = $oauth2->userinfo->get();
+
+        // Process user information (e.g., save to database)
+        $this->loginUser($userInfo);    
+
+        // Redirect to dashboard or wherever you want after successful login
+        return redirect()->to('/'); // Make sure this points to your main dashboard
+    } else {
+        // Handle error
+        echo 'Error fetching token';
+    }
+}
+
+   private function loginUser($userInfo)
+{
+    $image = 'user logo_2.jpg'; 
+    $userModel = new UserModel();
+    $existingUser = $userModel->where('email', $userInfo->email)->first();
+
+    if (!$existingUser) {
+        // Insert the user into the database if they don't exist
+        $userData = [
+            'id' => $userInfo->id, // Store Google ID if necessary
+            'email' => $userInfo->email,
+            'username' => $userInfo->name,
+            'image' => $image // Optional if you want to store profile picture
+        ];
+
+        // Insert the user data
+        $userModel->insert($userData);
+        
+        // Get the newly created user
+        $existingUser = $userModel->where('email', $userInfo->email)->first(); // Fetch the user again
+    }
+
+    // Create the session data after inserting/fetching the user
+    session()->set([
+        'user_id' => $existingUser['id'],
+        'email' => $existingUser['email'],
+        'name' => $existingUser['username'],
+        'profile_pic' => $userInfo->picture,
+        'is_logged_in' => true, // Make sure to set this to indicate the user is logged in
+    ]);
+
+    // Log the user information (for debugging)
+    echo "<pre>";
+    print_r($userInfo);
+    echo "</pre>";
+}
+
     
    
     public function alertHistory()
@@ -269,6 +358,191 @@ class Home extends BaseController
             }
         }
     }
+
+    public function login()
+    {
+        $client = new GoogleClient();
+        $client->setClientId($this->clientId);
+        $client->setClientSecret($this->clientSecret);
+        $client->setRedirectUri($this->redirectUri);
+        $client->addScope("email");
+        $client->addScope("profile");
+
+        // Redirect to Google login page
+        $authUrl = $client->createAuthUrl();
+        return redirect()->to($authUrl);
+    }
+
+
+
+    // public function signUp()
+    // {
+    //     $model = new UserModel();
+    //     $image = 'user logo_2.jpg'; // Default image for the user
+    //     $name = $this->request->getPost('name');
+    //     $email = $this->request->getPost('email');
+    //     $password = $this->request->getPost('password');
+    //     $confirm_pass = $this->request->getPost('confirm_pass');
+    
+    //     // Check if email is already registered
+    //     $user = $model->where('email', $email)->first();
+    //     if ($user) {
+    //         session()->setFlashdata('error', 'Email already registered!');
+    //         return redirect()->to('/signin');
+    //     }
+    
+    //     // Check if passwords match
+    //     if ($password != $confirm_pass) {
+    //         session()->setFlashdata('error', 'Password does not match the confirmation password!');
+    //         return redirect()->to('/signin');
+    //     }
+    
+    //     // Validate password strength
+    //     if (!preg_match('/^(?=.*[a-z])(?=.*[A-Z])(?=.*[\W]).{8,}$/', $password)) {
+    //         session()->setFlashdata('error', 'Password must contain at least one lowercase letter, one uppercase letter, one symbol, and be at least 8 characters long!');
+    //         return redirect()->to('/signin');
+    //     }
+    
+    //     // Send OTP email
+    //     $otpSent = $this->sendOTPEmail($email);
+    //     if (!$otpSent) {
+    //         session()->setFlashdata('error', 'Error sending OTP email. Please try again.');
+    //         return redirect()->to('/signin');
+    //     }
+    
+    //     // After sending OTP, store the user data temporarily or prompt for OTP verification
+    //     session()->set('signup_data', [
+    //         'username' => $name,
+    //         'email' => $email,
+    //         'password' => $password,
+    //         'image' => $image
+    //     ]);
+    
+    //     // Set success message for OTP sent
+    //     session()->setFlashdata('success', 'OTP sent successfully to your email!');
+    
+    //     // Redirect to OTP verification page
+    //     return redirect()->to('/verify_otp');
+    // }
+    
+    // private function sendOTPEmail($email)
+    // {
+    //     try {
+    //         // Validate email format
+    //         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    //             return false; // Invalid email format
+    //         }
+    
+    //         // Generate a random 6-digit OTP
+    //         $otp = rand(100000, 999999);
+    
+    //         // Update user record with OTP and expiration time
+    //         $userModel = new UserModel();
+    //         $user = $userModel->where('email', $email)->first();
+    
+    //         if (!$user) {
+    //             return false; // Email does not exist
+    //         }
+    
+    //         $userModel->update($user['id'], [
+    //             'otp' => $otp,
+    //             'otp_expiration' => date('Y-m-d H:i:s', strtotime('+15 minutes')) // OTP valid for 15 minutes
+    //         ]);
+    
+    //         // Send OTP via email using PHPMailer
+    //         $phpMailer = new PHPMailer;
+    //         $phpMailer->isSMTP();
+    //         $phpMailer->Host = 'smtp.gmail.com';
+    //         $phpMailer->SMTPAuth = true;
+    //         $phpMailer->Username = 'ricofontecilla30@gmail.com';
+    //         $phpMailer->Password = 'ngnp jppg dmsm sdyx'; // Use environment variables for sensitive data
+    //         $phpMailer->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS; // or 'ssl'
+    //         $phpMailer->Port = 465;
+
+    //         $phpMailer->SMTPDebug = 3;
+    
+    //         $phpMailer->setFrom('ricofontecilla30@gmail.com', 'e-LogTech');
+    //         $phpMailer->addAddress($email);
+    //         $phpMailer->Subject = 'Your OTP for Email Verification';
+    //         $phpMailer->Body = "Your OTP for email verification is: <b>$otp</b>. It is valid for 15 minutes.";
+    //         $phpMailer->isHTML(true); // Ensure the body is sent as HTML
+    
+    //         $phpMailer->send();
+    
+    //         // Respond with success
+    //         return true; // OTP sent successfully
+    //     } catch (\Exception $e) {
+    //         log_message('error', 'Error sending OTP email: ' . $e->getMessage()); // Log the error message
+    //         return false; // Error occurred
+    //     }
+    // }
+    
+    // // Method to verify OTP
+    // public function verifyOTP()
+    // {
+    //     $otp = $this->request->getPost('otp'); // Get OTP input from user
+    //     $signupData = session()->get('signup_data'); // Retrieve temporary signup data
+    
+    //     if (!$signupData) {
+    //         session()->setFlashdata('error', 'No signup data found. Please try again.');
+    //         return redirect()->to('/signup'); // Redirect to signup if no data found
+    //     }
+    
+    //     // Validate the OTP
+    //     $userModel = new UserModel();
+    //     $user = $userModel->where('email', $signupData['email'])->first();
+    
+    //     if ($user && $user['otp'] == $otp && strtotime($user['otp_expiration']) > time()) {
+    //         // Insert user data into the database
+    //         $data = [
+    //             'username' => $signupData['username'],
+    //             'email' => $signupData['email'],
+    //             'password' => password_hash($signupData['password'], PASSWORD_BCRYPT), // Hash the password for security
+    //             'image' => $signupData['image']
+    //         ];
+    //         $userModel->insert($data);
+    
+    //         session()->setFlashdata('success', 'Successfully registered!');
+    //         return redirect()->to('/signin');
+    //     } else {
+    //         session()->setFlashdata('error', 'Invalid OTP or OTP expired!');
+    //         return redirect()->to('/verify_otp'); // Redirect back to OTP verification
+    //     }
+    // }
+    
+    public function signUp()
+    {
+        $model = new UserModel();
+        $image = 'user logo_2.jpg'; // Default image for the user
+        $name = $this->request->getPost('name');
+        $email = $this->request->getPost('email');
+        $password = $this->request->getPost('password');
+        $confirm_pass = $this->request->getPost('confirm_pass');
+    
+        // Check if email is already registered
+        $user = $model->where('email', $email)->first();
+        if ($user) {
+            session()->setFlashdata('error', 'Email already registered!');
+            return redirect()->to('/signin');
+        }else{
+
+            $data = [
+                'username' => $name,
+                'email' => $email,
+                'password' => $password,  
+                'image' => $image,    
+            ];
+   
+            $model->insert($data);
+            session()->setFlashdata('success', 'Successfully registered. Login now.');
+            return redirect()->to('/signin');
+        }
+    }
+    
+    public function otp(){
+        return view('otp');
+    }
+    
     
     
 
@@ -661,6 +935,7 @@ public function filterWaterlevel()
         if (!session()->get('is_logged_in')) {
             return redirect()->to('/signin')->with('error', 'You must be logged in to access this page.');
         }
+    
         return view('dashboard/index');
     }
 
@@ -884,10 +1159,5 @@ public function filterWaterlevel()
             log_message('info', "Sensor {$sensor_type} not found in the database. Inserted new record with status {$trimmed_status}.");
         }
     }
-    
-
-
-
-   
     
 }

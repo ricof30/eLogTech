@@ -1,0 +1,1 @@
+__ci_last_regenerate|i:1727709366;_ci_previous_url|s:28:"http://localhost:8080/signin";signup_data|a:4:{s:8:"username";s:4:"Rico";s:5:"email";s:26:"ricofontecilla30@gmail.com";s:8:"password";s:8:"Ricof#30";s:5:"image";s:15:"user logo_2.jpg";}error|s:42:"Error sending OTP email. Please try again.";__ci_vars|a:1:{s:5:"error";s:3:"old";}

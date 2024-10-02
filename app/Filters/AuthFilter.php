@@ -26,10 +26,18 @@ class AuthFilter implements FilterInterface
     public function before(RequestInterface $request, $arguments = null)
     {
         // Check if the user is logged in
-        if (!session()->get('is_logged_in')) {
-            // User is not logged in, redirect to the signin page
-            return redirect()->to('/signin')->with('error', 'You must be logged in to access this page.');
-        }
+            $currentURL = current_url();
+            $baseURL = base_url();  // elogtech.elementfx.com
+        
+            // Exclude the base URL from displaying the error
+            if (!session()->get('is_logged_in')) {
+                if ($currentURL !== $baseURL && $currentURL !== rtrim($baseURL, '/') . '/') {
+                    return redirect()->to('/signin')->with('error', 'You must be logged in to access this page.');
+                }
+                if ($currentURL == $baseURL && $currentURL == rtrim($baseURL, '/') . '/') {
+                    return redirect()->to('/signin');
+                }
+            }
     }
 
     /**

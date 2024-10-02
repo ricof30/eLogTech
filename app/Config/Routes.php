@@ -24,6 +24,11 @@ $routes->post('/updatePhoto', 'Home::updatePhoto');
 $routes->get('/sentMessage', 'Home::sentMessage');
 $routes->get('/signin', 'Home::signin');
 $routes->post('/adminSignin', 'Home::adminSignin');
+$routes->post('/signUp', 'Home::signUp');
+$routes->get('google-login', 'Home::googleAuth');
+$routes->get('google-callback', 'Home::callback');
+$routes->get('/verify_otp', 'Home::otp');
+
 
 $routes->group('/', ['filter' => 'auth'], function($routes) {
     $routes->get('/', 'Home::index');
