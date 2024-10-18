@@ -1,0 +1,15 @@
+CRITICAL - 2024-10-10 03:02:19 --> TypeError: Cannot access offset of type string on string
+in APPPATH\Controllers\Home.php on line 1038.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->updateProfile()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(82): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')
+CRITICAL - 2024-10-10 03:04:01 --> ErrorException: Undefined array key "name"
+in APPPATH\Controllers\Home.php on line 1042.
+ 1 APPPATH\Controllers\Home.php(1042): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "name"', 'C:\\laragon\\www\\solarflood\\app\\Controllers\\Home.php', 1042)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->updateProfile()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(82): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')

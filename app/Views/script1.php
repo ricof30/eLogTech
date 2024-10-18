@@ -406,7 +406,59 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 </script>
 
+<script>
+    // Toggle chat visibility
+function toggleReportFloodChat() {
+    const chatBox = document.getElementById('reportFloodChat');
+    chatBox.classList.toggle('d-none');
+}
 
+// Fetch flood reports when chat is opened
+function fetchFloodReports() {
+    fetch('/flood-report/fetchReports')
+        .then(response => response.json())
+        .then(data => {
+            const chatMessages = document.getElementById('chatMessages');
+            chatMessages.innerHTML = '';
+
+            data.forEach(report => {
+                const messageElement = document.createElement('div');
+                messageElement.classList.add('chat-message');
+                messageElement.innerHTML = `
+                    <strong>User ${report.user_id}:</strong> ${report.message}<br>
+                    ${report.image ? `<img src="/uploads/flood_reports/${report.image}" alt="Flood Image" style="max-width: 100%;">` : ''}
+                    <small>${new Date(report.created_at).toLocaleString()}</small>
+                `;
+                chatMessages.appendChild(messageElement);
+            });
+
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        });
+}
+
+// Handle form submission
+document.getElementById('floodReportForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    const formData = new FormData(this);
+
+    fetch('/flood-report/submitReport', {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.status === 'success') {
+            fetchFloodReports(); // Reload chat
+            document.getElementById('floodReportForm').reset(); // Clear form
+        }
+    });
+});
+
+// Fetch flood reports when the chat is opened
+document.getElementById('reportFloodButton').addEventListener('click', fetchFloodReports);
+
+</script>
 
 
  

@@ -25,20 +25,57 @@ class AuthFilter implements FilterInterface
      */
     public function before(RequestInterface $request, $arguments = null)
     {
+        $session = session();
+        $role = $session->get('role');
+        $currentURL = current_url();
+        $baseURL = base_url();
+
         // Check if the user is logged in
-            $currentURL = current_url();
-            $baseURL = base_url();  // elogtech.elementfx.com
-        
-            // Exclude the base URL from displaying the error
-            if (!session()->get('is_logged_in')) {
-                if ($currentURL !== $baseURL && $currentURL !== rtrim($baseURL, '/') . '/') {
-                    return redirect()->to('/signin')->with('error', 'You must be logged in to access this page.');
-                }
-                if ($currentURL == $baseURL && $currentURL == rtrim($baseURL, '/') . '/') {
-                    return redirect()->to('/signin');
-                }
+        if (!session()->get('is_logged_in')) {
+            if ($currentURL !== $baseURL && $currentURL !== rtrim($baseURL, '/') . '/') {
+                return redirect()->to('/signin')->with('error', 'You must be logged in to access this page.');
             }
+            if ($currentURL == $baseURL && $currentURL == rtrim($baseURL, '/') . '/') {
+                return redirect()->to('/signin');
+            }
+        }
+
+        // Restrict pages based on user role
+        if ($role === 'user') {
+            // Allow the user to access only these pages
+            $allowedPagesForUser = [
+                // base_url('/'),
+                base_url('/'),
+                base_url('/alertHistory'),  
+                base_url('/logout'),  
+            ];
+
+            // If the current page is not allowed for users, redirect to the home page
+            if (!in_array($currentURL, $allowedPagesForUser)) {
+                return redirect()->to('/');
+            }
+        }
+
+        if ($role === 'admin') {
+            // Allow the user to access only these pages
+            $allowedPagesForUser = [
+                // base_url('/'),
+                base_url('/dashboard'),
+                base_url('/alertHistory'),
+                base_url('/contact'),
+                base_url('/sentMessage'),
+                base_url('/status'),
+                base_url('/user'),  
+                base_url('/logout'),  
+            ];
+
+            // If the current page is not allowed for users, redirect to the home page
+            if (!in_array($currentURL, $allowedPagesForUser)) {
+                return redirect()->to('/dashboard');
+            }
+        }
     }
+
 
     /**
      * Allows After filters to inspect and modify the response

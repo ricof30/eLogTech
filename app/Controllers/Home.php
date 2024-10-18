@@ -3,14 +3,6 @@
 namespace App\Controllers;
 use Config\Database;
 use CodeIgniter\RESTful\ResourceController;
-use Phpml\Dataset\ArrayDataset;
-use Phpml\Classification\KNearestNeighbors;
-use Phpml\Metric\Accuracy;
-use Phpml\Classification\SVC;
-use Phpml\Regression\LeastSquares;
-use Phpml\Regression\Ridge;
-use Phpml\Regression\SVR;
-use Phpml\SupportVectorMachine\Kernel;
 use App\Models\ContactModel;
 use App\Models\WaterLevelModel;
 use App\Models\UserModel;
@@ -18,6 +10,7 @@ use App\Models\SentMessageModel;
 use App\Models\ReceiveMessageModel;
 use App\Models\RainFallModel;
 use App\Models\StatusModel;
+use App\Models\ReportModel;
 use App\Models\SolarVoltageModel;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
@@ -30,6 +23,11 @@ use PhpOffice\PhpSpreadsheet\IOFactory;
 use TCPDF;
 use Google\Client as GoogleClient;
 use Google\Service\Oauth2;
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+use Minishlink\WebPush\WebPush;
+use Minishlink\WebPush\Subscription;
+use Minishlink\WebPush\VAPID;
 
 
 
@@ -41,6 +39,10 @@ class Home extends BaseController
     public $clientSecret = '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'; 
     public $redirectURI = 'https://elogtech.elementfx.com/google-callback'; 
 
+    private $apiKey = '63064c321974f9d7ff589ebd1773b5e6'; 
+    private $latitude = '13.3765'; 
+    private $longitude = '121.2269'; 
+
     public function index(): string
     {
         // Initialize the models
@@ -48,10 +50,11 @@ class Home extends BaseController
         $solarVoltageModel = new SolarVoltageModel();
         $rainfallModel = new RainfallModel();
         $userModel = new UserModel();
-
+    
+        // Water level processing
         $waterLevels = $waterLevelModel->findAll();
         $monthlyWaterLevels = [];
-    
+        
         foreach ($waterLevels as $level) {
             $month = date('F', strtotime($level['date']));
             $waterLevel = $level['waterlevel'];
@@ -71,7 +74,7 @@ class Home extends BaseController
             }
         }
     
-        // Fetch all solar voltages and process them
+        // Solar voltage processing
         $solarVoltages = $solarVoltageModel->findAll();
         $dailyVoltages = [];
     
@@ -83,18 +86,19 @@ class Home extends BaseController
             $dailyVoltages[$date] += $voltage['voltage'];
         }
     
-        // Fetch all rainfalls and prepare rainfall data
+        // Rainfall processing
         $rainfalls = $rainfallModel->findAll(); 
         $rainfallData = $this->prepareRainfallData($rainfalls);
     
-        // Fetch user data based on the current user ID
-        $currentUserId = session()->get('user_id'); // Replace this with your method of retrieving the current user ID
+        // Fetch user data
+        $currentUserId = session()->get('user_id'); 
         $user = $userModel->find($currentUserId);
+    
+        $weatherData = $this->getWeatherData();
     
         // Fetch additional data
         $messages = $this->getLastThreeMessages();
         $latestWaterLevel = $this->getLatestWaterLevel();
-        // $notifications = $this->getNotifications(); // Uncomment if notifications are needed
     
         // Return the view with the processed data
         return view('dashboard', [
@@ -103,11 +107,65 @@ class Home extends BaseController
             'rainfallData' => $rainfallData,
             'messages' => $messages,
             'latestWaterLevel' => $latestWaterLevel,
-            'user' => $user
-            // 'notifications' => $notifications // Uncomment if notifications are needed
+            'user' => $user,
+            'weatherData' => $weatherData // Pass weather data to the view
         ]);
     }
+    
+    // Function to fetch weather data from OpenWeatherMap
 
+    public function getWeatherData()
+    {
+        $apiKey = 'UtcResU4V8va0tluzhUl49qMGWQ57rAy'; // Replace with your actual API key
+        $latitude = '13.3765';
+        $longitude = '121.2269';
+    
+        $endTime = new \DateTime('now', new \DateTimeZone('UTC')); 
+        $endTime->modify('+4 days');  // Modify to +3 days to get 4 days including today
+        $endTimeString = $endTime->format('Y-m-d\TH:i:s\Z'); // Format for Tomorrow.io API
+    
+        $url = "https://api.tomorrow.io/v4/timelines?location={$latitude},{$longitude}&fields=temperature,precipitationIntensity,precipitationType,weatherCode,windSpeed,windDirection&units=metric&timesteps=1d&startTime=now&endTime={$endTimeString}&apikey={$apiKey}";
+    
+        $ch = curl_init($url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        $response = curl_exec($ch);
+    
+        if (curl_errno($ch)) {
+            return ['error' => 'Unable to fetch weather data: ' . curl_error($ch)];
+        }
+    
+        curl_close($ch);
+    
+        $weatherData = json_decode($response, true);
+    
+        // Extract the 4-day forecast data (current day + next 3 days)
+        $forecast = [];
+        if (isset($weatherData['data']['timelines'][0]['intervals'])) {
+            foreach ($weatherData['data']['timelines'][0]['intervals'] as $index => $interval) {
+                // Get the current date in UTC
+                $currentDate = (new \DateTime('now', new \DateTimeZone('UTC')))->format('Y-m-d');
+    
+                // Format the date from the API response
+                $forecastDate = date('Y-m-d', strtotime($interval['startTime']));
+    
+                // Only include the current day and the next three days
+                if ($forecastDate >= $currentDate && count($forecast) < 4) {
+                    $forecast[$forecastDate] = [
+                        'temperature' => $interval['values']['temperature'],
+                        'precipitationIntensity' => $interval['values']['precipitationIntensity'],
+                        'precipitationType' => $interval['values']['precipitationType'],
+                        'weatherCode' => $interval['values']['weatherCode'],
+                        'windSpeed' => $interval['values']['windSpeed'],
+                        'windDirection' => $interval['values']['windDirection'],
+                    ];
+                }
+            }
+        }
+    
+        return $forecast;
+    }
+    
+    
 
 
 
@@ -163,7 +221,8 @@ class Home extends BaseController
             'id' => $userInfo->id, // Store Google ID if necessary
             'email' => $userInfo->email,
             'username' => $userInfo->name,
-            'image' => $image // Optional if you want to store profile picture
+            'image' => $image, // Optional if you want to store profile picture
+            'role' => "user"
         ];
 
         // Insert the user data
@@ -328,36 +387,71 @@ class Home extends BaseController
         return view('signin');
     }
 
+    public function getUser(){
+        $model = new UserModel();
+        $currentUserId = session()->get('user_id');
+        $messages = $this->getLastThreeMessages();
+        $latestWaterLevel = $this->getLatestWaterLevel();
+        $user = $model->find($currentUserId);
+        $data['user'] = $model->findAll();
+
+        return view('user_list', [
+            'list' => $data['user'],
+            'messages' => $messages,
+            'latestWaterLevel' => $latestWaterLevel,
+            'user' => $user
+        ]);
+    }
     public function adminSignin() {
         if ($this->request->getMethod() === 'post') {
             $email = $this->request->getPost('email');
             $password = $this->request->getPost('password');
-    
+            
             $model = new UserModel();
-            $user = $model->where('email', $email)->first(); 
-    
+            $user = $model->where('email', $email)->first();
+            
             if ($user) {
-                
-                if ($password === $user['password']) {
-                    
-                    $sessionData = [
-                        'user_id' => $user['id'],
-                        'email' => $user['email'],
-                        'is_logged_in' => true,
-                    ];
-                    session()->set($sessionData);
+                // Check if the user is verified
+                if ($user['is_verified'] == 0) {
+                    session()->setFlashdata('error', 'Your email is not verified!');
+                    return redirect()->to('/signin'); // Redirect to the login page
+                }
     
-                    return redirect()->to('/'); 
+                // Check if the password matches
+                if ($password === $user['password']) {
+                    if($user['role'] == "user"){
+                        $sessionData = [
+                            'user_id' => $user['id'],
+                            'email' => $user['email'],
+                            'is_logged_in' => true,
+                            'role' => "user"
+                        ];
+                        session()->set($sessionData);
+        
+                        return redirect()->to('/'); 
+                    }else{
+                        $sessionData = [
+                            'user_id' => $user['id'],
+                            'email' => $user['email'],
+                            'is_logged_in' => true,
+                            'role' => "admin"
+                        ];
+                        session()->set($sessionData);
+        
+                        return redirect()->to('/dashboard'); 
+                    }
+                    
                 } else {
-                    session()->setFlashdata('error', 'Incorrect Username and Password');
+                    session()->setFlashdata('error', 'Incorrect Username or Password');
                     return redirect()->to('/signin');
                 }
             } else {
-                session()->setFlashdata('error', 'Incorrect Username and Password');
+                session()->setFlashdata('error', 'Email is not registered');
                 return redirect()->to('/signin');
             }
         }
     }
+    
 
     public function login()
     {
@@ -373,175 +467,102 @@ class Home extends BaseController
         return redirect()->to($authUrl);
     }
 
+public function signUp()
+{
+    $model = new UserModel();
+    $name = $this->request->getPost('name');
+    $contact = $this->request->getPost('contact');
+    $email = $this->request->getPost('email');
+    $password = $this->request->getPost('password');
+    $confirm_pass = $this->request->getPost('confirm_pass');
 
+    $user = $model->where('email', $email)->first();
+    if ($user) {
+        session()->setFlashdata('error', 'Email already registered!');
+        return redirect()->to('/signin');
+    } else {
+        $otp = rand(100000, 999999); 
+        $data = [
+            'username' => $name,
+            'contact' => $contact,
+            'email' => $email,
+            'password' => $password,  
+            'image' => 'user logo_4.jpg',
+            'otp' => $otp,  
+            'is_verified' => 0, 
+            'role' => "user"
+        ];
 
-    // public function signUp()
-    // {
-    //     $model = new UserModel();
-    //     $image = 'user logo_2.jpg'; // Default image for the user
-    //     $name = $this->request->getPost('name');
-    //     $email = $this->request->getPost('email');
-    //     $password = $this->request->getPost('password');
-    //     $confirm_pass = $this->request->getPost('confirm_pass');
-    
-    //     // Check if email is already registered
-    //     $user = $model->where('email', $email)->first();
-    //     if ($user) {
-    //         session()->setFlashdata('error', 'Email already registered!');
-    //         return redirect()->to('/signin');
-    //     }
-    
-    //     // Check if passwords match
-    //     if ($password != $confirm_pass) {
-    //         session()->setFlashdata('error', 'Password does not match the confirmation password!');
-    //         return redirect()->to('/signin');
-    //     }
-    
-    //     // Validate password strength
-    //     if (!preg_match('/^(?=.*[a-z])(?=.*[A-Z])(?=.*[\W]).{8,}$/', $password)) {
-    //         session()->setFlashdata('error', 'Password must contain at least one lowercase letter, one uppercase letter, one symbol, and be at least 8 characters long!');
-    //         return redirect()->to('/signin');
-    //     }
-    
-    //     // Send OTP email
-    //     $otpSent = $this->sendOTPEmail($email);
-    //     if (!$otpSent) {
-    //         session()->setFlashdata('error', 'Error sending OTP email. Please try again.');
-    //         return redirect()->to('/signin');
-    //     }
-    
-    //     // After sending OTP, store the user data temporarily or prompt for OTP verification
-    //     session()->set('signup_data', [
-    //         'username' => $name,
-    //         'email' => $email,
-    //         'password' => $password,
-    //         'image' => $image
-    //     ]);
-    
-    //     // Set success message for OTP sent
-    //     session()->setFlashdata('success', 'OTP sent successfully to your email!');
-    
-    //     // Redirect to OTP verification page
-    //     return redirect()->to('/verify_otp');
-    // }
-    
-    // private function sendOTPEmail($email)
-    // {
-    //     try {
-    //         // Validate email format
-    //         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-    //             return false; // Invalid email format
-    //         }
-    
-    //         // Generate a random 6-digit OTP
-    //         $otp = rand(100000, 999999);
-    
-    //         // Update user record with OTP and expiration time
-    //         $userModel = new UserModel();
-    //         $user = $userModel->where('email', $email)->first();
-    
-    //         if (!$user) {
-    //             return false; // Email does not exist
-    //         }
-    
-    //         $userModel->update($user['id'], [
-    //             'otp' => $otp,
-    //             'otp_expiration' => date('Y-m-d H:i:s', strtotime('+15 minutes')) // OTP valid for 15 minutes
-    //         ]);
-    
-    //         // Send OTP via email using PHPMailer
-    //         $phpMailer = new PHPMailer;
-    //         $phpMailer->isSMTP();
-    //         $phpMailer->Host = 'smtp.gmail.com';
-    //         $phpMailer->SMTPAuth = true;
-    //         $phpMailer->Username = 'ricofontecilla30@gmail.com';
-    //         $phpMailer->Password = 'ngnp jppg dmsm sdyx'; // Use environment variables for sensitive data
-    //         $phpMailer->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS; // or 'ssl'
-    //         $phpMailer->Port = 465;
+        $model->insert($data);
 
-    //         $phpMailer->SMTPDebug = 3;
-    
-    //         $phpMailer->setFrom('ricofontecilla30@gmail.com', 'e-LogTech');
-    //         $phpMailer->addAddress($email);
-    //         $phpMailer->Subject = 'Your OTP for Email Verification';
-    //         $phpMailer->Body = "Your OTP for email verification is: <b>$otp</b>. It is valid for 15 minutes.";
-    //         $phpMailer->isHTML(true); // Ensure the body is sent as HTML
-    
-    //         $phpMailer->send();
-    
-    //         // Respond with success
-    //         return true; // OTP sent successfully
-    //     } catch (\Exception $e) {
-    //         log_message('error', 'Error sending OTP email: ' . $e->getMessage()); // Log the error message
-    //         return false; // Error occurred
-    //     }
-    // }
-    
-    // // Method to verify OTP
-    // public function verifyOTP()
-    // {
-    //     $otp = $this->request->getPost('otp'); // Get OTP input from user
-    //     $signupData = session()->get('signup_data'); // Retrieve temporary signup data
-    
-    //     if (!$signupData) {
-    //         session()->setFlashdata('error', 'No signup data found. Please try again.');
-    //         return redirect()->to('/signup'); // Redirect to signup if no data found
-    //     }
-    
-    //     // Validate the OTP
-    //     $userModel = new UserModel();
-    //     $user = $userModel->where('email', $signupData['email'])->first();
-    
-    //     if ($user && $user['otp'] == $otp && strtotime($user['otp_expiration']) > time()) {
-    //         // Insert user data into the database
-    //         $data = [
-    //             'username' => $signupData['username'],
-    //             'email' => $signupData['email'],
-    //             'password' => password_hash($signupData['password'], PASSWORD_BCRYPT), // Hash the password for security
-    //             'image' => $signupData['image']
-    //         ];
-    //         $userModel->insert($data);
-    
-    //         session()->setFlashdata('success', 'Successfully registered!');
-    //         return redirect()->to('/signin');
-    //     } else {
-    //         session()->setFlashdata('error', 'Invalid OTP or OTP expired!');
-    //         return redirect()->to('/verify_otp'); // Redirect back to OTP verification
-    //     }
-    // }
-    
-    public function signUp()
-    {
-        $model = new UserModel();
-        $image = 'user logo_2.jpg'; // Default image for the user
-        $name = $this->request->getPost('name');
-        $email = $this->request->getPost('email');
-        $password = $this->request->getPost('password');
-        $confirm_pass = $this->request->getPost('confirm_pass');
-    
-        // Check if email is already registered
-        $user = $model->where('email', $email)->first();
-        if ($user) {
-            session()->setFlashdata('error', 'Email already registered!');
-            return redirect()->to('/signin');
-        }else{
-
-            $data = [
-                'username' => $name,
-                'email' => $email,
-                'password' => $password,  
-                'image' => $image,    
-            ];
-   
-            $model->insert($data);
-            session()->setFlashdata('success', 'Successfully registered. Login now.');
-            return redirect()->to('/signin');
+        if ($this->sendOTPEmail($email, $otp)) {
+            session()->setFlashdata('success', 'Registration successful. Please check your email to verify your account.');
+            return redirect()->to('/verify_otp?email=' . urlencode($email));
+        } else {
+            session()->setFlashdata('error', 'Failed to send OTP email. Please try again.');
+            return redirect()->back();
         }
     }
-    
-    public function otp(){
-        return view('otp');
+}
+
+// Function to send the OTP email using PHPMailer
+public function sendOTPEmail($email, $otp)
+{
+    $mail = new PHPMailer(true);
+
+    try {
+        //Server settings
+        $mail->isSMTP();                                           // Send using SMTP
+        $mail->Host       = 'smtp.gmail.com';                    // Set the SMTP server to send through
+        $mail->SMTPAuth   = true;                                  // Enable SMTP authentication
+        $mail->Username   = 'ricofontecilla30@gmail.com';              // SMTP username
+        $mail->Password   = 'ngnp jppg dmsm sdyx';                 // SMTP password
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;        // Enable TLS encryption
+        $mail->Port       = 587;                                   // TCP port to connect to
+
+        //Recipients
+        $mail->setFrom('ricofontecilla30@example.com', 'e-LogTech');
+        $mail->addAddress($email);    // Add recipient
+
+        // Content
+        $mail->isHTML(true);                                  // Set email format to HTML
+        $mail->Subject = 'OTP for Email Verification';
+        $mail->Body    = 'Your OTP for email verification is: <b>' . $otp . '</b>';
+
+        $mail->send();
+        return true;
+    } catch (Exception $e) {
+        log_message('error', 'Mail error: ' . $mail->ErrorInfo);
+        return false;
     }
+}
+
+public function verifyOTP()
+{
+    $model = new UserModel();
+    $otp = $this->request->getPost('otp');
+    $email = $this->request->getPost('email');
+
+    $user = $model->where('email', $email)->first();
+
+    if ($user && $user['otp'] == $otp) {
+        // Update the user status to verified
+        $model->update($user['id'], ['is_verified' => 1, 'otp' => null]);
+        session()->setFlashdata('success', 'Your email has been verified. You can now log in.');
+        return redirect()->to('/signin');
+    } else {
+        session()->setFlashdata('error', 'Invalid OTP. Please try again.');
+        return redirect()->back();
+    }
+}
+
+    
+public function otp()
+{
+    $email = $this->request->getGet('email');  // Retrieve the email from the query string
+    return view('otp', ['email' => $email]);   // Pass the email to the view
+}
+
     
     
     
@@ -979,40 +1000,54 @@ public function filterWaterlevel()
 }
 
 
-    public function updatePhoto()
-    {
-        $userModel = new UserModel();
+public function updateProfile()
+{
+    $userModel = new UserModel();
+
+    // Get user ID from session or other source
+    $userId = session()->get('user_id');
+    $username = $this->request->getPost('username');
+    $contact = $this->request->getPost('contact');
     
-        // Get user ID from session or other source
-        $userId = session()->get('user_id');
+    // Get current user data
+    $user = $userModel->find($userId);
+
+    // Handle file upload
+    $profilePhoto = $this->request->getFile('profilePhoto');
+    $currentPhoto = $user['image']; // Get current photo name
     
-        // Handle file upload
-        $profilePhoto = $this->request->getFile('profilePhoto');
-        $currentPhoto = $userModel->find($userId)['image']; // Get current photo name
-    
-        if ($profilePhoto->isValid() && !$profilePhoto->hasMoved()) {
-            // Use the original name of the file
-            $profilePhotoName = $profilePhoto->getName();
-            $profilePhoto->move(ROOTPATH . 'public/assets/img', $profilePhotoName);
-    
-            // Delete old photo if it exists
-            if ($currentPhoto && file_exists(ROOTPATH . 'public/assets/img/' . $currentPhoto)) {
-                unlink(ROOTPATH . 'public/assets/img/' . $currentPhoto);
-            }
-        } else {
-            // If no new photo uploaded, keep the current one
-            $profilePhotoName = $currentPhoto;
+    if ($profilePhoto->isValid() && !$profilePhoto->hasMoved()) {
+        // Use the original name of the file
+        $profilePhotoName = $profilePhoto->getName();
+        $profilePhoto->move(ROOTPATH . 'public/assets/img', $profilePhotoName);
+
+        // Delete old photo if it exists
+        if ($currentPhoto && file_exists(ROOTPATH . 'public/assets/img/' . $currentPhoto)) {
+            unlink(ROOTPATH . 'public/assets/img/' . $currentPhoto);
         }
-    
-        // Update the user's photo in the database
-        $updateData = [
-            'image' => $profilePhotoName,
-        ];
-    
-        $userModel->update($userId, $updateData);
-    
-        return redirect()->to('/')->with('success', 'Profile photo updated successfully');
+    } else {
+        // If no new photo uploaded, keep the current one
+        $profilePhotoName = $currentPhoto;
     }
+
+    // Update username and contact only if they've changed
+    $profileUsername = ($user['username'] != $username) ? $username : $user['username'];
+    $profileContact = ($user['contact'] != $contact) ? $contact : $user['contact'];
+
+    // Prepare data for update
+    $updateData = [
+        'image' => $profilePhotoName,
+        'username' => $profileUsername,
+        'contact' => $profileContact,
+    ];
+
+    // Update the user's information in the database
+    $userModel->update($userId, $updateData);
+    session()->setFlashdata('success', 'Profile Updated Successfully');
+    return redirect()->to('/');
+}
+
+
 
     public function receiveData()
     {
@@ -1159,5 +1194,216 @@ public function filterWaterlevel()
             log_message('info', "Sensor {$sensor_type} not found in the database. Inserted new record with status {$trimmed_status}.");
         }
     }
+
+    public function getWeather()
+    {
+        // OpenWeatherMap API endpoint with latitude and longitude
+        $apiUrl = "https://api.openweathermap.org/data/2.5/weather?lat={$this->latitude}&lon={$this->longitude}&appid={$this->apiKey}&units=metric";
+
+        // Initialize cURL
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_URL, $apiUrl);
+        $result = curl_exec($ch);
+        curl_close($ch);
+
+        // Decode the JSON response into an array
+        $weatherData = json_decode($result, true);
+
+        // Check if the API returned data successfully
+        if (isset($weatherData['main'])) {
+            // Extract needed weather details
+            $data = [
+                'location' => 'Arangin, Naujan, Oriental Mindoro',
+                'temperature' => $weatherData['main']['temp'],
+                'humidity' => $weatherData['main']['humidity'],
+                'wind_speed' => $weatherData['wind']['speed'],
+                'description' => $weatherData['weather'][0]['description'],
+            ];
+
+            // Load the view and pass the weather data
+            return view('weather', $data);
+        } else {
+            // Handle the error (e.g., data not found)
+            return view('weather', ['error' => 'Weather data not available for this location.']);
+        }
+    }
+
+    public function subscribe()
+    {
+        // Receive the subscription object from frontend
+        $json = $this->request->getJSON(true);
+        // Store the subscription in a database for future use (not implemented in this example)
+
+        return $this->response->setJSON(['success' => true]);
+    }
+
+    public function sendNotification()
+    {
+        // Example subscription info (retrieve this from your database)
+        $subscription = Subscription::create([
+            'endpoint' => '<endpoint>',
+            'keys' => [
+                'p256dh' => '<p256dh>',
+                'auth' => '<auth_token>',
+            ],
+        ]);
+
+        // VAPID keys (generated using WebPush::createVapidKeys)
+        $auth = [
+            'VAPID' => [
+                'subject' => 'mailto:ricofontecilla30@gmail.com',
+                'publicKey' => '<your_public_key>',
+                'privateKey' => '<your_private_key>',
+            ],
+        ];
+
+        $webPush = new WebPush($auth);
+
+        $report = $webPush->sendOneNotification(
+            $subscription,
+            json_encode([
+                'title' => 'Flood Alert!',
+                'body' => 'Water level is rising. Please take action!',
+            ])
+        );
+
+        return $this->response->setJSON(['success' => true]);
+    }
+    public function generateKeys()
+    {
+        // Generate VAPID keys
+        $vapid = VAPID::createVapidKeys();
+
+        // Display the keys
+        echo 'Public key: ' . $vapid['publicKey'] . '<br>';
+        echo 'Private key: ' . $vapid['privateKey'];
+    }
+
+    public function userDashboard(){
+        $waterLevelModel = new WaterLevelModel();
+        $rainfallModel = new RainfallModel();
+        $solarVoltageModel = new SolarVoltageModel();
+        $userModel = new UserModel();
+
+        $waterLevels = $waterLevelModel->findAll();
+        $monthlyWaterLevels = [];
+        
+        foreach ($waterLevels as $level) {
+            $month = date('F', strtotime($level['date']));
+            $waterLevel = $level['waterlevel'];
+    
+            if (!isset($monthlyWaterLevels[$month])) {
+                $monthlyWaterLevels[$month] = ['total' => 0, 'low' => 0, 'moderate' => 0, 'high' => 0]; 
+            }
+    
+            $monthlyWaterLevels[$month]['total']++;
+    
+            if ($waterLevel > 2.00 && $waterLevel <= 3.00) {
+                $monthlyWaterLevels[$month]['high']++;
+            } elseif ($waterLevel > 1.00 && $waterLevel <= 2.00) {
+                $monthlyWaterLevels[$month]['moderate']++;
+            } elseif ($waterLevel > 0 && $waterLevel <= 1.00) {
+                $monthlyWaterLevels[$month]['low']++;
+            }
+        }
+
+         // Solar voltage processing
+         $solarVoltages = $solarVoltageModel->findAll();
+         $dailyVoltages = [];
+     
+         foreach ($solarVoltages as $voltage) {
+             $date = date('Y-m-d', strtotime($voltage['date']));
+             if (!isset($dailyVoltages[$date])) {
+                 $dailyVoltages[$date] = 0;
+             }
+             $dailyVoltages[$date] += $voltage['voltage'];
+         }
+
+        $rainfalls = $rainfallModel->findAll(); 
+        $rainfallData = $this->prepareRainfallData($rainfalls);
+    
+        // Fetch user data
+        $currentUserId = session()->get('user_id'); 
+        $user = $userModel->find($currentUserId);
+    
+        $weatherData = $this->getWeatherData();
+    
+        // Fetch additional data
+        $messages = $this->getLastThreeMessages();
+        $latestWaterLevel = $this->getLatestWaterLevel();
+    
+        // Return the view with the processed data
+        return view('user/dashboard', [
+            'rainfallData' => $rainfallData,
+            'latestWaterLevel' => $latestWaterLevel,
+            'monthlyWaterLevels' => $monthlyWaterLevels,
+            'dailyVoltages' => $dailyVoltages,
+            'user' => $user,
+            'weatherData' => $weatherData // Pass weather data to the view
+        ]);
+    }
+
+    public function getMessages()
+    {
+        $reportModel = new ReportModel();
+        $messages = $reportModel->orderBy('created_at', 'ASC')->findAll(); // Fetch all messages sorted by time
+    
+        // Loop through each message to append the correct image URL
+        foreach ($messages as &$message) {
+            if (!empty($message['image'])) {
+                // Prepend the base URL to the image path
+                $message['image'] =  base_url('../assets/img/' . $message['image']); 
+            }
+        }
+    
+        return $this->response->setJSON($messages); // Return messages (including images) as JSON
+    }
+    
+    
+        
+
+        // Send a new message
+        public function sendMessage()
+        {
+            $reportModel = new ReportModel();
+        
+            $message = $this->request->getPost('message');
+            $username = $this->request->getPost('username');
+        
+            // Handle file upload
+            $image = $this->request->getFile('image');
+            $imagePath = null; // Default to null if no image is uploaded
+        
+            if ($image && $image->isValid() && !$image->hasMoved()) {
+                $imageName = $image->getName();
+                $imagePath = ROOTPATH . 'public/assets/img/' . $imageName;
+        
+                // Check if the image already exists
+                if (!file_exists($imagePath)) {
+                    // Move the image to the uploads folder if it doesn't exist
+                    $image->move(ROOTPATH . 'public/assets/img', $imageName);
+                } else {
+                    // If the image already exists, set $imagePath to the existing image name (without moving it)
+                    $imagePath = $imageName;
+                }
+            }
+        
+            // Prepare the data to insert
+            $data = [
+                'username' => $username,
+                'message' => $message,
+                'image' => $imagePath ? basename($imagePath) : null // Save only the image name if uploaded
+            ];
+        
+            // Insert message into the database
+            $reportModel->insert($data);
+        
+            return $this->response->setJSON(['status' => 'Message sent']);
+        }
+        
+        
+    
+    
     
 }

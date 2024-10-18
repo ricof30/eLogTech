@@ -48,6 +48,38 @@
         });
     });
 </script>
+<script>
+    // Toggle password visibility for the main password field
+    const togglePassword = document.querySelector('#togglePassword');
+    const password = document.querySelector('#password');
+
+    togglePassword.addEventListener('click', function () {
+        const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+        password.setAttribute('type', type);
+        this.classList.toggle('fa-eye-slash'); // Toggle eye icon
+    });
+
+    // Toggle password visibility for the confirm password field
+    const toggleConfirmPassword = document.querySelector('#toggleConfirmPassword');
+    const confirmPassword = document.querySelector('#confirm_password');
+
+    toggleConfirmPassword.addEventListener('click', function () {
+        const type = confirmPassword.getAttribute('type') === 'password' ? 'text' : 'password';
+        confirmPassword.setAttribute('type', type);
+        this.classList.toggle('fa-eye-slash'); // Toggle eye icon
+    });
+
+    const toggleLoginPassword = document.querySelector('#toggleLoginPassword');
+    const loginPassword = document.querySelector('#loginPassword');
+
+    toggleLoginPassword.addEventListener('click', function () {
+        const type = loginPassword.getAttribute('type') === 'password' ? 'text' : 'password';
+        loginPassword.setAttribute('type', type);
+        this.classList.toggle('fa-eye-slash'); // Toggle eye icon
+    });
+</script>
+
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
 

@@ -5,7 +5,7 @@ use CodeIgniter\Router\RouteCollection;
 /**
  * @var RouteCollection $routes
  */
-$routes->get('/', 'Home::index');
+$routes->get('/dashboard', 'Home::index');
 $routes->get('/contact', 'Home::contact');
 $routes->post('/add_contact', 'Home::add_contact');
 $routes->get('/delete/(:num)', 'Home::delete_contact/$1');
@@ -20,7 +20,7 @@ $routes->get('/logout', 'Home::logout');
 $routes->get('/status', 'Home::viewStatus');
 $routes->get('/alertHistory', 'Home::alertHistory');
 $routes->get('/weather', 'Home::weather');
-$routes->post('/updatePhoto', 'Home::updatePhoto');
+$routes->post('/updateProfile', 'Home::updateProfile');
 $routes->get('/sentMessage', 'Home::sentMessage');
 $routes->get('/signin', 'Home::signin');
 $routes->post('/adminSignin', 'Home::adminSignin');
@@ -28,6 +28,18 @@ $routes->post('/signUp', 'Home::signUp');
 $routes->get('google-login', 'Home::googleAuth');
 $routes->get('google-callback', 'Home::callback');
 $routes->get('/verify_otp', 'Home::otp');
+$routes->post('verifyOTP', 'Home::verifyOTP');
+$routes->get('/weather', 'Home::getWeather');
+$routes->get('/user', 'Home::getUser');
+$routes->get('push-notification/generate-keys', 'Home::generateKeys');
+$routes->get('/getMessages', 'Home::getMessages');
+$routes->post('/sendMessage', 'Home::sendMessage');
+
+
+
+$routes->get('/', 'Home::userDashboard');
+// $routes->get('weather_view', 'Home::weather');
+
 
 
 $routes->group('/', ['filter' => 'auth'], function($routes) {

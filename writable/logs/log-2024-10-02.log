@@ -1,0 +1,44 @@
+CRITICAL - 2024-10-02 05:19:31 --> Error: Class "App\Controllers\PHPMailer" not found
+in APPPATH\Controllers\Home.php on line 586.
+ 1 APPPATH\Controllers\Home.php(573): App\Controllers\Home->sendOTPEmail('ricofontecilla30@gmail.com', 456677)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->signUp()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(82): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')
+CRITICAL - 2024-10-02 05:29:48 --> ErrorException: Undefined variable $email
+in APPPATH\Views\otp.php on line 43.
+ 1 APPPATH\Views\otp.php(43): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $email', 'C:\\laragon\\www\\solarflood\\app\\Views\\otp.php', 43)
+ 2 SYSTEMPATH\View\View.php(228): include('C:\\laragon\\www\\solarflood\\app\\Views\\otp.php')
+ 3 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('otp', [], true)
+ 5 APPPATH\Controllers\Home.php(638): view('otp')
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->otp()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(82): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')
+CRITICAL - 2024-10-02 05:30:54 --> ErrorException: Undefined variable $email
+in APPPATH\Views\otp.php on line 43.
+ 1 APPPATH\Views\otp.php(43): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $email', 'C:\\laragon\\www\\solarflood\\app\\Views\\otp.php', 43)
+ 2 SYSTEMPATH\View\View.php(228): include('C:\\laragon\\www\\solarflood\\app\\Views\\otp.php')
+ 3 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('otp', [], true)
+ 5 APPPATH\Controllers\Home.php(638): view('otp')
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->otp()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(82): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')
+CRITICAL - 2024-10-02 05:35:25 --> ErrorException: Undefined property: CodeIgniter\View\View::$request
+in APPPATH\Views\otp.php on line 42.
+ 1 APPPATH\Views\otp.php(42): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: CodeIgniter\\View\\View::$request', 'C:\\laragon\\www\\solarflood\\app\\Views\\otp.php', 42)
+ 2 SYSTEMPATH\View\View.php(228): include('C:\\laragon\\www\\solarflood\\app\\Views\\otp.php')
+ 3 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('otp', [], true)
+ 5 APPPATH\Controllers\Home.php(638): view('otp')
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->otp()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(82): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')

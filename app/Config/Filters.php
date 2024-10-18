@@ -34,13 +34,15 @@ class Filters extends BaseConfig
     public $filters = [
         'auth' => [
             'before' => [
-                '/',            // Home page
-                '/contact',     // Contact page
-                '/messages', // Sent message page
-                '/status',      // Status page
-                '/alertHistory', // Alert history page
+                '/',
+                '/dashboard',
+                '/contact',     
+                '/messages', 
+                '/status',      
+                '/alertHistory', 
                 '/sentMessage',
-                '/logout'
+                '/logout',
+                '/user'
             ]
         ],
     ];

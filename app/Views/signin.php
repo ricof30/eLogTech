@@ -334,7 +334,6 @@ body {
         padding: 5px;                    /* Further reduce padding on smallest screens */
     }
 }
-
   </style>
 </head>
 <body>
@@ -362,63 +361,73 @@ body {
         <div class="login-form">
           <div class="title">Login</div>
           <form action="<?= base_url('adminSignin');?>" method="post">
-            <div class="input-boxes">
-              <div class="input-box">
-                <i class="fas fa-envelope"></i>
-                <input type="text" placeholder="Enter your email" name="email" required>
-              </div>
-              <div class="input-box">
-                <i class="fas fa-lock"></i>
-                <input type="password" placeholder="Enter your password" name="password" required>
-              </div>
-              <div class="text"><a href="#">Forgot password?</a></div>
-              <div class="button input-box">
-                <input type="submit" value="Submit">
-              </div>
-              <div class="text sign-up-text">Don't have an account? <label for="flip">Signup now</label></div>
-              <div class="text-center" style="margin-top: 20px;">
-            <button type="button" class="google-signin-btn  text-center">
-              <img src="../assets/img/google.png" alt="Google Logo">
-              <span class="text-center">Sign in with Google</span>
-            </button>
-          </div>
-            </div>
+                  <div class="input-boxes">
+                    <div class="input-box">
+                      <i class="fas fa-envelope"></i>
+                      <input type="text" placeholder="Enter your email" name="email" required>
+                    </div>
+                    <div class="input-box">
+                       <i class="fas fa-lock"></i>
+                      <input id="loginPassword" type="password" placeholder="Enter your password" name="password" required>
+                  <i class="fas fa-eye" id="toggleLoginPassword" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer;"></i>
+                    </div>
+                    <div class="text"><a href="#">Forgot password?</a></div>
+                    <div class="button input-box">
+                      <input type="submit" value="Submit">
+                    </div>
+                    <div class="text sign-up-text">Don't have an account? <label for="flip">Signup now</label></div>
+                    <div class="text-center" style="margin-top: 20px;">
+                      <a href="<?= base_url('google-login');?>" style="text-decoration:none">
+                        <button type="button" class="google-signin-btn  text-center">
+                        <img src="../assets/img/google.png" alt="Google Logo">
+                        <span class="text-center">Sign in with Google</span>
+                      </button>
+                      </a>
+                </div>
+                  </div>
           </form>  
         </div>
         
         <div class="signup-form">
-  <div class="title">Signup</div>
-  <form id="signupForm" action="<?= base_url('signUp');?>" method="post">
-    <div class="input-boxes">
-      <div class="input-box">
-        <i class="fas fa-user"></i>
-        <input type="text" placeholder="Enter your name" name="name" required>
-      </div>
-      <div class="input-box">
-        <i class="fas fa-envelope"></i>
-        <input type="text" placeholder="Enter your email" name="email" required>
-      </div>
-      <div class="input-box">
-        <i class="fas fa-lock"></i>
-        <input id="password" type="password" placeholder="Enter your password" name="password" required>
-      </div>
-      <!-- Password validation error message -->
-      <div class="error-box">
-        <span id="password-error" style="color: red; display: none;">Password must have at least one uppercase letter, one lowercase letter, one number, and one special character!</span>
-      </div>
-      <div class="input-box">
-        <i class="fas fa-lock"></i>
-        <input id="confirm_password" type="password" placeholder="Confirm password" name="confirm_pass" required>
-      </div>
-      <!-- Password mismatch error message -->
-      <div class="error-box">
-        <span id="error-message" style="color: red; display: none;">Passwords do not match!</span>
-      </div>
-      <div class="button input-box">
-        <input type="submit" value="Submit">
-      </div>
-      <div class="text sign-up-text">Already have an account? <label for="flip">Login now</label></div>
-    </div>
+          <div class="title">Signup</div>
+          <form id="signupForm" action="<?= base_url('signUp');?>" method="post">
+            <div class="input-boxes">
+              <div class="input-box">
+                <i class="fas fa-user"></i>
+                <input type="text" placeholder="Enter your name" name="name" required>
+              </div>
+              <div class="input-box">
+                <i class="fas fa-phone"></i>
+                <input type="number" placeholder="Enter your phone number" name="contact" required>
+              </div>
+              <div class="input-box">
+                <i class="fas fa-envelope"></i>
+                <input type="text" placeholder="Enter your email" name="email" required>
+              </div>
+              <div class="input-box" style="position: relative;">
+                  <i class="fas fa-lock"></i>
+                  <input id="password" type="password" placeholder="Enter your password" name="password" required style="padding-left: 30px;">
+                  <i class="fas fa-eye" id="togglePassword" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer;"></i>
+              </div>
+              <div class="error-box">
+                  <span id="password-error" style="color: red; display: none;">Password must have at least one uppercase letter, one lowercase letter, one number, and one special character!</span>
+              </div>
+
+              <div class="input-box" style="position: relative;">
+                  <i class="fas fa-lock"></i>
+                  <input id="confirm_password" type="password" placeholder="Confirm password" name="confirm_pass" required style="padding-left: 30px;">
+                  <i class="fas fa-eye" id="toggleConfirmPassword" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer;"></i>
+              </div>
+
+              <!-- Password mismatch error message -->
+              <div class="error-box">
+                <span id="error-message" style="color: red; display: none;">Passwords do not match!</span>
+              </div>
+              <div class="button input-box">
+                <input type="submit" value="Submit">
+              </div>
+              <div class="text sign-up-text">Already have an account? <label for="flip">Login now</label></div>
+            </div>
   </form>
 </div>
 
@@ -430,6 +439,7 @@ body {
   </div>
 
   <!-- Toastr JS -->
+   <?= $this->include('script');?>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 

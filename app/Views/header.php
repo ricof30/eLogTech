@@ -9,7 +9,7 @@
     <meta content="" name="description">
 
     <!-- Favicon -->
-    <link href="../assets/img/eLogTech.png" rel="icon">
+    <link href="../assets/img/eLogTech.jpg" rel="icon">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -108,6 +108,67 @@
     background-color: #E0FFFF !important; /* Keep the same background color on hover */
     color: #000 !important;
 }
+
+/* weather design */
+.weather-dashboard {
+    padding: 20px;
+    background-color: #f0f8ff; /* Light background for contrast */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.weather-dashboard h3 {
+    text-align: center;
+    color: #333;
+}
+
+.weather-dashboard h6 {
+    margin-top: 20px;
+    color: #555;
+}
+
+.forecast-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap; /* Wrap items to new line if necessary */
+}
+
+.forecast-day {
+    flex: 1 1 calc(25% - 10px); /* 4 items per row with spacing */
+    margin: 5px;
+    padding: 15px;
+    background-color: #ffffff; /* White background for cards */
+    border: 1px solid #ddd; /* Border for cards */
+    border-radius: 5px; /* Slightly rounded corners */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.current-icon, .forecast-icon {
+    width: 50px; /* Set icon width */
+    height: auto; /* Keep aspect ratio */
+}
+
+.forecast-day h6 {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.forecast-day p {
+    margin: 5px 0;
+}
+/* .weather-dashboard .card {
+    transition: transform 0.2s;
+}
+
+.weather-dashboard .card:hover {
+    transform: scale(1.05);
+} */
+ /* Chat container */
+
+
+
+
 
   </style>
 

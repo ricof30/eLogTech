@@ -1,0 +1,163 @@
+CRITICAL - 2024-10-03 09:42:49 --> ErrorException: Undefined variable $location
+in APPPATH\Views\weather_view.php on line 32.
+ 1 APPPATH\Views\weather_view.php(32): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $location', 'C:\\laragon\\www\\solarflood\\app\\Views\\weather_view.php', 32)
+ 2 SYSTEMPATH\View\View.php(228): include('C:\\laragon\\www\\solarflood\\app\\Views\\weather_view.php')
+ 3 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('weather_view', [], true)
+ 5 APPPATH\Controllers\Home.php(1139): view('weather_view')
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->weather()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(82): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')
+CRITICAL - 2024-10-03 09:43:24 --> ErrorException: Undefined variable $location
+in APPPATH\Views\weather_view.php on line 32.
+ 1 APPPATH\Views\weather_view.php(32): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $location', 'C:\\laragon\\www\\solarflood\\app\\Views\\weather_view.php', 32)
+ 2 SYSTEMPATH\View\View.php(228): include('C:\\laragon\\www\\solarflood\\app\\Views\\weather_view.php')
+ 3 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('weather_view', [], true)
+ 5 APPPATH\Controllers\Home.php(1139): view('weather_view')
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->weather()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(82): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')
+CRITICAL - 2024-10-03 09:43:38 --> ErrorException: Undefined variable $location
+in APPPATH\Views\weather_view.php on line 32.
+ 1 APPPATH\Views\weather_view.php(32): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $location', 'C:\\laragon\\www\\solarflood\\app\\Views\\weather_view.php', 32)
+ 2 SYSTEMPATH\View\View.php(228): include('C:\\laragon\\www\\solarflood\\app\\Views\\weather_view.php')
+ 3 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('weather_view', [], true)
+ 5 APPPATH\Controllers\Home.php(1139): view('weather_view')
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->weather()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(82): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')
+CRITICAL - 2024-10-03 09:47:08 --> ErrorException: unlink(C:\laragon\www\solarflood\public/assets/img/user logo_2.jpg): Resource temporarily unavailable
+in APPPATH\Controllers\Home.php on line 941.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'unlink(C:\\laragon\\www\\solarflood\\public/assets/img/user logo_2.jpg): Resource temporarily unavailable', 'C:\\laragon\\www\\solarflood\\app\\Controllers\\Home.php', 941)
+ 2 APPPATH\Controllers\Home.php(941): unlink('C:\\laragon\\www\\solarflood\\public/assets/img/user logo_2.jpg')
+ 3 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->updatePhoto()
+ 4 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 5 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(82): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')
+CRITICAL - 2024-10-03 10:03:49 --> ErrorException: file_get_contents(https://api.openweathermap.org/data/2.5/forecast?lat=13.3765&amp;lon=121.2269&amp;appid=YOUR_API_KEY&amp;units=metric): Failed to open stream: HTTP request failed! HTTP/1.1 401 Unauthorized
+
+in APPPATH\Controllers\Home.php on line 128.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'file_get_contents(https://api.openweathermap.org/data/2.5/forecast?lat=13.3765&amp;lon=121.2269&amp;appid=YOUR_API_KEY&amp;units=metric): Failed to open stream: HTTP request failed! HTTP/1.1 401 Unauthorized
+', 'C:\\laragon\\www\\solarflood\\app\\Controllers\\Home.php', 128)
+ 2 APPPATH\Controllers\Home.php(128): file_get_contents('https://api.openweathermap.org/data/2.5/forecast?lat=13.3765&lon=121.2269&appid=YOUR_API_KEY&units=metric')
+ 3 APPPATH\Controllers\Home.php(101): App\Controllers\Home->getForecastData()
+ 4 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->index()
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(82): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')
+CRITICAL - 2024-10-03 10:24:02 --> ErrorException: file_get_contents(https://api.openweathermap.org/data/2.5/forecast?lat=13.3765&amp;lon=121.2269&amp;appid=84b6fde798b94a8453ad049010f9f26f&amp;units=metric): Failed to open stream: HTTP request failed! HTTP/1.1 401 Unauthorized
+
+in APPPATH\Controllers\Home.php on line 128.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'file_get_contents(https://api.openweathermap.org/data/2.5/forecast?lat=13.3765&amp;lon=121.2269&amp;appid=84b6fde798b94a8453ad049010f9f26f&amp;units=metric): Failed to open stream: HTTP request failed! HTTP/1.1 401 Unauthorized
+', 'C:\\laragon\\www\\solarflood\\app\\Controllers\\Home.php', 128)
+ 2 APPPATH\Controllers\Home.php(128): file_get_contents('https://api.openweathermap.org/data/2.5/forecast?lat=13.3765&lon=121.2269&appid=84b6fde798b94a8453ad049010f9f26f&units=metric')
+ 3 APPPATH\Controllers\Home.php(101): App\Controllers\Home->getForecastData()
+ 4 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->index()
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(82): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')
+CRITICAL - 2024-10-03 10:25:05 --> ErrorException: file_get_contents(https://api.openweathermap.org/data/2.5/weather?lat=13.3765&amp;lon=121.2269&amp;appid=84b6fde798b94a8453ad049010f9f26f&amp;units=metric): Failed to open stream: HTTP request failed! HTTP/1.1 401 Unauthorized
+
+in APPPATH\Controllers\Home.php on line 128.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'file_get_contents(https://api.openweathermap.org/data/2.5/weather?lat=13.3765&amp;lon=121.2269&amp;appid=84b6fde798b94a8453ad049010f9f26f&amp;units=metric): Failed to open stream: HTTP request failed! HTTP/1.1 401 Unauthorized
+', 'C:\\laragon\\www\\solarflood\\app\\Controllers\\Home.php', 128)
+ 2 APPPATH\Controllers\Home.php(128): file_get_contents('https://api.openweathermap.org/data/2.5/weather?lat=13.3765&lon=121.2269&appid=84b6fde798b94a8453ad049010f9f26f&units=metric')
+ 3 APPPATH\Controllers\Home.php(101): App\Controllers\Home->getWeatherData()
+ 4 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->index()
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(82): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')
+CRITICAL - 2024-10-03 10:39:44 --> Error: Call to undefined method CodeIgniter\View\View::getWeatherData()
+in APPPATH\Views\dashboard.php on line 25.
+ 1 SYSTEMPATH\View\View.php(228): include()
+ 2 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('dashboard', [], true)
+ 4 APPPATH\Controllers\Home.php(115): view('dashboard', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->index()
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(82): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')
+CRITICAL - 2024-10-03 10:42:07 --> Error: Call to undefined method CodeIgniter\View\View::getWeatherData()
+in APPPATH\Views\dashboard.php on line 25.
+ 1 SYSTEMPATH\View\View.php(228): include()
+ 2 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('dashboard', [], true)
+ 4 APPPATH\Controllers\Home.php(115): view('dashboard', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->index()
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(82): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')
+CRITICAL - 2024-10-03 10:55:38 --> ErrorException: file_get_contents(https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/13.3765,121.2269?key=63064c321974f9d7ff589ebd1773b5e6&amp;contentType=json): Failed to open stream: HTTP request failed! HTTP/1.1 401 
+
+in APPPATH\Controllers\Home.php on line 131.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'file_get_contents(https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/13.3765,121.2269?key=63064c321974f9d7ff589ebd1773b5e6&amp;contentType=json): Failed to open stream: HTTP request failed! HTTP/1.1 401 
+', 'C:\\laragon\\www\\solarflood\\app\\Controllers\\Home.php', 131)
+ 2 APPPATH\Controllers\Home.php(131): file_get_contents('https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/13.3765,121.2269?key=63064c321974f9d7ff589ebd1773b5e6&contentType=json')
+ 3 APPPATH\Controllers\Home.php(101): App\Controllers\Home->getWeatherData()
+ 4 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->index()
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(82): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')
+CRITICAL - 2024-10-03 10:58:58 --> ErrorException: Undefined array key "date"
+in APPPATH\Views\dashboard.php on line 36.
+ 1 APPPATH\Views\dashboard.php(36): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "date"', 'C:\\laragon\\www\\solarflood\\app\\Views\\dashboard.php', 36)
+ 2 SYSTEMPATH\View\View.php(228): include('C:\\laragon\\www\\solarflood\\app\\Views\\dashboard.php')
+ 3 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('dashboard', [], true)
+ 5 APPPATH\Controllers\Home.php(115): view('dashboard', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->index()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(82): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')
+CRITICAL - 2024-10-03 11:07:14 --> ErrorException: Undefined array key "date"
+in APPPATH\Views\dashboard.php on line 33.
+ 1 APPPATH\Views\dashboard.php(33): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "date"', 'C:\\laragon\\www\\solarflood\\app\\Views\\dashboard.php', 33)
+ 2 SYSTEMPATH\View\View.php(228): include('C:\\laragon\\www\\solarflood\\app\\Views\\dashboard.php')
+ 3 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('dashboard', [], true)
+ 5 APPPATH\Controllers\Home.php(115): view('dashboard', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->index()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(82): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')
+CRITICAL - 2024-10-03 11:08:59 --> ErrorException: Undefined array key "date"
+in APPPATH\Views\dashboard.php on line 25.
+ 1 APPPATH\Views\dashboard.php(25): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "date"', 'C:\\laragon\\www\\solarflood\\app\\Views\\dashboard.php', 25)
+ 2 SYSTEMPATH\View\View.php(228): include('C:\\laragon\\www\\solarflood\\app\\Views\\dashboard.php')
+ 3 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('dashboard', [], true)
+ 5 APPPATH\Controllers\Home.php(115): view('dashboard', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->index()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(82): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')
+CRITICAL - 2024-10-03 11:29:46 --> ErrorException: Undefined array key "date"
+in APPPATH\Views\dashboard.php on line 35.
+ 1 APPPATH\Views\dashboard.php(35): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "date"', 'C:\\laragon\\www\\solarflood\\app\\Views\\dashboard.php', 35)
+ 2 SYSTEMPATH\View\View.php(228): include('C:\\laragon\\www\\solarflood\\app\\Views\\dashboard.php')
+ 3 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('dashboard', [], true)
+ 5 APPPATH\Controllers\Home.php(115): view('dashboard', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->index()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(82): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\solarflood\\public\\index.php')

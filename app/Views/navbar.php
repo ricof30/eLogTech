@@ -148,7 +148,7 @@
           <div class="modal-body">
                   <!-- Display current photo -->
                   <div class="text-center mb-4">
-                  <form action="<?= base_url('updatePhoto'); ?>" method="post" enctype="multipart/form-data">
+                  <form action="<?= base_url('updateProfile'); ?>" method="post" enctype="multipart/form-data">
 
                       <img id="profilePhotoPreview" src="<?= base_url('../assets/img/' . $user['image']); ?>" alt="Profile Photo" class="img-fluid rounded-circle" style="width: 150px; height: 150px; object-fit: cover;">
                       <div class="position-relative">
@@ -163,13 +163,18 @@
                   <!-- Username Field -->
                   <div class="mb-3">
                       <label for="username" class="form-label">Username</label>
-                      <input type="text" class="form-control bg-white" id="username" name="username" value="<?= esc($user['username']); ?>" readonly>
+                      <input type="text" class="form-control bg-white" id="username" name="username" value="<?= esc($user['username']); ?>">
                   </div>
 
                   <!-- Email Field -->
                   <div class="mb-3">
                       <label for="email" class="form-label">Email</label>
                       <input type="email" class="form-control bg-white" id="email" name="email" value="<?= esc($user['email']); ?>" readonly>
+                  </div>
+
+                  <div class="mb-3">
+                      <label for="email" class="form-label">Contact Number</label>
+                      <input type="number" class="form-control bg-white" id="contact" name="contact" value="<?= esc($user['contact']); ?>">
                   </div>
 
                   <button type="submit" class="btn btn-primary">Save changes</button>
