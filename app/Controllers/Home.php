@@ -35,13 +35,7 @@ use Minishlink\WebPush\VAPID;
 class Home extends BaseController
 {
 
-    public $clientID = '416774517161-ve653inuu3v308tbt8nl1blld4hnf4o9.apps.googleusercontent.com'; 
-    public $clientSecret = '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'; 
-    public $redirectURI = 'https://elogtech.elementfx.com/google-callback'; 
-
-    private $apiKey = '63064c321974f9d7ff589ebd1773b5e6'; 
-    private $latitude = '13.3765'; 
-    private $longitude = '121.2269'; 
+   
 
     public function index(): string
     {
@@ -116,7 +110,6 @@ class Home extends BaseController
 
     public function getWeatherData()
     {
-        $apiKey = 'UtcResU4V8va0tluzhUl49qMGWQ57rAy'; // Replace with your actual API key
         $latitude = '13.3765';
         $longitude = '121.2269';
     
